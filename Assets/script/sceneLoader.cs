@@ -1,55 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Timers;
 using Unity.VisualScripting;
 using UnityEngine.Events;
 using System;
+using System.Threading;
+using UnityEditor.Rendering;
+using System.Runtime.CompilerServices;
+
+
 
 public class sceneLoader : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private  GameObject _startingSceneTransition;
-    [SerializeField] private  GameObject _endingSceneTransition;
-    private System.Timers.Timer timer = new System.Timers.Timer(5000);
-    private static UnityEvent myEvent = new UnityEvent();
+    [SerializeField]  private  GameObject _startingSceneTransition;
+    [SerializeField]  private  GameObject _endingSceneTransition;
+    [SerializeField] private GameObject _blurEffect;
+    [SerializeField] private GameObject _dialog;
+    [SerializeField] private GameObject _rocket;
+    [SerializeField] private GameObject _Enemy;
 
-    void Start()
-        {
+    private float distance = 2f;
+    private float _rocket_offset = 2.0f;
+
+
+    void Start() {
         _startingSceneTransition.SetActive(true);
-        timer.Elapsed += OnTimerElapsed;
-        timer.Enabled  = true;
-        timer.AutoReset = true;
-        myEvent.AddListener(DisableStartingSceneTransition);
 
+
+        Invoke(nameof(transition), 3f);
 
     }
-    private void DisableStartingSceneTransition()
+    private void transition()
     {
-        
         _startingSceneTransition.SetActive(false);
-        myEvent.RemoveListener(DisableStartingSceneTransition);
-        myEvent.AddListener(EnableEndingSceneTransition);
-
-    }
-
-    private void EnableEndingSceneTransition()
-    {
         _endingSceneTransition.SetActive(true);
+        Invoke(nameof(DeactiviteUI), 1f);
+ 
+    }
+
+    private void DeactiviteUI() {
+        _endingSceneTransition.SetActive(false);
+        _blurEffect.SetActive(false);
+        _dialog.SetActive(false);
+      
+        _rocket.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distance;
+        
+
+        this._rocket.transform.position = new Vector3(this._rocket.transform.position.x, 
+            this._rocket.transform.position.y+ _rocket_offset, 
+            this._rocket.transform.position.z);
+        _rocket.SetActive(true);
+
+        var startPos = this._rocket.transform.position;
+        var endPos = Camera.main.transform.position;
+
+        CoroutineUtils.Lerp(this, 1f, t => {
+            var EndPos = endPos;
+
+            float l = Mathf.Lerp(startPos.y,
+                endPos.y, t);
+            
+            this._rocket.transform.position = new Vector3(this._rocket.transform.position.x, l, 
+            this._rocket.transform.position.z);
+
+            if(t == 1f)
+                this._Enemy.transform.position = EndPos;
+            
+
+        });
        
+
 
     }
 
-    private static void OnTimerElapsed(object sender, ElapsedEventArgs e)
-    {
-       
-        myEvent.Invoke();
 
-    }
-
-   
 
     public void LoadA(string scenename)
         {
@@ -58,3 +85,5 @@ public class sceneLoader : MonoBehaviour
         }
     
 }
+
+
