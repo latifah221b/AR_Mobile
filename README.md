@@ -1,15 +1,16 @@
 Bugs: 
 -----------------------
-ios:
+  ios:
 
-XR Interaction toolkit is not working. 
+  XR Interaction toolkit is not working. 
 
-Memoryleaks. 
+  Memoryleaks. 
 
-Android: 
+  Android: 
 
-Nothing. 
+  Nothing. 
 
+Build: 
 ------------------------------
 To run the app on IOS: 
 * switch the build to IOS platform on Unity. 
