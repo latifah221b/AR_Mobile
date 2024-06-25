@@ -5,8 +5,11 @@ ios:
 XR Interaction toolkit is not working. 
 
 Memoryleaks. 
+
 Android: 
-Nothing 
+
+Nothing. 
+
 ------------------------------
 To run the app on IOS: 
 * switch the build to IOS platform on Unity. 
