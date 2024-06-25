@@ -1,14 +1,4 @@
-Bugs: 
------------------------
-  ios:
 
-  XR Interaction toolkit is not working. 
-
-  Memoryleaks. 
-
-  Android: 
-
-  Nothing. 
 
 Build: 
 ------------------------------
