@@ -447,20 +447,23 @@ public class ARTemplateMenuManager : MonoBehaviour
 
                 pos.y = pos.y + 0.3f;
 
-                attachedObject.AddComponent<collectable_script>().mangerScript =
-                    this.m_touch_manger;
-
-                attachedObject.GetComponent<collectable_script>().score_text =
-                    this.score_text;
-
-                attachedObject.GetComponent<collectable_script>().score_struct =
-                    this.score;
-                attachedObject.GetComponent<collectable_script>().sceneLoader = sceneLoader;
-
-                Instantiate(attachedObject,
+               
+                var clone = Instantiate(attachedObject,
                    pos,
                     Quaternion.identity);
                 attachedObject.transform.localScale = (Vector3.one * 2f);
+
+
+                clone.AddComponent<collectable_script>().mangerScript =
+                   this.m_touch_manger;
+
+                clone.GetComponent<collectable_script>().score_text =
+                    this.score_text;
+
+                clone.GetComponent<collectable_script>().score_struct =
+                    this.score;
+                clone.GetComponent<collectable_script>().sceneLoader = sceneLoader;
+
                 Destroy(currentFocusedObject.transform.gameObject);
             }
         }

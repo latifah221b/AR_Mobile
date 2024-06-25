@@ -13,7 +13,7 @@ public class collectable_script : MonoBehaviour
    public TouchMangerScript mangerScript;
    public TextMeshProUGUI score_text;
    public score_struct score_struct;
-    public sceneLoader sceneLoader;
+   public sceneLoader sceneLoader;
 
 
 
@@ -25,36 +25,36 @@ public class collectable_script : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
-    {
-        if(score_struct.score == 3)
-        {
-            mangerScript.m_event.RemoveListener(handleTap);
-           
-        }
-        
-    }
+
 
     private void handleTap(Vector2 screenpos)
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(screenpos);
-        if (Physics.Raycast(ray, out hit, 100))
+        if (screenpos != null)
         {
-            if(hit.collider.gameObject.tag=="star" )
+            Ray ray = Camera.main.ScreenPointToRay(screenpos);
+            if (Physics.Raycast(ray, out hit, 100))
             {
-                score_struct.score++; 
-                score_text.text = "3 / " + score_struct.score.ToString();
-                if(score_struct.score == 3)
+                if (hit.collider != null && 
+                    hit.collider.gameObject != null 
+                    && hit.collider.gameObject.tag != null &&
+                    hit.collider.gameObject.tag == "star")
                 {
-                    sceneLoader.LoadA("scene4");
-                }
-                Destroy(hit.collider.gameObject);
-                Destroy(this.gameObject);
-               
-                
-            }
+                    score_struct.score++;
+                    score_text.text = "3 / " + score_struct.score.ToString();
 
+                    Destroy(hit.collider.gameObject);
+                    Destroy(this.gameObject);
+
+                    if (score_struct.score == 3)
+                    {
+                        sceneLoader.LoadA("scene4");
+                    }
+
+
+                }
+
+            }
         }
     }
     

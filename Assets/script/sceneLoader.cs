@@ -27,10 +27,13 @@ public class sceneLoader : MonoBehaviour
 
 
     void Start() {
-        _startingSceneTransition.SetActive(true);
-
-
-        Invoke(nameof(transition), 3f);
+       if(_startingSceneTransition != null)
+        {
+            _startingSceneTransition.SetActive(true);
+            Invoke(nameof(transition), 3f);
+        }
+        
+       
 
     }
     private void transition()
@@ -41,24 +44,40 @@ public class sceneLoader : MonoBehaviour
  
     }
 
+    private Vector2 Random_positioning(Vector2 original_point, 
+        float radius)
+    {
+
+        return original_point + UnityEngine.Random.insideUnitCircle * radius;
+    }
+
     private void DeactiviteUI() {
         _endingSceneTransition.SetActive(false);
         _blurEffect.SetActive(false);
         _dialog.SetActive(false);
       
         _rocket.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distance;
-        
 
-        this._rocket.transform.position = new Vector3(this._rocket.transform.position.x, 
+       
+        var endPos = _rocket.transform.position ;
+        endPos = endPos - new Vector3(0, 1.0f, 0);
+
+
+        this._rocket.transform.position
+             = new Vector3(this._rocket.transform.position.x, 
             this._rocket.transform.position.y+ _rocket_offset, 
             this._rocket.transform.position.z);
         _rocket.SetActive(true);
 
         var startPos = this._rocket.transform.position;
-        var endPos = Camera.main.transform.position;
+
+
+
+
+
 
         CoroutineUtils.Lerp(this, 1f, t => {
-            var EndPos = endPos;
+          
 
             float l = Mathf.Lerp(startPos.y,
                 endPos.y, t);
@@ -66,9 +85,15 @@ public class sceneLoader : MonoBehaviour
             this._rocket.transform.position = new Vector3(this._rocket.transform.position.x, l, 
             this._rocket.transform.position.z);
 
-            if(t == 1f)
-                this._Enemy.transform.position = EndPos;
-            
+            if (t == 1f) {
+                endPos = endPos + new Vector3(0, 0.5f, 0);
+                var random_pos = Random_positioning(endPos, 0.1f);
+                _Enemy.transform.position = new Vector3(random_pos.x, 
+                    endPos.y, random_pos.y);
+                
+                }
+
+
 
         });
        
