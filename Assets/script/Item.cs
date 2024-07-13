@@ -8,3 +8,4 @@ public class Item : ScriptableObject
     public Sprite icon;
     internal object currentQuantity;
 }
+//
