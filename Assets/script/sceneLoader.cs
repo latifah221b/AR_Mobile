@@ -19,8 +19,9 @@ public class sceneLoader : MonoBehaviour
     [SerializeField]  private  GameObject _endingSceneTransition;
     [SerializeField] private GameObject _blurEffect;
     [SerializeField] private GameObject _dialog;
-    [SerializeField] private GameObject _rocket;
+    [SerializeField] private GameObject _rocket_scene;
     [SerializeField] private GameObject _Enemy;
+    [SerializeField] private GameObject animation; 
 
     private float distance = 2f;
     private float _rocket_offset = 2.0f;
@@ -55,49 +56,7 @@ public class sceneLoader : MonoBehaviour
         _endingSceneTransition.SetActive(false);
         _blurEffect.SetActive(false);
         _dialog.SetActive(false);
-      
-        _rocket.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distance;
-
-       
-        var endPos = _rocket.transform.position ;
-        endPos = endPos - new Vector3(0, 1.0f, 0);
-
-
-        this._rocket.transform.position
-             = new Vector3(this._rocket.transform.position.x, 
-            this._rocket.transform.position.y+ _rocket_offset, 
-            this._rocket.transform.position.z);
-        _rocket.SetActive(true);
-
-        var startPos = this._rocket.transform.position;
-
-
-
-
-
-
-        CoroutineUtils.Lerp(this, 1f, t => {
-          
-
-            float l = Mathf.Lerp(startPos.y,
-                endPos.y, t);
-            
-            this._rocket.transform.position = new Vector3(this._rocket.transform.position.x, l, 
-            this._rocket.transform.position.z);
-
-            if (t == 1f) {
-                endPos = endPos + new Vector3(0, 0.5f, 0);
-                var random_pos = Random_positioning(endPos, 0.1f);
-                _Enemy.transform.position = new Vector3(random_pos.x, 
-                    endPos.y, random_pos.y);
-                
-                }
-
-
-
-        });
-       
-
+        _rocket_scene.SetActive(true);
 
     }
 
