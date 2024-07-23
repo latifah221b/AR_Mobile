@@ -18,10 +18,10 @@ public class sceneLoader : MonoBehaviour
     [SerializeField]  private  GameObject _startingSceneTransition;
     [SerializeField]  private  GameObject _endingSceneTransition;
     [SerializeField] private GameObject _blurEffect;
-    [SerializeField] private GameObject _dialog;
+    [SerializeField] private GameObject  _dialog;
     [SerializeField] private GameObject _rocket_scene;
     [SerializeField] private GameObject _Enemy;
-    [SerializeField] private GameObject animation; 
+    
 
     private float distance = 2f;
     private float _rocket_offset = 2.0f;
@@ -56,9 +56,28 @@ public class sceneLoader : MonoBehaviour
         _endingSceneTransition.SetActive(false);
         _blurEffect.SetActive(false);
         _dialog.SetActive(false);
-        _rocket_scene.SetActive(true);
+        //_rocket_scene.SetActive(true);
+        PlacePrefab();
 
     }
+
+
+   
+    private void PlacePrefab()
+    {
+        Transform CameraTransfrom = Camera.main.transform;
+
+        Vector3 spawnPosition = CameraTransfrom.position +
+            CameraTransfrom.forward * 20;
+
+        GameObject instantiatePrefab = Instantiate(_rocket_scene, 
+            spawnPosition, Quaternion.identity);
+
+        Destroy(_rocket_scene);
+        instantiatePrefab.SetActive(true);
+
+    }
+    
 
 
 
