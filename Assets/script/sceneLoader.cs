@@ -31,6 +31,7 @@ public class sceneLoader : MonoBehaviour
 
     void Start() {
         _startingSceneTransition.SetActive(true);
+        StartCoroutine(transition());
        // CameraTransfrom = Camera.main.transform;
        // PlacePrefab();
 
@@ -41,7 +42,7 @@ public class sceneLoader : MonoBehaviour
       //  CameraTransfrom = Camera.main.transform;
     }
 
-    /*
+    
     IEnumerator transition()
     {
         // _startingSceneTransition.SetActive(true);
@@ -52,15 +53,17 @@ public class sceneLoader : MonoBehaviour
         //_blurEffect.SetActive(true);
         // _dialog.SetActive(true);
 
-        // yield return new WaitForSeconds(3f);
+         yield return new WaitForSeconds(3f);
         // _endingSceneTransition.SetActive(true);
 
         // Invoke(nameof(DeactiviteUI), 3f);
 
+        _rocket_scene.SetActive(true);
+
        
 
     }
-    */
+    
 
     private Vector2 Random_positioning(Vector2 original_point, 
         float radius)
