@@ -21,29 +21,46 @@ public class sceneLoader : MonoBehaviour
     [SerializeField] private GameObject  _dialog;
     [SerializeField] private GameObject _rocket_scene;
     [SerializeField] private GameObject _Enemy;
+
     
 
     private float distance = 2f;
     private float _rocket_offset = 2.0f;
+    Transform CameraTransfrom = null;
 
 
     void Start() {
-       if(_startingSceneTransition != null)
-        {
-            _startingSceneTransition.SetActive(true);
-            Invoke(nameof(transition), 3f);
-        }
-        
+        _startingSceneTransition.SetActive(true);
+       // CameraTransfrom = Camera.main.transform;
+       // PlacePrefab();
+
+
+    }
+    private void Update()
+    {
+      //  CameraTransfrom = Camera.main.transform;
+    }
+
+    /*
+    IEnumerator transition()
+    {
+        // _startingSceneTransition.SetActive(true);
+        //  yield return new WaitForSeconds(3f);
+        // _startingSceneTransition.SetActive(false);
+
+
+        //_blurEffect.SetActive(true);
+        // _dialog.SetActive(true);
+
+        // yield return new WaitForSeconds(3f);
+        // _endingSceneTransition.SetActive(true);
+
+        // Invoke(nameof(DeactiviteUI), 3f);
+
        
 
     }
-    private void transition()
-    {
-        _startingSceneTransition.SetActive(false);
-        _endingSceneTransition.SetActive(true);
-        Invoke(nameof(DeactiviteUI), 1f);
- 
-    }
+    */
 
     private Vector2 Random_positioning(Vector2 original_point, 
         float radius)
@@ -53,11 +70,10 @@ public class sceneLoader : MonoBehaviour
     }
 
     private void DeactiviteUI() {
-        _endingSceneTransition.SetActive(false);
-        _blurEffect.SetActive(false);
-        _dialog.SetActive(false);
-        //_rocket_scene.SetActive(true);
-        PlacePrefab();
+        //_endingSceneTransition.SetActive(false);
+        //_blurEffect.SetActive(false);
+        //_dialog.SetActive(false);
+       
 
     }
 
@@ -65,16 +81,13 @@ public class sceneLoader : MonoBehaviour
    
     private void PlacePrefab()
     {
-        Transform CameraTransfrom = Camera.main.transform;
+        
 
         Vector3 spawnPosition = CameraTransfrom.position +
-            CameraTransfrom.forward * 20;
+            CameraTransfrom.forward * 50;
 
-        GameObject instantiatePrefab = Instantiate(_rocket_scene, 
-            spawnPosition, Quaternion.identity);
-
-        Destroy(_rocket_scene);
-        instantiatePrefab.SetActive(true);
+        _rocket_scene.transform.position = spawnPosition;
+        _rocket_scene.SetActive(true);
 
     }
     
