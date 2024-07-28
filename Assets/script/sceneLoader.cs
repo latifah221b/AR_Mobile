@@ -102,9 +102,10 @@ public class sceneLoader : MonoBehaviour
 
     void Start() {
         fill_questions();
-
-        _startingSceneTransition.SetActive(true);
-        StartCoroutine(transition());
+        if (_startingSceneTransition) { _startingSceneTransition.SetActive(true); 
+            StartCoroutine(transition()); }
+       
+        
 
 
     }

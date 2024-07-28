@@ -5,5 +5,4 @@ using UnityEngine;
 public class score_struct : MonoBehaviour
 {
     public int score;
-    
 }
