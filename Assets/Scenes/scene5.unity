@@ -3951,6 +3951,21 @@ PrefabInstance:
       propertyPath: sceneloader
       value: 
       objectReference: {fileID: 1545701204}
+    - target: {fileID: 1591353451283675784, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441549370012957653, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639573154781069235, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6442570124100514515, guid: 58d37ae7380b6e54099c016338b664f2,
         type: 3}
       propertyPath: sceneloader
@@ -4061,6 +4076,11 @@ PrefabInstance:
       propertyPath: sceneloader
       value: 
       objectReference: {fileID: 1545701204}
+    - target: {fileID: 8641138343489926018, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8940105162443425402, guid: 58d37ae7380b6e54099c016338b664f2,
         type: 3}
       propertyPath: m_Name
@@ -4176,7 +4196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1545701203}
   - component: {fileID: 1545701204}
-  - component: {fileID: 1545701205}
   m_Layer: 0
   m_Name: GameManger
   m_TagString: Untagged
@@ -4218,18 +4237,6 @@ MonoBehaviour:
   _rocket_scene: {fileID: 1171296214}
   _Enemy: {fileID: 8986328500875594450, guid: de54668c6a0c8456896a3b28095ed6e7, type: 3}
   _num_of_enemy: 4
---- !u!114 &1545701205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545701201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e177ae74536c14e8a55f6d5e8bc390, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1569690631
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class fetch_question_for_enemy : MonoBehaviour
     {
         // listen to the tap on the enemy 
 
-        //fill_the_canvas();
+        fill_the_canvas();
 
         // event listener ..
         foreach (var button in _buttons)
@@ -65,7 +65,7 @@ public class fetch_question_for_enemy : MonoBehaviour
                 opt.RemoveAt(indx);
             }
             correct_answer = q.get_correct_op();
-            canvas.SetActive(true);
+            //canvas.SetActive(true);
         }
 
 
