@@ -1,4 +1,4 @@
-//using UnityEngine;
+using UnityEngine;
 //public class ItemPickup : MonoBehaviour
 //{
 //    public Item Item;
@@ -23,17 +23,17 @@
 //        Destroy(gameObject);
 //    }
 //}
-//public class ItemPickup : MonoBehaviour
-//{
-//    public Item Item;
-//    void Pickup()
-//    {
-//        InventoryManager.Instance.Add(Item);
-//        Destroy(gameObject);
-//    }
-//    private void OnMouseDown()
-//    {
-//        Pickup();
+public class ItemPickup : MonoBehaviour
+{
+    public Item Item;
+    void Pickup()
+    {
+        InventoryManager.Instance.Add(Item);
+        Destroy(gameObject);
+    }
+    private void OnMouseDown()
+    {
+        Pickup();
 
-//    }
-//}
+    }
+}
