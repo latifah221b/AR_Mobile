@@ -14,18 +14,29 @@ public class InputManger : MonoBehaviour
 
     private void OnEnable() {
         touchControl.Enable();
+        touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
+        touchControl.Touch.TouchInput.started -= ctx => endtouch(ctx);
     }
     private void OnDisable()
     {
         touchControl.Disable();
     }
      void Start() {
-        touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
-        touchControl.Touch.TouchInput.started -= ctx => endtouch(ctx);
+        
     }
 
     public void starttouch(InputAction.CallbackContext context)
     {
+        Debug.Log("The time: " + context.time);
+        Debug.Log("The phase: " + context.phase);
+        Debug.Log("The Duration: " + context.duration);
+
+        Debug.Log("The action: " + context.action.name);
+
+        Debug.Log("The performed: " + context.performed);
+
+        Debug.Log("The control: " + context.control.name);
+
         handleTap(context.ReadValue<Vector2>());
         Debug.Log("Touch started: "+ context.ReadValue<Vector2>());
     }
@@ -47,7 +58,7 @@ public class InputManger : MonoBehaviour
                     hit.collider.gameObject != null && 
                     hit.collider.gameObject == _visuals) 
                 {
-                    _canvas.gameObject.SetActive(true);
+                   // _canvas.gameObject.SetActive(true);
                 }
 
             }
