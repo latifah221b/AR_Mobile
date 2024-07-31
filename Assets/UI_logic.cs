@@ -63,8 +63,7 @@ public class UI_logic : MonoBehaviour
     {
         _blurEffect.SetActive(false);
         _dialog[4].SetActive(false);
-
-        //Sceneloader.LoadA("scene6");
+        _dialog[5].SetActive(true);
     }
 
   
