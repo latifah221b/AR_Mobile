@@ -65,7 +65,6 @@ public class fetch_question_for_enemy : MonoBehaviour
                 opt.RemoveAt(indx);
             }
             correct_answer = q.get_correct_op();
-            //canvas.SetActive(true);
         }
 
 
@@ -85,7 +84,7 @@ public class fetch_question_for_enemy : MonoBehaviour
 
                 butt.colors = colorBlock;
 
-                yield return new WaitForSecondsRealtime(3);
+                yield return new WaitForSecondsRealtime(2);
                 canvas.SetActive(false);
                 _visual.SetActive(false);
                 _attached_part.SetActive(true);

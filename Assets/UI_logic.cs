@@ -29,7 +29,7 @@ public class UI_logic : MonoBehaviour
 
     IEnumerator activiateDialogs()
     {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(2);
         _startSceneTransition.SetActive(false);
         _blurEffect.SetActive(true);
         _dialog[0].SetActive(true);
