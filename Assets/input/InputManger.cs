@@ -8,37 +8,30 @@ public class InputManger : MonoBehaviour
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject _visuals;
 
-    private void Awake() { 
+    private void Awake() {
         touchControl = new TouchControl();
+        Debug.Log("Awake: Input");
     }
 
     private void OnEnable() {
+        Debug.Log("OnEnable: Input");
         touchControl.Enable();
-        touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
-        touchControl.Touch.TouchInput.started -= ctx => endtouch(ctx);
     }
     private void OnDisable()
     {
+        Debug.Log("OnDisable: Input");
         touchControl.Disable();
     }
      void Start() {
+        Debug.Log("Start: Input");
         
+        touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
+        touchControl.Touch.TouchInput.started -= ctx => endtouch(ctx);
     }
 
     public void starttouch(InputAction.CallbackContext context)
     {
-        Debug.Log("The time: " + context.time);
-        Debug.Log("The phase: " + context.phase);
-        Debug.Log("The Duration: " + context.duration);
-
-        Debug.Log("The action: " + context.action.name);
-
-        Debug.Log("The performed: " + context.performed);
-
-        Debug.Log("The control: " + context.control.name);
-
         handleTap(context.ReadValue<Vector2>());
-        Debug.Log("Touch started: "+ context.ReadValue<Vector2>());
     }
 
     public void endtouch(InputAction.CallbackContext context)
@@ -58,7 +51,7 @@ public class InputManger : MonoBehaviour
                     hit.collider.gameObject != null && 
                     hit.collider.gameObject == _visuals) 
                 {
-                   // _canvas.gameObject.SetActive(true);
+                    _canvas.gameObject.SetActive(true);
                 }
 
             }

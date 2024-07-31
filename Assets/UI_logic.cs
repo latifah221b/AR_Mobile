@@ -34,17 +34,6 @@ public class UI_logic : MonoBehaviour
         _blurEffect.SetActive(true);
         _dialog[0].SetActive(true);
         yield return new WaitForSecondsRealtime(6);
-        //_dialog[0].SetActive(false);
-       // _dialog[1].SetActive(true);
-
-       // yield return new WaitForSecondsRealtime(6);
-       // _dialog[1].SetActive(false);
-        //_dialog[2].SetActive(true);
-
-
-
-
-
     }
     public void activiate_dialog_0()
     {
@@ -72,7 +61,10 @@ public class UI_logic : MonoBehaviour
     }
     public void activiate_dialog_3()
     {
-        Sceneloader.LoadA("scene6");
+        _blurEffect.SetActive(false);
+        _dialog[4].SetActive(false);
+
+        //Sceneloader.LoadA("scene6");
     }
 
   

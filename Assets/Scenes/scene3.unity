@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1613,7 +1613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CameraToFace: {fileID: 0}
   m_ObjectPrefabs:
-  - {fileID: 8986328500875594450, guid: de54668c6a0c8456896a3b28095ed6e7, type: 3}
+  - {fileID: 8986328500875594450, guid: 1493115cc149f8247b1c2b70ba3f0fb9, type: 3}
   m_SpawnVisualizationPrefab: {fileID: 0}
   m_SpawnOptionIndex: 0
   m_OnlySpawnInView: 1
@@ -5745,8 +5745,9 @@ MonoBehaviour:
   _endingSceneTransition: {fileID: 0}
   _blurEffect: {fileID: 0}
   _dialog: {fileID: 0}
-  _rocket: {fileID: 0}
+  _rocket_scene: {fileID: 0}
   _Enemy: {fileID: 0}
+  _num_of_enemy: 0
 --- !u!4 &1186522888
 Transform:
   m_ObjectHideFlags: 0
