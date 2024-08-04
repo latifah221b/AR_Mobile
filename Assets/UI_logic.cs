@@ -9,6 +9,7 @@ public class UI_logic : MonoBehaviour
     [SerializeField] private sceneLoader Sceneloader;
     [SerializeField] private GameObject _startSceneTransition;
     [SerializeField] private GameObject _endSceneTransition;
+    [SerializeField] private GameObject[] enemyinputs; 
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,10 @@ public class UI_logic : MonoBehaviour
     public void activiteUI()
     {
         StartCoroutine(activiateDialogs());
+         foreach(var enemy in enemyinputs)
+        {
+            enemy.GetComponent<InputManger>().enabled = true;
+        }
       
     }
 

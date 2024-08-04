@@ -31,6 +31,7 @@ public class InputManger : MonoBehaviour
 
     public void starttouch(InputAction.CallbackContext context)
     {
+
         handleTap(context.ReadValue<Vector2>());
     }
 
