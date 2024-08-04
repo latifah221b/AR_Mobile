@@ -51,6 +51,7 @@ public class InputManger : MonoBehaviour
                     hit.collider.gameObject != null && 
                     hit.collider.gameObject == _visuals) 
                 {
+                    Debug.Log("The canvas will be activiated");
                     _canvas.gameObject.SetActive(true);
                 }
 

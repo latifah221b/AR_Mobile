@@ -43,6 +43,7 @@ public class sceneLoader : MonoBehaviour
     [SerializeField] private GameObject _rocket_scene;
     [SerializeField] private GameObject _Enemy;
     [SerializeField] private int _num_of_enemy;
+    [SerializeField] private GameObject _eventSystem; 
     private question[] _question_list;
     private List<question> Questions = new List<question>();
 
@@ -104,6 +105,8 @@ public class sceneLoader : MonoBehaviour
         fill_questions();
         if (_startingSceneTransition) { _startingSceneTransition.SetActive(true); 
             StartCoroutine(transition()); }
+
+        if(_eventSystem != null) { DoNotDestoryOnload(_eventSystem); }
        
         
 
@@ -151,9 +154,27 @@ public class sceneLoader : MonoBehaviour
     public void LoadA(string scenename)
         {
 
-            SceneManager.LoadScene(scenename);
+        //SceneManager.LoadScene(scenename);
+        StartCoroutine(LoadYourAsyncScene(scenename));
         }
-    
+
+
+    // Async load
+    IEnumerator LoadYourAsyncScene(string scenename)
+    {
+
+        var asyncload = SceneManager.LoadSceneAsync(scenename);
+        while(! asyncload.isDone)
+        {
+            yield return null;
+        }
+    }
+
+    public void DoNotDestoryOnload(GameObject obj)
+    {
+        DontDestroyOnLoad(obj);
+    }
+
 }
 
 

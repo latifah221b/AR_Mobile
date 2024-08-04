@@ -42,14 +42,16 @@ public class collectable_script : MonoBehaviour
                 {
                     score_struct.score++;
                     score_text.text = "3 / " + score_struct.score.ToString();
-
                     Destroy(hit.collider.gameObject);
-                    Destroy(this.gameObject);
-
                     if (score_struct.score == 3)
                     {
                         sceneLoader.LoadA("scene4");
                     }
+
+                   
+                    Destroy(this.gameObject);
+
+                  
 
 
                 }

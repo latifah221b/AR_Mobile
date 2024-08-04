@@ -106,7 +106,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         [SerializeField]
         [Tooltip("When enabled, the object will be rotated about the y-axis when spawned by Spawn Angle Range, " +
             "in relation to the direction of the spawn point to the camera.")]
-        bool m_ApplyRandomAngleAtSpawn = true;
+        bool m_ApplyRandomAngleAtSpawn = false;
 
         /// <summary>
         /// When enabled, the object will be rotated about the y-axis when spawned by <see cref="spawnAngleRange"/>

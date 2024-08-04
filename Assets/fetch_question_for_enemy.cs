@@ -40,7 +40,7 @@ public class fetch_question_for_enemy : MonoBehaviour
             });
         }
 
-
+        
 
     }
 
@@ -65,6 +65,7 @@ public class fetch_question_for_enemy : MonoBehaviour
                 opt.RemoveAt(indx);
             }
             correct_answer = q.get_correct_op();
+           
         }
 
 
