@@ -91,7 +91,7 @@ public class fetch_question_for_enemy : MonoBehaviour
                 _visual.SetActive(false);
                 _attached_part.SetActive(true);
 
-                //To do: show the object to that was collected to "Inventory System"
+                //To do: show the object that was collected to "Inventory System"
                 //Destory the enemy once the part is collect to clean up the scene. 
             }
 
@@ -104,7 +104,7 @@ public class fetch_question_for_enemy : MonoBehaviour
                 canvas.SetActive(false);
                 _particles.SetActive(true);
                 _visual.SetActive(false);
-                yield return new WaitForSecondsRealtime(2);
+                yield return new WaitForSecondsRealtime(0.8f);
                 _particles.SetActive(false);
 
 

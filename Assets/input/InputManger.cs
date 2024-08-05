@@ -7,6 +7,8 @@ public class InputManger : MonoBehaviour
     private TouchControl touchControl;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject _visuals;
+    [SerializeField] private GameObject _rocket_part_attached;
+    private GameObject customPart;
 
     private void Awake() {
         touchControl = new TouchControl();
@@ -27,6 +29,14 @@ public class InputManger : MonoBehaviour
         
         touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
         touchControl.Touch.TouchInput.started -= ctx => endtouch(ctx);
+
+        // look for custom part 
+        if (_rocket_part_attached != null) {
+            var mesh_col = _rocket_part_attached.GetComponentInChildren<MeshCollider>();
+            if (mesh_col != null) { Debug.Log("The meshCollider has been found");
+                customPart = mesh_col.gameObject; }
+
+        }
     }
 
     public void starttouch(InputAction.CallbackContext context)
@@ -49,14 +59,36 @@ public class InputManger : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100))
             {
                 if (hit.collider != null && 
-                    hit.collider.gameObject != null && 
-                    hit.collider.gameObject == _visuals) 
+                    hit.collider.gameObject != null ) 
                 {
-                    Debug.Log("The canvas will be activiated");
-                    _canvas.gameObject.SetActive(true);
+                    check(hit.collider.gameObject);
                 }
 
             }
         }
+    }
+
+    private void check(GameObject collider_game)
+
+    {
+        if(_visuals != null && collider_game == _visuals 
+            && _canvas != null) {
+
+            Debug.Log("The canvas will be activiated");
+            _canvas.gameObject.SetActive(true);
+
+        } else if(customPart != null && 
+            customPart == collider_game)
+        {
+             _rocket_part_attached.SetActive(false);
+            Destroy(this.gameObject);
+            //  Destroy(_rocket_part_attached);
+
+            //TODO: update the main screen & inventory
+        }
+
+
+
+
     }
 }
