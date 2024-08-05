@@ -19,6 +19,7 @@ public class fetch_question_for_enemy : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject _attached_part;
     [SerializeField] private GameObject _visual;
+    [SerializeField] private GameObject _particles; 
 
 
     private string correct_answer;
@@ -90,14 +91,23 @@ public class fetch_question_for_enemy : MonoBehaviour
                 _visual.SetActive(false);
                 _attached_part.SetActive(true);
 
-
+                //To do: show the object to that was collected to "Inventory System"
                 //Destory the enemy once the part is collect to clean up the scene. 
             }
-            //To do: change the button  to correct & show the object to collect "Inventory System"
+
             else
             {
                 incorrect_dailog.SetActive(true);
                 //To do: change the trans & hide the game object for a while 
+                yield return new WaitForSecondsRealtime(2);
+                
+                canvas.SetActive(false);
+                _particles.SetActive(true);
+                _visual.SetActive(false);
+                yield return new WaitForSecondsRealtime(2);
+                _particles.SetActive(false);
+
+
             }
 
         }
