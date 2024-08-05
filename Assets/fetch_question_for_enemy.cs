@@ -19,10 +19,13 @@ public class fetch_question_for_enemy : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject _attached_part;
     [SerializeField] private GameObject _visual;
-    [SerializeField] private GameObject _particles; 
+    [SerializeField] private GameObject _particles;
+    [SerializeField] private Transform _transform;
 
 
     private string correct_answer;
+    private float spawnRadiusMin = 1f;
+    private float spawnRadiusMax = 5f;
 
 
     // Start is called before the first frame update
@@ -98,7 +101,7 @@ public class fetch_question_for_enemy : MonoBehaviour
             else
             {
                 incorrect_dailog.SetActive(true);
-                //To do: change the trans & hide the game object for a while 
+                
                 yield return new WaitForSecondsRealtime(2);
                 
                 canvas.SetActive(false);
@@ -106,12 +109,28 @@ public class fetch_question_for_enemy : MonoBehaviour
                 _visual.SetActive(false);
                 yield return new WaitForSecondsRealtime(0.8f);
                 _particles.SetActive(false);
+                //To do: change the trans & hide the game object for a while 
 
+                yield return new WaitForSecondsRealtime(3f);
+
+                Debug.Log("old pos" + _transform.position);
+                var new_pos = GetRandomSpawnPosition(_transform.position);
+                Debug.Log("new pos" + new_pos);
+                _transform.position = new_pos;
+
+                incorrect_dailog.SetActive(false);
+                _visual.SetActive(true);
 
             }
 
         }
 
+    }
+
+    private Vector3 GetRandomSpawnPosition(Vector3 pos)
+    {
+        Vector3 randomPosition = (Vector3) Random.insideUnitCircle;
+        return pos + randomPosition.normalized * spawnRadiusMin + randomPosition * (spawnRadiusMax - spawnRadiusMin);
     }
 }
 

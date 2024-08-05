@@ -266,6 +266,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1355641855}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &229832970 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1509689911557342650, guid: 58d37ae7380b6e54099c016338b664f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355641855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &292043642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2706392466884877393, guid: 716a8801e230a4f479ef964cd3b23a16,
@@ -2084,6 +2090,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1355641855}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1140920689 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5287970485715879143, guid: 58d37ae7380b6e54099c016338b664f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355641855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1157891080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2261,15 +2273,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aab936275761544caf21a4f9c68a782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1171296216 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 990500370797855053, guid: 58d37ae7380b6e54099c016338b664f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355641855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1195478524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5453464677135021093, guid: 58d37ae7380b6e54099c016338b664f2,
     type: 3}
   m_PrefabInstance: {fileID: 1355641855}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1195478525 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8434570282982591664, guid: 58d37ae7380b6e54099c016338b664f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355641855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1342198993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8216304422120159252, guid: 58d37ae7380b6e54099c016338b664f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355641855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1342198994 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5522865142935240833, guid: 58d37ae7380b6e54099c016338b664f2,
     type: 3}
   m_PrefabInstance: {fileID: 1355641855}
   m_PrefabAsset: {fileID: 0}
@@ -2281,6 +2311,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 89734490256652264, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
+      propertyPath: _transform
+      value: 
+      objectReference: {fileID: 229832970}
     - target: {fileID: 89734490256652264, guid: 58d37ae7380b6e54099c016338b664f2,
         type: 3}
       propertyPath: sceneloader
@@ -2383,6 +2418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6442570124100514515, guid: 58d37ae7380b6e54099c016338b664f2,
         type: 3}
+      propertyPath: _transform
+      value: 
+      objectReference: {fileID: 1342198994}
+    - target: {fileID: 6442570124100514515, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
       propertyPath: sceneloader
       value: 
       objectReference: {fileID: 1545701204}
@@ -2443,9 +2483,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6678581859374118581, guid: 58d37ae7380b6e54099c016338b664f2,
         type: 3}
+      propertyPath: _transform
+      value: 
+      objectReference: {fileID: 1140920689}
+    - target: {fileID: 6678581859374118581, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
       propertyPath: sceneloader
       value: 
       objectReference: {fileID: 1545701204}
+    - target: {fileID: 6769918894798026241, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1171296216}
     - target: {fileID: 6769918894798026241, guid: 58d37ae7380b6e54099c016338b664f2,
         type: 3}
       propertyPath: Sceneloader
@@ -2531,6 +2581,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6971623939453402850, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
+      propertyPath: _transform
+      value: 
+      objectReference: {fileID: 1195478525}
     - target: {fileID: 6971623939453402850, guid: 58d37ae7380b6e54099c016338b664f2,
         type: 3}
       propertyPath: sceneloader
