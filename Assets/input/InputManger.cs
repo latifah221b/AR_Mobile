@@ -10,10 +10,11 @@ public class InputManger : MonoBehaviour
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject _visuals;
     [SerializeField] private GameObject _rocket_part_attached;
+    [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
 
     private TouchControl touchControl;
     private GameObject customPart;
-    [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
+   
 
     private void Awake() {
         touchControl = new TouchControl();
@@ -100,9 +101,6 @@ public class InputManger : MonoBehaviour
 
             //TODO: update the main screen & inventory
         }
-
-
-
 
     }
 }
