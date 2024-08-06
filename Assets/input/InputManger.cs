@@ -1,14 +1,19 @@
+using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputManger : MonoBehaviour
 {
-    private TouchControl touchControl;
+   
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject _visuals;
     [SerializeField] private GameObject _rocket_part_attached;
+
+    private TouchControl touchControl;
     private GameObject customPart;
+    [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
 
     private void Awake() {
         touchControl = new TouchControl();
@@ -81,7 +86,16 @@ public class InputManger : MonoBehaviour
             customPart == collider_game)
         {
              _rocket_part_attached.SetActive(false);
+            
+            if(_Main_Quest_txt != null)
+            {
+                int value_int = Int32.Parse(_Main_Quest_txt.text);
+                value_int++;
+                _Main_Quest_txt.text = value_int.ToString();
+
+            }
             Destroy(this.gameObject);
+
             //  Destroy(_rocket_part_attached);
 
             //TODO: update the main screen & inventory
