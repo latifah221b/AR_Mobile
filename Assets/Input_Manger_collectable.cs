@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,8 +9,14 @@ using UnityEngine.InputSystem;
 public class Input_Manger_collectable : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _Collectable_count_txt;
+    [SerializeField] private Transform _rocket_Transform;
+    [SerializeField] private GameObject _star_prefab;
 
     private TouchControl touchControl;
+
+    private float spawnRadiusMin = 1f;
+    private float spawnRadiusMax = 5f;
+
     private void Awake()
     {
         touchControl = new TouchControl();
@@ -35,6 +41,14 @@ public class Input_Manger_collectable : MonoBehaviour
 
         touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
         touchControl.Touch.TouchInput.started -= ctx => endtouch(ctx);
+
+
+        // Get a Random Pos .. 
+      var pos =  GetRandomSpawnPosition(_rocket_Transform.position);
+        // init 
+        _star_prefab.transform.position = pos;
+        Instantiate(_star_prefab, pos, Quaternion.identity);
+        
     }
 
     // Update is called once per frame
@@ -78,10 +92,16 @@ public class Input_Manger_collectable : MonoBehaviour
        if(collider_game != null && collider_game.tag =="star") { 
             Destroy(collider_game);
             string text = _Collectable_count_txt.text;
-            int value = Int32.Parse(text);
+            int value = System.Int32.Parse(text);
             value++;
             _Collectable_count_txt.text = value.ToString();
 
         }
+    }
+
+    private Vector3 GetRandomSpawnPosition(Vector3 pos)
+    {
+        Vector3 randomPosition = (Vector3)Random.insideUnitCircle;
+        return pos + randomPosition.normalized * spawnRadiusMin + randomPosition * (spawnRadiusMax - spawnRadiusMin);
     }
 }
