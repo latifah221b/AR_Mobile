@@ -10,11 +10,12 @@ public class UI_logic : MonoBehaviour
     [SerializeField] private GameObject _startSceneTransition;
     [SerializeField] private GameObject _endSceneTransition;
     [SerializeField] private GameObject[] enemyinputs;
-    [SerializeField] private Animator _animator; 
+    [SerializeField] private Animator _animator;
+    private Input_Manger_collectable _Manger_collectable; 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _Manger_collectable = this.gameObject.GetComponent<Input_Manger_collectable>();
     }
 
     // Update is called once per frame
@@ -71,11 +72,18 @@ public class UI_logic : MonoBehaviour
         {
             enemy.GetComponent<InputManger>().enabled = true;
         }
-
+        //animator ..
         if(_animator != null)
         {
             _animator.enabled = false;
         }
+
+        //collectable script ..
+        if(_Manger_collectable != null)
+        {
+            _Manger_collectable.enabled = true;
+        }
+
     }
 
   

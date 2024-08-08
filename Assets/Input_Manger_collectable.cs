@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,16 +7,30 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class Input_Manger_collectable : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _Collectable_count_txt;
     [SerializeField] private Transform _rocket_Transform;
     [SerializeField] private GameObject _star_prefab;
 
+    private int star_to_spawn = 5 ; 
+
     private TouchControl touchControl;
 
     private float spawnRadiusMin = 1f;
     private float spawnRadiusMax = 5f;
+
+    private Vector3 _leftpos = new Vector3(-5f, 0f, 0.77f); 
+    private Vector3 _rightpos = new Vector3(5f, 0f, 0.77f);
+
+    private Vector3 _uppos = new Vector3(0.06f, 0f, 5f);
+    private Vector3 _downpos = new Vector3(0.06f, 0f, -5f);
+
+    private Vector3[] list_of_ref;
+    private int index_ref = 0;
+
+    private Vector3 boxSize = new  Vector3(1,1,1); 
 
     private void Awake()
     {
@@ -39,16 +54,24 @@ public class Input_Manger_collectable : MonoBehaviour
     {
         Debug.Log("Start: Input");
 
+        list_of_ref = new Vector3[4] { _leftpos, _rightpos, _uppos, _downpos };
+
         touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
         touchControl.Touch.TouchInput.started -= ctx => endtouch(ctx);
+       
+
+       for (int i= 0; i < star_to_spawn; i++)
+        { 
+            spawn_star(list_of_ref[index_ref]);
+           index_ref++;
+            if(index_ref >= list_of_ref.Length)
+            {
+               index_ref = 0;
+           }
 
 
-        // Get a Random Pos .. 
-      var pos =  GetRandomSpawnPosition(_rocket_Transform.position);
-        // init 
-        _star_prefab.transform.position = pos;
-        Instantiate(_star_prefab, pos, Quaternion.identity);
-        
+       }
+  
     }
 
     // Update is called once per frame
@@ -101,7 +124,48 @@ public class Input_Manger_collectable : MonoBehaviour
 
     private Vector3 GetRandomSpawnPosition(Vector3 pos)
     {
-        Vector3 randomPosition = (Vector3)Random.insideUnitCircle;
+        Vector3 randomPosition = (Vector3) UnityEngine.Random.insideUnitCircle;
         return pos + randomPosition.normalized * spawnRadiusMin + randomPosition * (spawnRadiusMax - spawnRadiusMin);
+    }
+
+    private void spawn_star(Vector3 pos_arg)
+    {
+        // Get a Random Pos .. 
+        var pos = GetRandomSpawnPosition(pos_arg);
+         pos.y = -0.1f;
+
+        if(IsPositionValid(pos))
+        {
+            SpawnObject(pos);
+        }
+
+      
+
+    }
+
+    Vector3 GetPosition() {
+        Vector3 randomPos;
+        randomPos.x = UnityEngine.Random.Range(1f, 5f);
+        randomPos.y = -0.1f;
+        randomPos.z = UnityEngine.Random.Range(1f, 5f);
+
+        return randomPos;
+    }
+
+    void SpawnObject(Vector3 position)
+    {
+        // init 
+        Instantiate(_star_prefab, position, Quaternion.identity);
+    }
+    bool IsPositionValid(Vector3 pos)
+    {
+        Collider[] colliders = Physics.OverlapBox(pos, boxSize / 2);
+      
+        return colliders.Length == 0; 
+    }
+     void OnDrawGizmos()
+    {
+       // Gizmos.color = Color.red;
+       // Gizmos.DrawWireCube(_leftpos, boxSize);
     }
 }
