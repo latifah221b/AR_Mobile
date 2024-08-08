@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 
 public class Input_Manger_collectable : MonoBehaviour
@@ -30,7 +31,9 @@ public class Input_Manger_collectable : MonoBehaviour
     private Vector3[] list_of_ref;
     private int index_ref = 0;
 
-    private Vector3 boxSize = new  Vector3(1,1,1); 
+    private Vector3 boxSize = new  Vector3(1,1,1);
+
+    private float timer = 50f;
 
     private void Awake()
     {
@@ -58,20 +61,10 @@ public class Input_Manger_collectable : MonoBehaviour
 
         touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
         touchControl.Touch.TouchInput.started -= ctx => endtouch(ctx);
-       
-
-       for (int i= 0; i < star_to_spawn; i++)
-        { 
-            spawn_star(list_of_ref[index_ref]);
-           index_ref++;
-            if(index_ref >= list_of_ref.Length)
-            {
-               index_ref = 0;
-           }
 
 
-       }
-  
+        StartCoroutine(spawn_all_object());
+
     }
 
     // Update is called once per frame
@@ -163,9 +156,24 @@ public class Input_Manger_collectable : MonoBehaviour
       
         return colliders.Length == 0; 
     }
-     void OnDrawGizmos()
+   
+
+    IEnumerator spawn_all_object()
     {
-       // Gizmos.color = Color.red;
-       // Gizmos.DrawWireCube(_leftpos, boxSize);
+        for (int i = 0; i < star_to_spawn; i++)
+        {
+            spawn_star(list_of_ref[index_ref]);
+            index_ref++;
+            if (index_ref >= list_of_ref.Length)
+            {
+                index_ref = 0;
+            }
+
+
+        }
+
+        yield return new WaitForSeconds(timer);
+        
+        StartCoroutine(spawn_all_object());
     }
 }
