@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class InputManger : MonoBehaviour
     [SerializeField] private GameObject _visuals;
     [SerializeField] private GameObject _rocket_part_attached;
     [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
+    [SerializeField] private GameObject [] _final_dialogs ; 
 
     private TouchControl touchControl;
     private GameObject customPart;
@@ -95,12 +97,42 @@ public class InputManger : MonoBehaviour
                 _Main_Quest_txt.text = value_int.ToString();
 
             }
-            Destroy(this.gameObject);
+           
 
             //  Destroy(_rocket_part_attached);
 
             //TODO: update the main screen & inventory
+
+            // check if we reached the final count:
+            int value_int_1 = Int32.Parse(_Main_Quest_txt.text);
+            if (value_int_1 >= 3)
+            {
+                StartCoroutine(final_logic());
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+
         }
+
+    }
+
+
+
+    IEnumerator final_logic()
+    {
+        _final_dialogs[0].SetActive(true);
+        yield return new WaitForSecondsRealtime(3);
+        _final_dialogs[0].SetActive(false);
+
+        yield return new WaitForSecondsRealtime(1);
+
+        _final_dialogs[1].SetActive(true);
+        yield return new WaitForSecondsRealtime(3);
+        _final_dialogs[1].SetActive(false);
+        Destroy(this.gameObject);
+
 
     }
 }
