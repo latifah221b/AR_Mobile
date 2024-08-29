@@ -16,7 +16,7 @@ public class AbdullahObjectSpawner : MonoBehaviour
     public double topRightLatitude;        
     public double topRightLongitude;       
     public float spawnCooldown = 10f;      // Time in seconds between spawns
-    private float lastSpawnTime = -10f;    
+    private float lastSpawnTime = -3f;    
     public GameObject player;
 
     public Text debugText;                 
@@ -55,15 +55,12 @@ public class AbdullahObjectSpawner : MonoBehaviour
             UpdateDebugText("No objects to spawn.");
             return;
         }
-
-        
         int randomIndex = Random.Range(0, spawnableObjects.Length);
         GameObject objectToSpawn = spawnableObjects[randomIndex];
 
-        // spawn position 
-        Vector3 spawnPosition = player.transform.position; 
+        // spawn position , placed in front of player
+        Vector3 spawnPosition = player.transform.position +new Vector3(0f,0f,2f); 
 
-        
         Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
 
         UpdateDebugText($"Spawned: {objectToSpawn.name} at position {spawnPosition}");
