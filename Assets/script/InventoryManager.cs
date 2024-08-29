@@ -7,6 +7,10 @@ public class InventoryManager : MonoBehaviour
     public List<Item> Items = new List<Item>();
     public Transform ItemContent;
     public GameObject InventoryItem;
+    public GameObject InventoryDescription;
+    public Image ItemImage;
+    public Text ItemDescriptionNameText;
+    public Text ItemDescriptionText;
     private void Awake()
     {
         Instance = this;
@@ -15,17 +19,17 @@ public class InventoryManager : MonoBehaviour
     {
         Items.Add(item);
     }
-    public void Removed(Item item)
-    {
-        Items.Remove(item);
-    }
+    //public void Remove(Item item)
+    //{
+    //    Items.Remove(item);
+    //}
     public void ListItems()
     {
-        if (ItemContent == null)
-        {
-            Debug.LogError("ItemContent is not assigned in the InventoryManager!");
-            return;
-        }
+        //if (ItemContent == null)
+        //{
+        //    Debug.LogError("ItemContent is not assigned in the InventoryManager!");
+        //    return;
+        //}
         foreach (Transform item in ItemContent)
         {
             Destroy(item.gameObject);
@@ -37,6 +41,24 @@ public class InventoryManager : MonoBehaviour
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
+            Button button = obj.GetComponent<Button>();
+            button.onClick.AddListener(() => ShowItemDescription(item));
         }
+    }
+    public void ShowItemDescription(Item item)
+    {
+        //if (InventoryDescription == null)
+        //{
+        //    Debug.LogError("InventoryDescription is not assigned in the InventoryManager!");
+        //    return;
+        //}
+        InventoryDescription.SetActive(true);
+        ItemImage.sprite = item.icon;
+        ItemDescriptionNameText.text = item.itemName;
+        ItemDescriptionText.text = item.itemDescription;
+    }
+    public void CloseInventoryDescription()
+    {
+        InventoryDescription.SetActive(false);
     }
 }
