@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028353, g: 0.22571383, b: 0.30692253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -410,7 +409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &79296663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +557,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Key (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950713220629110048, guid: 3cd3de693cb9c4589afdf7ff6988393e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5110553606450481968, guid: 3cd3de693cb9c4589afdf7ff6988393e, type: 3}
@@ -797,6 +801,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Key (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950713220629110048, guid: 3cd3de693cb9c4589afdf7ff6988393e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5110553606450481968, guid: 3cd3de693cb9c4589afdf7ff6988393e, type: 3}
@@ -1511,6 +1520,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2950713220629110048, guid: 3cd3de693cb9c4589afdf7ff6988393e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5110553606450481968, guid: 3cd3de693cb9c4589afdf7ff6988393e, type: 3}
     - {fileID: -1875439351999709857, guid: 3cd3de693cb9c4589afdf7ff6988393e, type: 3}
@@ -1834,6 +1848,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Part
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580179684898680715, guid: fd40d681c669a484fb7928d5b246380f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 411663860667166920, guid: fd40d681c669a484fb7928d5b246380f, type: 3}
@@ -2315,7 +2334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &868714895
 Transform:
   m_ObjectHideFlags: 0
@@ -2677,7 +2696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1001240792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4114,7 +4133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1244330787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4219,6 +4238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Key (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950713220629110048, guid: 3cd3de693cb9c4589afdf7ff6988393e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5110553606450481968, guid: 3cd3de693cb9c4589afdf7ff6988393e, type: 3}
@@ -5176,7 +5200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1573033662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5745,6 +5769,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Engine
       objectReference: {fileID: 0}
+    - target: {fileID: 1659869073568272633, guid: 2013d86a7e56c4ae094d4337c1e970b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9178743982500827332, guid: 2013d86a7e56c4ae094d4337c1e970b1, type: 3}
     - {fileID: -5541829013862018396, guid: 2013d86a7e56c4ae094d4337c1e970b1, type: 3}
@@ -6016,7 +6045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2011450170
 MonoBehaviour:
   m_ObjectHideFlags: 0
