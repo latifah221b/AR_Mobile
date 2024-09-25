@@ -1,5 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
+
 
 public class AbdullahStepCounter : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class AbdullahStepCounter : MonoBehaviour
     private int initialStepCount = -1; // To store the initial step count when the app starts
     private bool isCounting = false;
 
-    public Text stepsText; // UI Text to display the step count
+    [SerializeField] private TMP_Text stepsText; // UI Text to display the step count
 
     void Start()
     {
@@ -68,6 +70,7 @@ public class AbdullahStepCounter : MonoBehaviour
 
     public void OnStepCounterUpdate(int steps)
     {
+        Debug.LogWarning("OnStepCounterUpdate");
         if (initialStepCount == -1)
         {
             // Set the initial step count the first time a step count is received
@@ -84,12 +87,17 @@ public class AbdullahStepCounter : MonoBehaviour
     {
         if (stepsText != null)
         {
-            stepsText.text = "Steps since start: " + stepsSinceStart;
+            stepsText.text =  stepsSinceStart.ToString();
         }
         else
         {
             Debug.LogWarning("Steps Text UI element is not assigned.");
         }
+    }
+
+    void LateUpdate()
+    {
+        UpdateStepsText();
     }
 
     void OnDestroy()
