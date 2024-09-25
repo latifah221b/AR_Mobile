@@ -105,8 +105,10 @@ public class Input_Manger_collectable : MonoBehaviour
     private void check(GameObject collider_game)
 
     {
-       if(collider_game != null && collider_game.tag =="star") { 
+       if(collider_game != null && collider_game.tag =="star_box") {
+            Destroy(collider_game.transform.parent.gameObject);
             Destroy(collider_game);
+
             string text = _Collectable_count_txt.text;
             int value = System.Int32.Parse(text);
             value++;
