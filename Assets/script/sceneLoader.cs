@@ -52,8 +52,8 @@ public class sceneLoader : MonoBehaviour
 
 
 
-    private float distance = 2f;
-    private float _rocket_offset = 2.0f;
+   // private float distance = 2f;
+   // private float _rocket_offset = 2.0f;
     Transform CameraTransfrom = null;
 
     public int pick_a_random_index(int max) {
