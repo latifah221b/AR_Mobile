@@ -11,8 +11,9 @@ public class InputManger : MonoBehaviour
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject _visuals;
     [SerializeField] private GameObject _rocket_part_attached;
+    [SerializeField] private Item rocketPartItem;
     [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
-    [SerializeField] private GameObject [] _final_dialogs ; 
+    [SerializeField] private GameObject [] _final_dialogs ;
 
     private TouchControl touchControl;
     private GameObject customPart;
@@ -88,7 +89,10 @@ public class InputManger : MonoBehaviour
         } else if(customPart != null && 
             customPart == collider_game)
         {
-             _rocket_part_attached.SetActive(false);
+            InventoryManager.Instance.Add(rocketPartItem);
+            Debug.Log(rocketPartItem.itemName + " added to inventory");
+
+            _rocket_part_attached.SetActive(false);
             
             if(_Main_Quest_txt != null)
             {
