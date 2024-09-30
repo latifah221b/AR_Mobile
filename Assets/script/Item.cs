@@ -10,9 +10,7 @@ public class Item : ScriptableObject
     public int value;
     public Sprite icon;
     public string itemDescription;
-    //public Image itemDescriptionImage;
-    //public TMP_Text ItemDescriptionNameText;
-    //public TMP_Text ItemDescriptionText;
     internal object currentQuantity;
     public string description;
+    public bool isRocketPart;
 }
