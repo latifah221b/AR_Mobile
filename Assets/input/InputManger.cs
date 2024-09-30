@@ -16,27 +16,49 @@ public class InputManger : MonoBehaviour
 
     private TouchControl touchControl;
     private GameObject customPart;
-   
+    private float timeThresholdMicroseconds = 30000f; 
+    private bool first_time = true; 
+
+    public void set_Main_Quest_txt(TextMeshProUGUI txt_ref)
+    {
+        _Main_Quest_txt = txt_ref;
+    }
 
     private void Awake() {
         touchControl = new TouchControl();
         Debug.Log("Awake: Input");
     }
+    private void OnDestroy()
+    {
+        touchControl.Disable();
+        touchControl.Touch.TouchInput.started -= ctx => starttouch(ctx);
+    }
 
     private void OnEnable() {
         Debug.Log("OnEnable: Input");
-        touchControl.Enable();
+        touchControl.Touch.TouchInput.Enable();
+        // touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
+         touchControl.Touch.TouchInput.started += ctx => starttouchInit(ctx);
+        StartCoroutine(Coroutine());
     }
+
+    IEnumerator Coroutine()
+    {
+        yield return new WaitForSeconds(2);
+        touchControl.Touch.TouchInput.started -= ctx => starttouchInit(ctx);
+        touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
+
+
+    }
+
     private void OnDisable()
     {
         Debug.Log("OnDisable: Input");
-        touchControl.Disable();
+        touchControl.Touch.TouchInput.Disable();
+        touchControl.Touch.TouchInput.started -= ctx => starttouch(ctx);
     }
      void Start() {
         Debug.Log("Start: Input");
-        
-        touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
-        touchControl.Touch.TouchInput.started -= ctx => endtouch(ctx);
 
         // look for custom part 
         if (_rocket_part_attached != null) {
@@ -47,16 +69,37 @@ public class InputManger : MonoBehaviour
         }
     }
 
-    public void starttouch(InputAction.CallbackContext context)
-    {
+    public void starttouch(InputAction.CallbackContext context) {
 
-        handleTap(context.ReadValue<Vector2>());
+        // Debug.Log($"Tap diff: {old_tap_or_fresh_ones(context)} microseconds");
+       // Debug.Log($"first time: {first_time} ");
+
+       // if (old_tap_or_fresh_ones(context)> 500f)
+       // {
+            handleTap(context.ReadValue<Vector2>());
+       // }
+      //  first_time = false;
     }
 
-    public void endtouch(InputAction.CallbackContext context)
+
+    public void starttouchInit(InputAction.CallbackContext context)
     {
+        Debug.Log(context.ToString());
+    }
+
+    private float old_tap_or_fresh_ones(InputAction.CallbackContext context)
+    {
+        float tapTime = (float)context.startTime * 1000000f;
+        float currentTime = (float) Time.realtimeSinceStartup * 1000000f;
+
+        Debug.Log($"Tap detected at: {tapTime} microseconds");
+        Debug.Log($"Tap Current Time: {currentTime} microseconds");
+
+        return Mathf.Abs(currentTime - tapTime);
 
     }
+
+   
 
     private void handleTap(Vector2 screenpos)
     {

@@ -130,22 +130,13 @@ public class sceneLoader : MonoBehaviour
 
         return original_point + UnityEngine.Random.insideUnitCircle * radius;
     }
-
-    private void DeactiviteUI() {
-    }
-
-
-   
     private void PlacePrefab()
     {
-        
-
         Vector3 spawnPosition = CameraTransfrom.position +
             CameraTransfrom.forward * 50;
 
         _rocket_scene.transform.position = spawnPosition;
         _rocket_scene.SetActive(true);
-
     }
     
 
