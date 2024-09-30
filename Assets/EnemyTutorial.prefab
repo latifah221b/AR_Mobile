@@ -898,6 +898,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1378158502073560992}
     m_Modifications:
+    - target: {fileID: 598932038221732788, guid: b913365c244a43941b2f93576cf9d623,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6110145117233668667, guid: b913365c244a43941b2f93576cf9d623,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -973,7 +978,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: star_new
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 598932038221732788, guid: b913365c244a43941b2f93576cf9d623, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1436,6 +1442,7 @@ MonoBehaviour:
   _canvas: {fileID: 8039893867038584927}
   _visuals: {fileID: 6600488088584196117}
   _rocket_part_attached: {fileID: 5865127679181088665}
+  rocketPartItem: {fileID: 0}
   _Main_Quest_txt: {fileID: 0}
   _final_dialogs: []
 --- !u!1001 &9153866852335399717

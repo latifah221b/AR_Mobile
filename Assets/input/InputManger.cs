@@ -132,8 +132,12 @@ public class InputManger : MonoBehaviour
         } else if(customPart != null && 
             customPart == collider_game)
         {
-            InventoryManager.Instance.Add(rocketPartItem);
-            Debug.Log(rocketPartItem.itemName + " added to inventory");
+
+            if (rocketPartItem != null)
+            {
+                InventoryManager.Instance.Add(rocketPartItem);
+                Debug.Log(rocketPartItem.itemName + " added to inventory");
+            }
 
             _rocket_part_attached.SetActive(false);
             
