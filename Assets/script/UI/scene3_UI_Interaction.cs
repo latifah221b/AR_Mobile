@@ -25,7 +25,18 @@ public class scene3_UI_Interaction : MonoBehaviour
     {
         if (_tappingCanvas != null)
         {
+            var clones = _arObjectSpawner.getobjectsToSpawnClones();
+
+            if (clones != null && clones[0] != null)
+            {
+                var GameObj = clones[0];
+
+                _arObjectSpawner.EnableInputMangerFromGameObject(GameObj);
+
+
+            }
             _tappingCanvas.SetActive(false);
+
         }
     }
 

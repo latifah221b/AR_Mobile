@@ -13,7 +13,7 @@ using TMPro;
 
 public class ARObjectSpawner : MonoBehaviour
 {
-    private int number_of_enemy = 2;
+    public static int number_of_enemy = 2;
     [SerializeField] private GameObject objectsToSpawn;
     private ARPlaneManager aRPlaneManager;
 
@@ -21,10 +21,18 @@ public class ARObjectSpawner : MonoBehaviour
     [SerializeField] private sceneLoader _sceneLoaderRef;
     [SerializeField] private GameObject _tappingCanvas;
     private Camera arCamera;
-    private float maxDistance = 2f;
+    private float maxDistance = 10f;
     private Vector2 requiredSize = new Vector2(0.3f, 0.3f);
 
     [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
+
+    private GameObject[] objectsToSpawnClones = new GameObject[number_of_enemy];
+
+
+    public GameObject[]  getobjectsToSpawnClones()
+    {
+        return objectsToSpawnClones;
+    }
 
 
     // Start is called before the first frame update
@@ -50,7 +58,9 @@ public class ARObjectSpawner : MonoBehaviour
 
             if (IsPlaneSuitable(detectedPlane))
             {
+               
                 PositionObjectOnPlane(detectedPlane);
+
                 count++;
                 if (count == 1) { _tappingCanvas.SetActive(true); }
                 if (number_of_enemy == count)
@@ -89,12 +99,30 @@ public class ARObjectSpawner : MonoBehaviour
         MakeObjectLookAtCamera(obj.transform);
         var fetchq = obj.GetComponent<fetch_question_for_enemy>();
         fetchq.set_transform(obj.transform);
+        // set a ref 
+          if(count < number_of_enemy)
+        {
 
-        // input manger 
+            objectsToSpawnClones[count] = obj;
+        }
+
         InputManger inputM = obj.GetComponent<InputManger>();
         inputM.set_Main_Quest_txt(_Main_Quest_txt);
-        inputM.enabled = true;
 
+        if(count == 1)
+        {
+            EnableInputMangerFromGameObject(obj);
+        }
+    }
+
+    public void EnableInputMangerFromGameObject(GameObject Gobject)
+    {
+        if(Gobject != null)
+        {
+            // input manger 
+            InputManger inputM = Gobject.GetComponent<InputManger>();
+            inputM.enabled = true;
+        }
     }
 
     // Function to check distance 
