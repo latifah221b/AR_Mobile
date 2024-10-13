@@ -31,22 +31,22 @@ public class InputManger : MonoBehaviour
     }
     private void OnDestroy()
     {
-        touchControl.Disable();
+       touchControl.Disable();
         touchControl.Touch.TouchInput.started -= ctx => starttouch(ctx);
     }
 
     private void OnEnable() {
         Debug.Log("OnEnable: Input");
         touchControl.Touch.TouchInput.Enable();
-        // touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
-         touchControl.Touch.TouchInput.started += ctx => starttouchInit(ctx);
+         touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
+        touchControl.Touch.TouchInput.started += ctx => starttouchInit(ctx);
         StartCoroutine(Coroutine());
     }
 
     IEnumerator Coroutine()
     {
         yield return new WaitForSeconds(2);
-        touchControl.Touch.TouchInput.started -= ctx => starttouchInit(ctx);
+       touchControl.Touch.TouchInput.started -= ctx => starttouchInit(ctx);
         touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
 
 
@@ -55,8 +55,8 @@ public class InputManger : MonoBehaviour
     private void OnDisable()
     {
         Debug.Log("OnDisable: Input");
-        touchControl.Touch.TouchInput.Disable();
-        touchControl.Touch.TouchInput.started -= ctx => starttouch(ctx);
+       touchControl.Touch.TouchInput.Disable();
+       touchControl.Touch.TouchInput.started -= ctx => starttouch(ctx);
     }
      void Start() {
         Debug.Log("Start: Input");
@@ -72,14 +72,7 @@ public class InputManger : MonoBehaviour
 
     public void starttouch(InputAction.CallbackContext context) {
 
-        // Debug.Log($"Tap diff: {old_tap_or_fresh_ones(context)} microseconds");
-       // Debug.Log($"first time: {first_time} ");
-
-       // if (old_tap_or_fresh_ones(context)> 500f)
-       // {
             handleTap(context.ReadValue<Vector2>());
-       // }
-      //  first_time = false;
     }
 
 
@@ -126,8 +119,8 @@ public class InputManger : MonoBehaviour
         if(_visuals != null && collider_game == _visuals 
             && _canvas != null) {
 
-            Debug.Log("The canvas will be activiated");
-            _canvas.gameObject.SetActive(true);
+           // Debug.Log("The canvas will be activiated");
+           // _canvas.gameObject.SetActive(true);
 
         } else if(customPart != null && 
             customPart == collider_game)

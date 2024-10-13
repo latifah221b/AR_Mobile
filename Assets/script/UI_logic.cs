@@ -11,11 +11,12 @@ public class UI_logic : MonoBehaviour
     [SerializeField] private GameObject _endSceneTransition;
     [SerializeField] private GameObject[] enemyinputs;
     [SerializeField] private Animator _animator;
-    private Input_Manger_collectable _Manger_collectable; 
+    [SerializeField] private TapResponder _tapResponder;
+    //private Input_Manger_collectable _Manger_collectable; 
     // Start is called before the first frame update
     void Start()
     {
-        _Manger_collectable = this.gameObject.GetComponent<Input_Manger_collectable>();
+       // _Manger_collectable = this.gameObject.GetComponent<Input_Manger_collectable>();
     }
 
     // Update is called once per frame
@@ -68,21 +69,25 @@ public class UI_logic : MonoBehaviour
         _blurEffect.SetActive(false);
         _dialog[4].SetActive(false);
         _dialog[5].SetActive(true);
-        foreach (var enemy in enemyinputs)
-        {
-            enemy.GetComponent<InputManger>().enabled = true;
-        }
+        // foreach (var enemy in enemyinputs)
+        // {
+        //     enemy.GetComponent<InputManger>().enabled = true;
+        // }
+
+        _tapResponder.enabled = true;
+
         //animator ..
-        if(_animator != null)
+        if (_animator != null)
         {
             _animator.enabled = false;
         }
 
         //collectable script ..
-        if(_Manger_collectable != null)
+       /* if(_Manger_collectable != null)
         {
             _Manger_collectable.enabled = true;
         }
+       */
 
     }
 

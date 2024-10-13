@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class scene3_UI_Interaction : MonoBehaviour
 {
-    [SerializeField] private GameObject _greetingCanvas, _tappingCanvas, _scanningCanvas;
+    [SerializeField] private GameObject _greetingCanvas, _tappingCanvas, _scanningCanvas, _tapResponder;
     [SerializeField] private ARObjectSpawner _arObjectSpawner;
 
 
@@ -25,17 +25,18 @@ public class scene3_UI_Interaction : MonoBehaviour
     {
         if (_tappingCanvas != null)
         {
-            var clones = _arObjectSpawner.getobjectsToSpawnClones();
+           // var clones = _arObjectSpawner.getobjectsToSpawnClones();
 
-            if (clones != null && clones[0] != null)
-            {
-                var GameObj = clones[0];
+           // if (clones != null && clones[0] != null)
+           // {
+              //  var GameObj = clones[0];
 
-                _arObjectSpawner.EnableInputMangerFromGameObject(GameObj);
+              //  _arObjectSpawner.EnableInputMangerFromGameObject(GameObj);
 
 
-            }
-            _tappingCanvas.SetActive(false);
+           // }
+           _tappingCanvas.SetActive(false);
+            _tapResponder.SetActive(true);
 
         }
     }

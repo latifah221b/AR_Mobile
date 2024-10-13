@@ -140,6 +140,7 @@ public class fetch_question_for_enemy : MonoBehaviour
         Vector3 randomPosition = (Vector3) Random.insideUnitCircle;
         return pos + randomPosition.normalized * spawnRadiusMin + randomPosition * (spawnRadiusMax - spawnRadiusMin);
     }
+
 }
 
 

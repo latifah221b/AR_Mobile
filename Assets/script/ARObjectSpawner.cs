@@ -24,15 +24,15 @@ public class ARObjectSpawner : MonoBehaviour
     private float maxDistance = 10f;
     private Vector2 requiredSize = new Vector2(0.3f, 0.3f);
 
-    [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
+   // [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
 
-    private GameObject[] objectsToSpawnClones = new GameObject[number_of_enemy];
+    //private GameObject[] objectsToSpawnClones = new GameObject[number_of_enemy];
 
 
-    public GameObject[]  getobjectsToSpawnClones()
-    {
-        return objectsToSpawnClones;
-    }
+   // public GameObject[]  getobjectsToSpawnClones()
+ //   {
+       // return objectsToSpawnClones;
+  //  }
 
 
     // Start is called before the first frame update
@@ -81,10 +81,10 @@ public class ARObjectSpawner : MonoBehaviour
 
     void Update()
     {
-        if (_Main_Quest_txt != null && Int32.Parse(_Main_Quest_txt.text) == 2) { 
+      //  if (_Main_Quest_txt != null && Int32.Parse(_Main_Quest_txt.text) == 2) { 
 
-            StartCoroutine(final_logic());
-        }
+           // StartCoroutine(final_logic());
+       // }
     }
 
     void PositionObjectOnPlane(ARPlane plane)
@@ -100,29 +100,30 @@ public class ARObjectSpawner : MonoBehaviour
         var fetchq = obj.GetComponent<fetch_question_for_enemy>();
         fetchq.set_transform(obj.transform);
         // set a ref 
-          if(count < number_of_enemy)
-        {
+      //    if(count < number_of_enemy)
+      //  {
 
-            objectsToSpawnClones[count] = obj;
-        }
+          //  objectsToSpawnClones[count] = obj;
+      //  }
 
-        InputManger inputM = obj.GetComponent<InputManger>();
-        inputM.set_Main_Quest_txt(_Main_Quest_txt);
+        //InputManger inputM = obj.GetComponent<InputManger>();
+       // inputM.set_Main_Quest_txt(_Main_Quest_txt);
 
-        if(count == 1)
-        {
-            EnableInputMangerFromGameObject(obj);
-        }
+      //  if(count == 1)
+      //  {
+         //   EnableInputMangerFromGameObject(obj);
+       // }
     }
 
     public void EnableInputMangerFromGameObject(GameObject Gobject)
     {
-        if(Gobject != null)
-        {
+     //   if(Gobject != null)
+       // {
             // input manger 
-            InputManger inputM = Gobject.GetComponent<InputManger>();
-            inputM.enabled = true;
-        }
+        //    InputManger inputM = Gobject.GetComponent<InputManger>();
+         //   inputM.enabled = true;
+      //  }
+      //  }
     }
 
     // Function to check distance 
