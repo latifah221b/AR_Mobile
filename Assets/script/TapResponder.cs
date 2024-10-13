@@ -9,11 +9,10 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 {
     //variables resident on the scenes 
 
-    [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
+    [SerializeField] private TextMeshProUGUI _Main_Quest_txt, _Collectable_count_txt;
     [SerializeField] private GameObject[] _final_dialogs;
     [SerializeField] private int _theTargetScore;
     [SerializeField] private sceneLoader _sceneLoaderRef;
-    [SerializeField] private TextMeshProUGUI _Collectable_count_txt;
 
     public void set_Main_Quest_txt(TextMeshProUGUI txt_ref)
     {
@@ -91,7 +90,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                 }
 
                 // Destroy the enemy prefab no longer is needed
-                    Destroy(parent);
+                    Destroy(GameObjectManager.Instance.GetParentGameObject(parent));
 
                 // check if we reached our goal
                 if (Int32.Parse(_Main_Quest_txt.text) >= _theTargetScore)
@@ -132,8 +131,6 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                 int value = System.Int32.Parse(text);
                 value++;
                 _Collectable_count_txt.text = value.ToString();
-
-
                 break;
             default:
                 Debug.Log("Hit an object with no specific tag.");

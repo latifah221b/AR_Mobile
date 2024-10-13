@@ -1287,10 +1287,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6330772565372944405}
-    - targetCorrespondingSourceObject: {fileID: 613292779795284151, guid: ebd7292e888c84f05924605e51048072,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4679308837286841717}
   m_SourcePrefab: {fileID: 100100000, guid: ebd7292e888c84f05924605e51048072, type: 3}
 --- !u!4 &4762239851910345287 stripped
 Transform:
@@ -1323,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _question: {fileID: 7917933451447498972}
-  _button_text:
+  _buttonText:
   - {fileID: 3537948325040947238}
   - {fileID: 2924663819715565613}
   - {fileID: 339451214078866453}
@@ -1334,30 +1330,12 @@ MonoBehaviour:
   - {fileID: 5933373431673279848}
   - {fileID: 7664239864640407031}
   sceneloader: {fileID: 0}
-  incorrect_dailog: {fileID: 2160036426115313129}
-  canvas: {fileID: 7421055793485403286}
-  _attached_part: {fileID: 5865127679181088665}
+  _incorrectDailog: {fileID: 2160036426115313129}
+  _canvas: {fileID: 7421055793485403286}
+  _attachedPart: {fileID: 5865127679181088665}
   _visual: {fileID: 6600488088584196117}
   _particles: {fileID: 8800616795929413072}
-  _transform: {fileID: 0}
---- !u!114 &4679308837286841717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8986328500875594450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e177ae74536c14e8a55f6d5e8bc390, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canvas: {fileID: 8039893867038584927}
-  _visuals: {fileID: 6600488088584196117}
-  _rocket_part_attached: {fileID: 5865127679181088665}
-  rocketPartItem: {fileID: 0}
-  _Main_Quest_txt: {fileID: 0}
-  _final_dialogs: []
+  _transform: {fileID: 4762239851910345287}
 --- !u!1001 &9153866852335399717
 PrefabInstance:
   m_ObjectHideFlags: 0

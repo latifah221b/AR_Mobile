@@ -24,17 +24,6 @@ public class ARObjectSpawner : MonoBehaviour
     private float maxDistance = 10f;
     private Vector2 requiredSize = new Vector2(0.3f, 0.3f);
 
-   // [SerializeField] private TextMeshProUGUI _Main_Quest_txt;
-
-    //private GameObject[] objectsToSpawnClones = new GameObject[number_of_enemy];
-
-
-   // public GameObject[]  getobjectsToSpawnClones()
- //   {
-       // return objectsToSpawnClones;
-  //  }
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +33,8 @@ public class ARObjectSpawner : MonoBehaviour
         aRPlaneManager.planesChanged += OnPlanesChanged;
 
         arCamera = Camera.main;
-        var fetchq = objectsToSpawn.GetComponent<fetch_question_for_enemy>();
-        fetchq.set_Scene_Loader(_sceneLoaderRef);
+        var enemyController = objectsToSpawn.GetComponent<EnemyController>();
+        enemyController.set_Scene_Loader(_sceneLoaderRef);
 
     }
 
@@ -79,14 +68,6 @@ public class ARObjectSpawner : MonoBehaviour
         aRPlaneManager.planesChanged -= OnPlanesChanged;
     }
 
-    void Update()
-    {
-      //  if (_Main_Quest_txt != null && Int32.Parse(_Main_Quest_txt.text) == 2) { 
-
-           // StartCoroutine(final_logic());
-       // }
-    }
-
     void PositionObjectOnPlane(ARPlane plane)
     {
         Vector3 spawnPosition = plane.center;
@@ -97,33 +78,8 @@ public class ARObjectSpawner : MonoBehaviour
 
         var obj = Instantiate(objectsToSpawn, spawnPosition, planeRotation);
         MakeObjectLookAtCamera(obj.transform);
-        var fetchq = obj.GetComponent<fetch_question_for_enemy>();
-        fetchq.set_transform(obj.transform);
-        // set a ref 
-      //    if(count < number_of_enemy)
-      //  {
-
-          //  objectsToSpawnClones[count] = obj;
-      //  }
-
-        //InputManger inputM = obj.GetComponent<InputManger>();
-       // inputM.set_Main_Quest_txt(_Main_Quest_txt);
-
-      //  if(count == 1)
-      //  {
-         //   EnableInputMangerFromGameObject(obj);
-       // }
-    }
-
-    public void EnableInputMangerFromGameObject(GameObject Gobject)
-    {
-     //   if(Gobject != null)
-       // {
-            // input manger 
-        //    InputManger inputM = Gobject.GetComponent<InputManger>();
-         //   inputM.enabled = true;
-      //  }
-      //  }
+        var enemyController = obj.GetComponent<EnemyController>();
+        enemyController.set_transform(obj.transform);
     }
 
     // Function to check distance 
@@ -194,7 +150,5 @@ public class ARObjectSpawner : MonoBehaviour
             _sceneLoaderRef.LoadA("scene4");
 
         }
-
-
     }
 }
