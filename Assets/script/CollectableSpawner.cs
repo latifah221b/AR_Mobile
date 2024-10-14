@@ -16,8 +16,6 @@ public class CollectableSpawner : MonoBehaviour
 
     private int NumberOfObjectToSpawn = 5 ; 
 
-  //  private TouchControl touchControl;
-
     private float spawnRadiusMin = 1f;
     private float spawnRadiusMax = 5f;
 
@@ -34,38 +32,10 @@ public class CollectableSpawner : MonoBehaviour
 
     private float TimerDuration = 50f;
 
-
-   // private string _tag = "star_box";
-
-    private void Awake()
-    {
-       // touchControl = new TouchControl();
-    }
-
-    private void OnEnable()
-    {
-       // touchControl.Enable();
-    }
-    private void OnDisable()
-    {
-        //touchControl.Disable();
-       // touchControl.Touch.TouchInput.started -= ctx => starttouch(ctx);
-    }
-    private void OnDestroy()
-    {
-       // touchControl.Disable();
-       // touchControl.Touch.TouchInput.started -= ctx => starttouch(ctx);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-       // Debug.Log("Start: Input");
-
         listOfReferencePositions = new Vector3[4] { _leftpos, _rightpos, _uppos, _downpos };
-
-       // touchControl.Touch.TouchInput.started += ctx => starttouch(ctx);
-
         StartCoroutine(spawn_all_object());
 
     }
@@ -89,51 +59,6 @@ public class CollectableSpawner : MonoBehaviour
         yield return new WaitForSeconds(TimerDuration);
         StartCoroutine(spawn_all_object());
     }
-
-
-
-    // public void starttouch(InputAction.CallbackContext context)
-    // {
-
-    //   handleTap(context.ReadValue<Vector2>());
-    //}
-
-
-
-    // private void handleTap(Vector2 screenpos)
-    // {
-    //    RaycastHit hit;
-    //    if (screenpos != null)
-    //   {
-    //     Ray ray = Camera.main.ScreenPointToRay(screenpos);
-    //      if (Physics.Raycast(ray, out hit, 100))
-    //      {
-    //        if (hit.collider != null &&
-    //            hit.collider.gameObject != null)
-    //      {
-    //         CheckCollision(hit.collider.gameObject);
-    //    }
-
-    // }
-    // }
-    //}
-
-    /*  private void CheckCollision(GameObject collider_game)
-
-      {
-         if(collider_game != null && 
-              collider_game.tag == _tag) {
-
-              Destroy(collider_game.transform.parent.gameObject);
-              Destroy(collider_game);
-
-              string text = _Collectable_count_txt.text;
-              int value = System.Int32.Parse(text);
-              value++;
-              _Collectable_count_txt.text = value.ToString();
-
-          }
-      }*/
 
     // This function generates a random position within a circle defined by a randomly selected radius,
     // with the circle's center determined by specified argument variables. 

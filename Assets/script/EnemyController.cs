@@ -20,9 +20,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject _incorrectDailog, 
         _canvas, _attachedPart, _visual, _particles;
 
-    [SerializeField] private Transform _transform;
+    //private Transform _transform;
     private float spawnRadiusMin = 1f;
     private float spawnRadiusMax = 5f;
+    [SerializeField] private float maxDistance; // Maximum distance to translate
+    [SerializeField] private float minDistance; 
+
+
     private string correctAnswer;
 
     // Start is called before the first frame update
@@ -39,17 +43,17 @@ public class EnemyController : MonoBehaviour
             });
         }
 
-
+        
 
     }
 
     public void set_Scene_Loader(sceneLoader scene) {
         sceneloader = scene;
 }
-    public void set_transform(Transform _tra)
-    {
-        _transform = _tra;
-    }
+   // public void set_transform(Transform _tra)
+   // {
+      // transform = _tra;
+   // }
 
     void fill_the_canvas()
     {
@@ -104,14 +108,16 @@ public class EnemyController : MonoBehaviour
                 yield return new WaitForSecondsRealtime(0.8f);
                 _particles.SetActive(false);
 
-                //To do: change the trans & hide the game object for a while 
-
                 yield return new WaitForSecondsRealtime(3f);
 
-                Debug.Log("old pos" + _transform.position);
-                var new_pos = GetRandomSpawnPosition(_transform.position);
-                Debug.Log("new pos" + new_pos);
-                _transform.position = new_pos;
+                
+                //  var new_pos = GetRandomSpawnPosition(transform.position);
+                //transform.position = new Vector3(new_pos.x, transform.position.y, new_pos.y);
+
+                
+                Debug.Log("old pos" + transform.position);
+                    TranslateRandomly();
+                Debug.Log("new pos" + transform.position);
 
                 _incorrectDailog.SetActive(false);
                 _visual.SetActive(true);
@@ -122,10 +128,31 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    private Vector3 GetRandomSpawnPosition(Vector3 pos)
+   // private Vector2 GetRandomSpawnPosition(Vector2 pos)
+    //{
+      //  Vector2 randomPosition = (Vector2)UnityEngine.Random.insideUnitCircle;
+       // return pos + randomPosition.normalized * spawnRadiusMin + randomPosition * (spawnRadiusMax - spawnRadiusMin);
+   // }
+
+    private void TranslateRandomly()
     {
-        Vector3 randomPosition = (Vector3) Random.insideUnitCircle;
-        return pos + randomPosition.normalized * spawnRadiusMin + randomPosition * (spawnRadiusMax - spawnRadiusMin);
+        // Generate a random distance and direction along X or Z
+        float randomDistance = Random.Range(minDistance, maxDistance);
+
+        bool translateX = Random.value > 0.5f; // Randomly choose X or z
+        Vector3 translation;
+        if (translateX)
+        {
+            randomDistance = Random.value > 0.5f ? randomDistance : -(randomDistance);  
+            translation = new Vector3(  randomDistance, 0, 0); // Translate along X
+        }
+        else
+        {
+            translation = new Vector3(0, 0, randomDistance); // Translate along Z
+        }
+
+        // Translate the object
+        transform.position += translation;
     }
 
 }

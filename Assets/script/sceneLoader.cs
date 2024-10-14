@@ -35,25 +35,15 @@ public struct question{
 
 public class sceneLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] private GameObject _startingSceneTransition;
-    [SerializeField] private GameObject _endingSceneTransition;
-    [SerializeField] private GameObject _blurEffect;
-    [SerializeField] private GameObject _dialog;
-    [SerializeField] private GameObject _rocket_scene;
-    [SerializeField] private GameObject _Enemy;
+    [SerializeField] private GameObject _startingSceneTransition, _endingSceneTransition, 
+        _blurEffect, _dialog, _rocket_scene, _Enemy, _eventSystem;
+
     [SerializeField] private int _num_of_enemy;
-    [SerializeField] private GameObject _eventSystem; 
+
+
     private question[] _question_list;
     private List<question> Questions = new List<question>();
 
-
-
-
-
-
-   // private float distance = 2f;
-   // private float _rocket_offset = 2.0f;
     Transform CameraTransfrom = null;
 
     public int pick_a_random_index(int max) {
@@ -108,21 +98,13 @@ public class sceneLoader : MonoBehaviour
 
         if(_eventSystem != null) { DoNotDestoryOnload(_eventSystem); }
        
-        
-
-
     }
-    private void Update()
-    {
-    }
-
     
     IEnumerator transition()
     {
         yield return new WaitForSeconds(3f);
         _rocket_scene.SetActive(true);
     }
-    
 
     private Vector2 Random_positioning(Vector2 original_point, 
         float radius)
@@ -138,15 +120,9 @@ public class sceneLoader : MonoBehaviour
         _rocket_scene.transform.position = spawnPosition;
         _rocket_scene.SetActive(true);
     }
-    
-
-
 
     public void LoadA(string scenename)
-        {
-
-        //SceneManager.LoadScene(scenename);
-        StartCoroutine(LoadYourAsyncScene(scenename));
+        {StartCoroutine(LoadYourAsyncScene(scenename));
         }
 
 

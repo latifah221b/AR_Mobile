@@ -21,7 +21,7 @@ public class ARObjectSpawner : MonoBehaviour
     [SerializeField] private sceneLoader _sceneLoaderRef;
     [SerializeField] private GameObject _tappingCanvas;
     private Camera arCamera;
-    private float maxDistance = 10f;
+    private float maxDistance = 2f;
     private Vector2 requiredSize = new Vector2(0.3f, 0.3f);
 
     // Start is called before the first frame update
@@ -79,7 +79,7 @@ public class ARObjectSpawner : MonoBehaviour
         var obj = Instantiate(objectsToSpawn, spawnPosition, planeRotation);
         MakeObjectLookAtCamera(obj.transform);
         var enemyController = obj.GetComponent<EnemyController>();
-        enemyController.set_transform(obj.transform);
+        //enemyController.set_transform(obj.transform);
     }
 
     // Function to check distance 
