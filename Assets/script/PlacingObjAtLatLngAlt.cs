@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-    public class PlacingObjAtLatLngAlt : MonoBehaviour
+public class PlacingObjAtLatLngAlt : MonoBehaviour
     {
         //Tracking information using GeospatialAPI
         [SerializeField] AREarthManager EarthManager;
@@ -38,6 +38,9 @@ using UnityEngine.XR.ARSubsystems;
         //Manager for creating anchors
         [SerializeField] ARAnchorManager AnchorManager;
         bool initialized = false;
+    
+    
+        private ARGeospatialAnchor anchor; 
 
 
         // Update is called once per frame
@@ -89,7 +92,7 @@ using UnityEngine.XR.ARSubsystems;
             }
             else
             {
-                ARGeospatialAnchor anchor = AnchorManager.AddAnchor(Latitude, Longitude, Altitude, quaternion);
+                anchor = AnchorManager.AddAnchor(Latitude, Longitude, Altitude, quaternion);
                 if (anchor != null)
                 {
                     displayObject = Instantiate(ContentPrefab, anchor.transform);
@@ -116,8 +119,10 @@ using UnityEngine.XR.ARSubsystems;
         }
         void ShowTrackingInfo(string status, GeospatialPose pose)
         {
-      
-            if (OutputText == null) return;
+
+        double distance = GeospatialDistance.Haversine(pose.Latitude, pose.Longitude, Latitude, Longitude); 
+
+        if (OutputText == null) return;
         OutputText.text = string.Format(
                "\n" +
                "Latitude/Longitude: {0}°, {1}°\n" +
@@ -126,7 +131,8 @@ using UnityEngine.XR.ARSubsystems;
                "Vertical Accuracy: {4}m\n" +
                "Heading: {5}°\n" +
                "Heading Accuracy: {6}°\n" +
-               "{7} \n"
+               "{7} \n \n" + 
+               "GeospatialDistance from Camera: {8}"
                ,
                pose.Latitude.ToString("F6"),  //{0}
                pose.Longitude.ToString("F6"), //{1}
@@ -135,7 +141,13 @@ using UnityEngine.XR.ARSubsystems;
                pose.VerticalAccuracy.ToString("F2"),  //{4}
                pose.EunRotation.ToString("F1"),   //{5}
                pose.OrientationYawAccuracy.ToString("F1"),   //{6}
-               status //{7}
+               status, //{7}
+               (distance * 1000.0f) // {8}
            );
         }
-    }
+
+   
+
+}
+
+
