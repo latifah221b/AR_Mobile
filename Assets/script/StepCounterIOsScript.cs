@@ -42,10 +42,18 @@ public class StepCounterIOSScript : MonoBehaviour
     {
         _msg = msg;
 
+        if (int.TryParse(_msg, out int steps))
+        {
+            //   int steps = int.Parse(_msg);
+            step_counter_txt.text = steps.ToString();
+            HandleStepCount(steps);
+        }
 
-        int steps = int.Parse(_msg);
-        step_counter_txt.text = steps.ToString();
-        HandleStepCount(steps);
+        //else
+        //{
+        //    Debug.LogWarning("error test: " + msg);
+        //}
+
     }
 
 
