@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
 
 
     private string correctAnswer;
+    //public Item rocketPart;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +95,10 @@ public class EnemyController : MonoBehaviour
                 _canvas.SetActive(false);
                 _visual.SetActive(false);
                 _attachedPart.SetActive(true);
+                //if (rocketPart != null && rocketPart.isRocketPart)
+                //{
+                    FindObjectOfType<StarRewardSystem>().CollectRocketPart();
+                //}
             }
 
             else

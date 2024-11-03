@@ -29,6 +29,14 @@ public class ItemPickup : MonoBehaviour
     void Pickup()
     {
         InventoryManager.Instance.Add(Item);
+        if (Item.isRocketPart)
+        {
+            FindObjectOfType<StarRewardSystem>().CollectRocketPart();
+        }
+        else if (Item.isSideItem)
+        {
+            FindObjectOfType<StarRewardSystem>().CollectItem();
+        }
         Destroy(gameObject);
     }
     private void OnMouseDown()

@@ -13,4 +13,5 @@ public class Item : ScriptableObject
     internal object currentQuantity;
     public string description;
     public bool isRocketPart;
+    public bool isSideItem;
 }
