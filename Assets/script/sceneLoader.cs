@@ -103,7 +103,7 @@ public class sceneLoader : MonoBehaviour
     IEnumerator transition()
     {
         yield return new WaitForSeconds(3f);
-        _rocket_scene.SetActive(true);
+        // _rocket_scene.SetActive(true);
     }
 
     private Vector2 Random_positioning(Vector2 original_point, 

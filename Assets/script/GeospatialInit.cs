@@ -97,7 +97,8 @@
 
             while (Input.location.status == LocationServiceStatus.Initializing)
             {
-                yield return null;
+          
+            yield return null;
             }
 
             _waitingForLocationService = false;
@@ -107,7 +108,7 @@
                     "Location service ended with {0} status.", Input.location.status);
                 Input.location.Stop();
             }
-        }
+    }
         /// <summary>
         /// Unity's OnDisable() method.
         /// </summary>
@@ -128,17 +129,18 @@
             LifecycleUpdate();
             if (_isReturning)
             {
-                return;
+            Debug.Log("is returning");
+            return;
             }
 
-            if (ARSession.state != ARSessionState.SessionInitializing &&
+        if (ARSession.state != ARSessionState.SessionInitializing &&
                 ARSession.state != ARSessionState.SessionTracking)
             {
                 return;
             }
 
-            // Check feature support and enable Geospatial API when it's supported.
-            var featureSupport = EarthManager.IsGeospatialModeSupported(GeospatialMode.Enabled);
+        // Check feature support and enable Geospatial API when it's supported.
+        var featureSupport = EarthManager.IsGeospatialModeSupported(GeospatialMode.Enabled);
             switch (featureSupport)
             {
                 case FeatureSupported.Unknown:
@@ -176,9 +178,8 @@
                     return;
                 }
             }
-
-            // Check earth state.
-            var earthState = EarthManager.EarthState;
+        // Check earth state.
+        var earthState = EarthManager.EarthState;
             if (earthState == EarthState.ErrorEarthNotReady)
             {
                 return;

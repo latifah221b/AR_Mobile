@@ -10297,6 +10297,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82488111}
     m_Modifications:
+    - target: {fileID: 1642093015067629132, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029266634126168891, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
+      propertyPath: m_FillColor.a
+      value: 0.14901961
+      objectReference: {fileID: 0}
     - target: {fileID: 3526706063548976867, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}
       propertyPath: m_Name
@@ -10385,7 +10395,7 @@ PrefabInstance:
     - target: {fileID: 4179889977712720244, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 54
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4179889977712720244, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}
@@ -10424,6 +10434,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8982353221631137228, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982353221631137228, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
       propertyPath: m_margin.x
       value: -40.05232
       objectReference: {fileID: 0}
@@ -10431,6 +10446,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.z
       value: -47.563644
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982353221631137228, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11580,16 +11600,16 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 554859628}
   - {fileID: 1661489935}
+  - {fileID: 611158916}
+  - {fileID: 1756220073}
+  - {fileID: 1390597914}
   - {fileID: 410087041}
   - {fileID: 82488111}
   - {fileID: 1341684082}
   - {fileID: 1545701203}
-  - {fileID: 554859628}
   - {fileID: 1355641855}
   - {fileID: 331484741}
   - {fileID: 1188061744}
   - {fileID: 1561602719}
-  - {fileID: 1390597914}
-  - {fileID: 611158916}
-  - {fileID: 1756220073}

@@ -49,7 +49,9 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
             //Return if initialization failed or tracking is not available
             if (!Initializer.IsReady || EarthManager.EarthTrackingState != TrackingState.Tracking)
             {
-                return;
+                Debug.Log("EarthManager: " + EarthManager.EarthTrackingState);
+                Debug.Log("Initializer: " + EarthManager.EarthTrackingState);
+            return;
             }
             //Tracking status to be displayed
             string status = "";
@@ -132,7 +134,7 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
                "Heading: {5}°\n" +
                "Heading Accuracy: {6}°\n" +
                "{7} \n \n" + 
-               "GeospatialDistance from Camera: {8}"
+               "GeospatialDistance from Camera: {8}m\n" + "Take Walk to minimize the distance between you and the rocket"
                ,
                pose.Latitude.ToString("F6"),  //{0}
                pose.Longitude.ToString("F6"), //{1}
@@ -144,6 +146,8 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
                status, //{7}
                (distance * 1000.0f) // {8}
            );
+
+
         }
 
    
