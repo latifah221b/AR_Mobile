@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour
     public Image ItemImage;
     public Text ItemDescriptionNameText;
     public Text ItemDescriptionText;
+    private HashSet<string> collectedHiddenItems = new HashSet<string>();
     private void Awake()
 
     {
@@ -91,5 +92,14 @@ public class InventoryManager : MonoBehaviour
     public void CloseInventoryDescription()
     {
         InventoryDescription.SetActive(false);
+    }
+
+    private void CheckHiddenItemsGoal()
+    {
+        if (collectedHiddenItems.Count == 6)
+        {
+            PapersBadge.Instance.ShowBadge();
+            //Debug.Log("all  collected");
+        }
     }
 }
