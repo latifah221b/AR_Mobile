@@ -10,27 +10,23 @@ public class StepCounterIOSScript : MonoBehaviour
 
     [SerializeField] private TMP_Text step_counter_txt;
 
-    //private Rect _rect
-    private string _msg;
-
     [SerializeField] private GameObject[] papers;
     private int currentStepCount = 0;
     private int nextPaperStep = 8;
     private int paperIndex = 0;
     private const float maxSpawnDistance = 2.0f;
     private int maxPapers = 6;
+    private const int stepBadgeGoal = 300;
 
+    private bool hasTriggeredBadge = false;
 
 #if UNITY_IOS && !UNITY_EDITOR
-   [DllImport("__Internal")]
+    [DllImport("__Internal")]
     private static extern void UnityOnStart();
 #endif
 
-
-    
     void Start()
     {
-        //_rect = new Rect(0, 0, Screen.width, Screen.height);
         _msg = "0";
 
 #if UNITY_IOS && !UNITY_EDITOR
@@ -38,64 +34,64 @@ public class StepCounterIOSScript : MonoBehaviour
 #endif
     }
 
+    private string _msg;
+
     private void OnMessageReceived(string msg)
     {
         _msg = msg;
 
         if (int.TryParse(_msg, out int steps))
         {
-            //   int steps = int.Parse(_msg);
             step_counter_txt.text = steps.ToString();
             HandleStepCount(steps);
         }
-
-        //else
-        //{
-        //    Debug.LogWarning("error test: " + msg);
-        //}
-
+        else
+        {
+            //Debug.LogWarning("parsing step count: " + msg);
+        }
     }
-
 
     private void HandleStepCount(int steps)
     {
         currentStepCount = steps;
 
-
-        if (paperIndex >= maxPapers) return;
-
-
-        if (currentStepCount >= nextPaperStep && paperIndex < papers.Length)
+        if (paperIndex < maxPapers && currentStepCount >= nextPaperStep && paperIndex < papers.Length)
         {
             SpawnPaper();
             nextPaperStep += 5;
         }
-    }
 
+        if (currentStepCount >= stepBadgeGoal && !hasTriggeredBadge)
+        {
+            TriggerStepBadge();
+        }
+    }
 
     private void SpawnPaper()
     {
         if (paperIndex >= maxPapers) return;
 
-
         Vector3 playerPosition = Camera.main.transform.position;
-
-
         Vector3 randomDirection = Random.insideUnitSphere * maxSpawnDistance;
         randomDirection.y = 0;
         Vector3 spawnPosition = playerPosition + randomDirection;
 
-
         Instantiate(papers[paperIndex], spawnPosition, Quaternion.identity);
 
-        Debug.Log("Spawned: " + papers[paperIndex].name + " at position: " + spawnPosition);
+        //Debug.Log("Spawned: " + papers[paperIndex].name + " at position: " + spawnPosition);
 
         paperIndex++;
     }
 
+    private void TriggerStepBadge()
+    {
+        StepsBadge.Instance.ShowBadge();
+        //Debug.Log("steps reached");
+        hasTriggeredBadge = true;
+    }
+
     void Update()
     {
-        //cube.transform.Rotate(rotate * Time.deltaTime);
         step_counter_txt.text = _msg;
     }
 }
