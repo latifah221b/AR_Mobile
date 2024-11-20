@@ -13,6 +13,7 @@ public class InventoryManager : MonoBehaviour
     public Text ItemDescriptionNameText;
     public Text ItemDescriptionText;
     private HashSet<string> collectedHiddenItems = new HashSet<string>();
+
     private void Awake()
 
     {
@@ -22,6 +23,15 @@ public class InventoryManager : MonoBehaviour
     public void Add(Item item)
     {
         Items.Add(item);
+        if (item.itemName.StartsWith("hidden"))
+        {
+            if (!collectedHiddenItems.Contains(item.itemName))
+            {
+                collectedHiddenItems.Add(item.itemName);
+                //Debug.Log("collected");
+                CheckHiddenItemsGoal();
+            }
+        }
     }
 
     //public void Remove(Item item)
@@ -77,7 +87,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     public void ShowItemDescription(Item item)
-    { 
+    {
         //if (InventoryDescription == null)
         //{
         //    Debug.LogError("InventoryDescription is not assigned in the InventoryManager!");
