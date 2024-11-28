@@ -49,8 +49,8 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
             //Return if initialization failed or tracking is not available
             if (!Initializer.IsReady || EarthManager.EarthTrackingState != TrackingState.Tracking)
             {
-                Debug.Log("EarthManager: " + EarthManager.EarthTrackingState);
-                Debug.Log("Initializer: " + EarthManager.EarthTrackingState);
+                //Debug.Log("EarthManager: " + EarthManager.EarthTrackingState);
+               // Debug.Log("Initializer: " + EarthManager.EarthTrackingState);
             return;
             }
             //Tracking status to be displayed
@@ -61,7 +61,7 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
             if (pose.OrientationYawAccuracy > HeadingThreshold ||
                   pose.HorizontalAccuracy > HorizontalThreshold)
             {
-                status = "Low Tracking Accuracy： Please look arround.";
+                status = "Low Tracking Accuracy Please look arround.";
             }
             else
             {
@@ -127,14 +127,14 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
         if (OutputText == null) return;
         OutputText.text = string.Format(
                "\n" +
-               "Latitude/Longitude: {0}°, {1}°\n" +
-               "Horizontal Accuracy: {2}m\n" +
-               "Altitude: {3}m\n" +
-               "Vertical Accuracy: {4}m\n" +
-               "Heading: {5}°\n" +
-               "Heading Accuracy: {6}°\n" +
+               "Latitude/Longitude {0}°, {1}°\n" +
+               "Horizontal Accuracy {2}m\n" +
+               "Altitude {3}m\n" +
+               "Vertical Accuracy {4}m\n" +
+               "Heading {5}°\n" +
+               "Heading Accuracy {6}°\n" +
                "{7} \n \n" + 
-               "GeospatialDistance from Camera: {8}m\n" + "Take Walk to minimize the distance between you and the rocket"
+               "GeospatialDistance from Camera {8}m\n" + "Take Walk to minimize the distance between you and the rocket"
                ,
                pose.Latitude.ToString("F6"),  //{0}
                pose.Longitude.ToString("F6"), //{1}

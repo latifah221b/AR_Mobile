@@ -23,6 +23,8 @@ public class AbdullahStepCounter : MonoBehaviour
         else
         {
             Debug.LogWarning("Step counter is only supported on Android devices.");
+            this.enabled = false; // Disable the script
+            return;
         }
     }
 
@@ -96,7 +98,10 @@ public class AbdullahStepCounter : MonoBehaviour
 
     void LateUpdate()
     {
-        UpdateStepsText();
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            UpdateStepsText();
+        }
     }
 
     void OnDestroy()

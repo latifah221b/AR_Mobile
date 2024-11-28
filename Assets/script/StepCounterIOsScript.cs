@@ -42,8 +42,11 @@ public class StepCounterIOSScript : MonoBehaviour
 
         if (int.TryParse(_msg, out int steps))
         {
-            step_counter_txt.text = steps.ToString();
-            HandleStepCount(steps);
+            if(step_counter_txt != null)
+            {
+                step_counter_txt.text = steps.ToString();
+                HandleStepCount(steps);
+            }
         }
         else
         {
@@ -92,6 +95,10 @@ public class StepCounterIOSScript : MonoBehaviour
 
     void Update()
     {
-        step_counter_txt.text = _msg;
+       if(step_counter_txt != null)
+        {
+            step_counter_txt.text = _msg;
+        }
+        
     }
 }
