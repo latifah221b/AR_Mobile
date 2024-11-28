@@ -2620,7 +2620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &611158915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2628,7 +2628,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611158914}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b50ad3f5d9024549b0a549c5a03a084, type: 3}
   m_Name: 
@@ -7714,7 +7714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1390597913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7722,7 +7722,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390597912}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 302bfae291a6d9b4d958ead8e8f56bee, type: 3}
   m_Name: 
@@ -8378,9 +8378,11 @@ MonoBehaviour:
   _Enemy: {fileID: 8986328500875594450, guid: de54668c6a0c8456896a3b28095ed6e7, type: 3}
   _eventSystem: {fileID: 0}
   _geodialog: {fileID: 2123342336}
+  _canvas: {fileID: 0}
+  _stepCounter: {fileID: 0}
   _num_of_enemy: 4
   _placingObjAtLatLngAlt: {fileID: 1756220072}
-  _toggleGeo: 0
+  _toggleGeo: 1
 --- !u!114 &1545701205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9121,7 +9123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1756220072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9129,7 +9131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756220071}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8762fba4a1296b148855ca393e0785fb, type: 3}
   m_Name: 
@@ -9139,8 +9141,8 @@ MonoBehaviour:
   OutputText: {fileID: 2123342335}
   HeadingThreshold: 25
   HorizontalThreshold: 20
-  Latitude: 24.715728072761163
-  Longitude: 46.64386422345598
+  Latitude: 24.843390092657472
+  Longitude: 46.633590186187746
   Altitude: 0
   ForcePutOnTerrain: 0
   Heading: 0
@@ -10608,7 +10610,7 @@ PrefabInstance:
     - target: {fileID: 8971163804139864163, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8982353221631137228, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}

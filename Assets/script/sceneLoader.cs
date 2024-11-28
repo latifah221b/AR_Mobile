@@ -10,8 +10,7 @@ using System.Threading;
 using UnityEditor.Rendering;
 using System.Runtime.CompilerServices;
 using UnityEngine.Rendering.Universal.Internal;
-
-
+using Unity.XR.CoreUtils;
 
 public struct question{
     private string question_text;
@@ -35,16 +34,20 @@ public struct question{
 
 public class sceneLoader : MonoBehaviour
 {
-    [SerializeField] private GameObject _startingSceneTransition, _endingSceneTransition, 
-        _blurEffect, _dialog, _rocket_scene, _Enemy, _eventSystem;
+    [SerializeField]
+    private GameObject _startingSceneTransition, _endingSceneTransition,
+        _blurEffect, _dialog, _rocket_scene, _Enemy, _eventSystem, _geodialog;
 
     [SerializeField] private int _num_of_enemy;
+
+    [SerializeField] PlacingObjAtLatLngAlt _placingObjAtLatLngAlt;
+    [SerializeField] bool _toggleGeo = false;
 
 
     private question[] _question_list;
     private List<question> Questions = new List<question>();
 
-    Transform CameraTransfrom = null;
+    private Transform cameraTransfrom = null;
 
     public int pick_a_random_index(int max) {
          System.Random rnd = new System.Random();
@@ -96,15 +99,36 @@ public class sceneLoader : MonoBehaviour
         if (_startingSceneTransition) { _startingSceneTransition.SetActive(true); 
             StartCoroutine(transition()); }
 
-        if(_eventSystem != null) { DoNotDestoryOnload(_eventSystem); }
-       
+        if(_eventSystem != null) { DoNotDestoryOnload(_eventSystem); }       
     }
     
     IEnumerator transition()
     {
-        yield return new WaitForSeconds(3f);
-        // _rocket_scene.SetActive(true);
+        if (!_toggleGeo)
+        {
+            yield return new WaitForSeconds(3f);
+            _rocket_scene.SetActive(true);
+        }
+        else
+        {
+            _geodialog.SetActive(true);
+            while (this._placingObjAtLatLngAlt.getdistance() >= 2.0)
+            {
+                yield return null; // Wait for the next frame
+            }
+
+            Destroy(_geodialog);
+            OnDistanceConditionMet();
+
+        }
+
     }
+
+    private void OnDistanceConditionMet()
+    {
+        LoadA("scene6");
+    }
+
 
     private Vector2 Random_positioning(Vector2 original_point, 
         float radius)
@@ -114,8 +138,8 @@ public class sceneLoader : MonoBehaviour
     }
     private void PlacePrefab()
     {
-        Vector3 spawnPosition = CameraTransfrom.position +
-            CameraTransfrom.forward * 50;
+        Vector3 spawnPosition = cameraTransfrom.position +
+            cameraTransfrom.forward * 50;
 
         _rocket_scene.transform.position = spawnPosition;
         _rocket_scene.SetActive(true);

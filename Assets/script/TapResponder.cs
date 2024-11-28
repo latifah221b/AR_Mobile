@@ -104,9 +104,9 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                             StartCoroutine(finalLogicScene3());
                             break;
 
-                            case "scene5":
-                            Debug.Log("Action for Scene5");
-                            StartCoroutine(finalLogicScene5());
+                            case "scene6":
+                            Debug.Log("Action for Scene6");
+                            StartCoroutine(finalLogicScene6());
                             break;
 
                             default:
@@ -183,7 +183,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
     }
 
-    IEnumerator finalLogicScene5()
+    IEnumerator finalLogicScene6()
     {
         if (_final_dialogs.Length > 0)
         {

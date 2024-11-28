@@ -40,11 +40,16 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
         bool initialized = false;
     
     
-        private ARGeospatialAnchor anchor; 
+        private ARGeospatialAnchor anchor;
+        private double distance = 1000000;
+
+    public double getdistance() {
+        return this.distance;
+    }
 
 
-        // Update is called once per frame
-        void Update()
+    // Update is called once per frame
+    void Update()
         {
             //Return if initialization failed or tracking is not available
             if (!Initializer.IsReady || EarthManager.EarthTrackingState != TrackingState.Tracking)
@@ -97,7 +102,7 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
                 anchor = AnchorManager.AddAnchor(Latitude, Longitude, Altitude, quaternion);
                 if (anchor != null)
                 {
-                    displayObject = Instantiate(ContentPrefab, anchor.transform);
+                   // displayObject = Instantiate(ContentPrefab, anchor.transform);
                 }
             }
         }
@@ -114,8 +119,8 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
             if (result.TerrainAnchorState == TerrainAnchorState.Success &&
                 result.Anchor != null)
             {
-                displayObject = Instantiate(ContentPrefab, result.Anchor.gameObject.transform);
-                displayObject.transform.parent = result.Anchor.gameObject.transform;
+                //displayObject = Instantiate(ContentPrefab, result.Anchor.gameObject.transform);
+              //  displayObject.transform.parent = result.Anchor.gameObject.transform;
             }
             yield break;
         }
@@ -133,7 +138,7 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
                "Vertical Accuracy {4}m\n" +
                "Heading {5}°\n" +
                "Heading Accuracy {6}°\n" +
-               "{7} \n \n" + 
+               "{7} \n \n" +
                "GeospatialDistance from Camera {8}m\n" + "Take Walk to minimize the distance between you and the rocket"
                ,
                pose.Latitude.ToString("F6"),  //{0}
@@ -146,6 +151,7 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
                status, //{7}
                (distance * 1000.0f) // {8}
            );
+            this.distance = (distance * 1000.0f);
 
 
         }
