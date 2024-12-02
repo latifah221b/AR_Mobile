@@ -21,7 +21,7 @@ public class ARObjectSpawner : MonoBehaviour
     [SerializeField] private sceneLoader _sceneLoaderRef;
     [SerializeField] private GameObject _tappingCanvas;
     private Camera arCamera;
-    private float maxDistance = 2f;
+    private float maxDistance = 5f;
     private Vector2 requiredSize = new Vector2(0.3f, 0.3f);
 
     // Start is called before the first frame update
@@ -50,13 +50,14 @@ public class ARObjectSpawner : MonoBehaviour
                
                 PositionObjectOnPlane(detectedPlane);
 
-                count++;
-                if (count == 1) { _tappingCanvas.SetActive(true); }
-                if (number_of_enemy == count)
-                {
+                //count++;
+                //if (count == 1) { _tappingCanvas.SetActive(true); }
+                _tappingCanvas.SetActive(true);
+                //if (number_of_enemy == count)
+                //{
                     aRPlaneManager.planesChanged -= OnPlanesChanged;
 
-                }
+                //}
             }
 
 
@@ -78,8 +79,14 @@ public class ARObjectSpawner : MonoBehaviour
 
         var obj = Instantiate(objectsToSpawn, spawnPosition, planeRotation);
         MakeObjectLookAtCamera(obj.transform);
-        var enemyController = obj.GetComponent<EnemyController>();
-        //enemyController.set_transform(obj.transform);
+
+        spawnPosition += new Vector3(0.5f, 0, 0);
+         obj = Instantiate(objectsToSpawn, spawnPosition, planeRotation);
+         MakeObjectLookAtCamera(obj.transform);
+
+
+
+
     }
 
     // Function to check distance 
