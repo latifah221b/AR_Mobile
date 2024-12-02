@@ -120,9 +120,9 @@ public class EnemyController : MonoBehaviour
                 //transform.position = new Vector3(new_pos.x, transform.position.y, new_pos.y);
 
                 
-                Debug.Log("old pos" + transform.position);
+                //Debug.Log("old pos" + transform.position);
                     TranslateRandomly();
-                Debug.Log("new pos" + transform.position);
+               // Debug.Log("new pos" + transform.position);
 
                 _incorrectDailog.SetActive(false);
                 _visual.SetActive(true);

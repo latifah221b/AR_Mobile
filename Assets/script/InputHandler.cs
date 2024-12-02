@@ -47,14 +47,14 @@ public class InputHandler : MonoBehaviour
 
     private void OnTap(InputAction.CallbackContext context)
     {
-        Debug.Log("OnTap");
+        //Debug.Log("OnTap");
         NotifyTap(context);
 
     }
 
     private void NotifyTap(InputAction.CallbackContext context)
     {
-        Debug.Log("NotifyTap");
+        //Debug.Log("NotifyTap");
         Vector2 tapPosition = context.ReadValue<Vector2>();
         GameObjectManager.Instance.NotifyAll(tapPosition);
     }

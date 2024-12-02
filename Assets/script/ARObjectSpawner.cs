@@ -91,8 +91,8 @@ public class ARObjectSpawner : MonoBehaviour
         // check if the distance is less than the max distance allowed 
         if (distance <= maxDistance)
         {
-            Debug.Log("Plane is close enough.");
-            Debug.Log("distance:" + string.Format("{0:N3}", distance));
+            //Debug.Log("Plane is close enough.");
+            //Debug.Log("distance:" + string.Format("{0:N3}", distance));
 
             return true;
         }
@@ -109,10 +109,10 @@ public class ARObjectSpawner : MonoBehaviour
         // check if the plane's dimensions are greater than the required size 
         if (planeSize.x >= requiredSize.x && planeSize.y >= requiredSize.y)
         {
-            Debug.Log("Plane is large enough");
+            //Debug.Log("Plane is large enough");
             return true;
         }
-        Debug.Log("Plane is too small. ");
+        //Debug.Log("Plane is too small. ");
         return false;
     }
 

@@ -22,7 +22,7 @@ public class GameObjectManager : MonoBehaviour
 
     public void RegisterNotifier(INotifyOnTap notifier)
     {
-        Debug.Log("RegisterNotifier");
+       // Debug.Log("RegisterNotifier");
 
         tapNotifiers.Add(notifier);
     }
@@ -34,7 +34,7 @@ public class GameObjectManager : MonoBehaviour
 
     public void NotifyAll(Vector2 tapPosition)
     {
-         Debug.Log("NotifyAll");
+       //  Debug.Log("NotifyAll");
 
         foreach (var notifier in tapNotifiers)
         {

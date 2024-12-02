@@ -14,7 +14,7 @@ public class ARPlaneIterator : MonoBehaviour
 
         if (arPlaneManager == null)
         {
-            Debug.LogError("ARPlaneManager not found! Please attach the script to a GameObject with ARPlaneManager.");
+            //Debug.LogError("ARPlaneManager not found! Please attach the script to a GameObject with ARPlaneManager.");
             return;
         }
 
@@ -33,7 +33,7 @@ public class ARPlaneIterator : MonoBehaviour
         foreach (var plane in arPlaneManager.trackables)
         {
             // Log the plane's ID, center position, and size
-            Debug.Log($"Plane ID: {plane.trackableId}, Center: {plane.center}, Size: {plane.size}");
+           // Debug.Log($"Plane ID: {plane.trackableId}, Center: {plane.center}, Size: {plane.size}");
         }
       
         

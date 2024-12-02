@@ -52,8 +52,8 @@ public class GeolocationManager : MonoBehaviour
             System.DateTime timestamp = System.DateTime.Now;
 
             // Log the location data
-            Debug.Log($"Latitude: {latitude}, Longitude: {longitude}, Altitude: {altitude}");
-            Debug.Log($"Horizontal Accuracy: {horizontalAccuracy}, Vertical Accuracy: {verticalAccuracy}, Timestamp: {timestamp}");
+           // Debug.Log($"Latitude: {latitude}, Longitude: {longitude}, Altitude: {altitude}");
+            //Debug.Log($"Horizontal Accuracy: {horizontalAccuracy}, Vertical Accuracy: {verticalAccuracy}, Timestamp: {timestamp}");
 
             // Wait for a specified interval before checking again
             yield return new WaitForSeconds(5); // Adjust as needed

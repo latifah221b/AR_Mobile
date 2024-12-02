@@ -30,13 +30,13 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
         if (hitCollider != null)
         {
-            Debug.Log($"Hit: {hitCollider.gameObject.name}");
+           // Debug.Log($"Hit: {hitCollider.gameObject.name}");
 
             HandleTag(hitCollider);
         }
         else
         {
-            Debug.Log("No collider was hit.");
+           // Debug.Log("No collider was hit.");
         }
 
     }
@@ -49,7 +49,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         {
             case "Enemy":
                 // Handle enemy objects
-                Debug.Log("Hit an enemy!");
+                //Debug.Log("Hit an enemy!");
                  parent = GameObjectManager.Instance.GetParentGameObject(collider.gameObject);
                var canvas = GameObjectManager.Instance.FindChildCanvas(parent);
                 canvas.gameObject.SetActive(true);
@@ -57,25 +57,20 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
             case "rocket_part":
 
-                Debug.Log("Interacting with rocket Part");
+                //Debug.Log("Interacting with rocket Part");
                 parent = GameObjectManager.Instance.GetParentGameObject(collider.gameObject);
-                Debug.Log($"Parent: {parent.name}");
+                //Debug.Log($"Parent: {parent.name}");
 
                 // if we are using a box 
                 parent = GameObjectManager.Instance.GetParentGameObject(parent);
-                Debug.Log($"Parent: {parent.name}");
+                //Debug.Log($"Parent: {parent.name}");
 
                 // update the inventory system  
                 Item item = GameObjectManager.Instance.GetItemScriptableObject(parent);
-                if(item != null)
-                {
-                    Debug.Log("the item is found");
-                }
-
                 if (item != null && InventoryManager.Instance != null)
                {
                    InventoryManager.Instance.Add(item);
-                   Debug.Log(item.itemName + " added to inventory");
+                   //Debug.Log(item.itemName + " added to inventory");
                }
 
                 // rocket part prefab 
@@ -100,17 +95,17 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                         switch (currentSceneName)
                         {
                             case "scene3":
-                                Debug.Log("Action for Scene 3");
+                                //Debug.Log("Action for Scene 3");
                             StartCoroutine(finalLogicScene3());
                             break;
 
                             case "scene6":
-                            Debug.Log("Action for Scene6");
+                            //Debug.Log("Action for Scene6");
                             StartCoroutine(finalLogicScene6());
                             break;
 
                             default:
-                                Debug.Log("Default action for other scenes");
+                                //Debug.Log("Default action for other scenes");
                                 // Default code
                                 break;
                         }
@@ -122,7 +117,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
             case "star_box":
                 // Handle collectible objects
-                Debug.Log("Collected an item!");
+                //Debug.Log("Collected an item!");
 
                 Destroy(collider.transform.parent.gameObject);
                 Destroy(collider);
@@ -133,7 +128,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                 _Collectable_count_txt.text = value.ToString();
                 break;
             default:
-                Debug.Log("Hit an object with no specific tag.");
+                //Debug.Log("Hit an object with no specific tag.");
                 break;
         }
     }
@@ -167,7 +162,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     private void OnDestroy()
     {
         // Unregister this instance from the GameObjectManager
-        Debug.Log("TapResponder is Destroyed");
+        //Debug.Log("TapResponder is Destroyed");
         GameObjectManager.Instance.UnregisterNotifier(this);
     }
 

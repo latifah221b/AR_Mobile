@@ -22,9 +22,9 @@ public class PlacingObjAtLatLngAlt : MonoBehaviour
         [SerializeField] double HorizontalThreshold = 20;
 
         //Latitude of the object to be placed
-        [SerializeField] double Latitude;
+      double Latitude = 24.715714035782835;
         //Longitude of the object to be placed
-        [SerializeField] double Longitude;
+      double Longitude = 46.64380104408511;
         //Altitude of the object to be placed [m] (geoid height + elevation. See elevation.txt for how to calculate)
         [SerializeField] double Altitude;
         //Flag to force the object to be placed on the ground. (If false, the object will be placed at the altitude specified by Altitude)
