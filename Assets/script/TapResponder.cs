@@ -185,16 +185,31 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     {
         if (_final_dialogs.Length > 0)
         {
+            yield return new WaitForSecondsRealtime(3);
+            _final_dialogs[2].SetActive(true);
+            yield return new WaitForSecondsRealtime(3);
+            _final_dialogs[2].SetActive(false);
+
             while (!IsFullyVisible())
             {
                 yield return new WaitForSecondsRealtime(1);
             }
 
+            _final_dialogs[3].SetActive(true);
+            yield return new WaitForSecondsRealtime(3);
+            _final_dialogs[3].SetActive(false);
+
+
             // Wait until the distance between pointA and pointB is less than or equal to targetDistance
-            while (Vector3.Distance(Camera.main.transform.position, objectRenderer.transform.position) > 2.0f)
+            while (Vector3.Distance(Camera.main.transform.position, objectRenderer.transform.position) > 4f)
             {
+               
                 yield return null; // Wait for the next frame
+               
+                
             }
+            yield return new WaitForSecondsRealtime(2);
+
 
             if (_flyanimation != null)
             {
