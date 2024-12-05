@@ -7491,6 +7491,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6614096039863288660, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6678581859374118581, guid: 58d37ae7380b6e54099c016338b664f2,
         type: 3}
       propertyPath: _transform
@@ -7695,6 +7700,12 @@ PrefabInstance:
 --- !u!4 &1355641856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6443361116227399810, guid: 58d37ae7380b6e54099c016338b664f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355641855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1355641857 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6614096039863288660, guid: 58d37ae7380b6e54099c016338b664f2,
     type: 3}
   m_PrefabInstance: {fileID: 1355641855}
   m_PrefabAsset: {fileID: 0}
@@ -8498,6 +8509,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3463387319105478802, guid: 5abc3d6e80fcbf4419557a628c6a9e84,
         type: 3}
+      propertyPath: _flyanimation
+      value: 
+      objectReference: {fileID: 1355641857}
+    - target: {fileID: 3463387319105478802, guid: 5abc3d6e80fcbf4419557a628c6a9e84,
+        type: 3}
+      propertyPath: objectRenderer
+      value: 
+      objectReference: {fileID: 1656243098}
+    - target: {fileID: 3463387319105478802, guid: 5abc3d6e80fcbf4419557a628c6a9e84,
+        type: 3}
       propertyPath: _Main_Quest_txt
       value: 
       objectReference: {fileID: 981446124}
@@ -8558,6 +8579,12 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!23 &1656243098 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6346746588852717947, guid: 58d37ae7380b6e54099c016338b664f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355641855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1661489932
 GameObject:
   m_ObjectHideFlags: 0
@@ -9139,8 +9166,6 @@ MonoBehaviour:
   OutputText: {fileID: 2123342335}
   HeadingThreshold: 25
   HorizontalThreshold: 20
-  Latitude: 24.715728072761163
-  Longitude: 46.64386422345598
   Altitude: 0
   ForcePutOnTerrain: 0
   Heading: 0

@@ -13,6 +13,9 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     [SerializeField] private GameObject[] _final_dialogs;
     [SerializeField] private int _theTargetScore;
     [SerializeField] private sceneLoader _sceneLoaderRef;
+    [SerializeField] private Animator _flyanimation;
+    [SerializeField] private Renderer objectRenderer;
+
 
     public void set_Main_Quest_txt(TextMeshProUGUI txt_ref)
     {
@@ -182,7 +185,26 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     {
         if (_final_dialogs.Length > 0)
         {
+            while (!IsFullyVisible())
+            {
+                yield return new WaitForSecondsRealtime(1);
+            }
+
+            // Wait until the distance between pointA and pointB is less than or equal to targetDistance
+            while (Vector3.Distance(Camera.main.transform.position, objectRenderer.transform.position) > 2.0f)
+            {
+                yield return null; // Wait for the next frame
+            }
+
+            if (_flyanimation != null)
+            {
+                _flyanimation.enabled = true;
+                // Wait for the animation duration
+                yield return new WaitForSeconds(_flyanimation.GetCurrentAnimatorStateInfo(0).length);
+            }
+
             yield return new WaitForSecondsRealtime(3);
+
             _final_dialogs[0].SetActive(true);
             yield return new WaitForSecondsRealtime(3);
             _final_dialogs[0].SetActive(false);
@@ -195,5 +217,34 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         }
 
 
+    }
+
+    private bool IsFullyVisible()
+    {
+        // Get the bounding box of the GameObject
+        Bounds bounds = objectRenderer.bounds;
+        Vector3[] corners = new Vector3[8];
+
+        // Calculate corners of the bounding box
+        corners[0] = bounds.min;
+        corners[1] = bounds.max;
+        corners[2] = new Vector3(bounds.min.x, bounds.min.y, bounds.max.z);
+        corners[3] = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
+        corners[4] = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
+        corners[5] = new Vector3(bounds.min.x, bounds.max.y, bounds.max.z);
+        corners[6] = new Vector3(bounds.max.x, bounds.min.y, bounds.max.z);
+        corners[7] = new Vector3(bounds.max.x, bounds.max.y, bounds.min.z);
+
+        // Check if all corners are visible to the camera
+        foreach (Vector3 corner in corners)
+        {
+            Vector3 screenPoint = Camera.main.WorldToViewportPoint(corner);
+            if (screenPoint.x < 0 || screenPoint.x > 1 || screenPoint.y < 0 || screenPoint.y > 1 || screenPoint.z < 0)
+            {
+                return false; // At least one corner is outside the view
+            }
+        }
+
+        return true; // All corners are inside the camera's view
     }
 }

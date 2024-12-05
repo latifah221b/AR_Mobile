@@ -84,6 +84,7 @@ MonoBehaviour:
   _endSceneTransition: {fileID: 0}
   enemyinputs: []
   _animator: {fileID: 0}
+  _tapResponder: {fileID: 0}
 --- !u!114 &2560447170141826432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,10 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e5c58a6a879d0409cb1f78bde413f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Collectable_count_txt: {fileID: 0}
-  _rocket_Transform: {fileID: 0}
-  _star_prefab: {fileID: 6881579605585344641, guid: b913365c244a43941b2f93576cf9d623,
-    type: 3}
+  _ObjectPrefab: {fileID: 0}
 --- !u!1001 &825419640716621472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,7 +446,11 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7122934357901190661, guid: 394ffe156a39ddc479166eddbdcd993e, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8986328500875594450, guid: 394ffe156a39ddc479166eddbdcd993e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6614096039863288660}
   m_SourcePrefab: {fileID: 100100000, guid: 394ffe156a39ddc479166eddbdcd993e, type: 3}
 --- !u!4 &6780330540407858986 stripped
 Transform:
@@ -456,6 +458,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2021638332163626349}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6970331368148803519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8986328500875594450, guid: 394ffe156a39ddc479166eddbdcd993e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2021638332163626349}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6614096039863288660
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970331368148803519}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8bf5cb29bd2b2e943b966865df47cda2, type: 2}
+  m_CullingMode: 2
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &3130914593521656097
 PrefabInstance:
   m_ObjectHideFlags: 0
