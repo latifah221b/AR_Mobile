@@ -146,16 +146,20 @@ public class sceneLoader : MonoBehaviour
     }
 
     public void LoadA(string scenename)
-        {StartCoroutine(LoadYourAsyncScene(scenename));
-        }
+        {
+        //StartCoroutine(LoadYourAsyncScene(scenename));
+        StartCoroutine(LoadYourAsyncSceneAfterDelay(scenename, 0.2f));
+    }
 
 
     // Async load
-    IEnumerator LoadYourAsyncScene(string scenename)
+    //IEnumerator LoadYourAsyncScene(string scenename)
+    IEnumerator LoadYourAsyncSceneAfterDelay(string scenename, float delay)
     {
 
+        yield return new WaitForSeconds(delay);
         var asyncload = SceneManager.LoadSceneAsync(scenename);
-        while(! asyncload.isDone)
+        while (! asyncload.isDone)
         {
             yield return null;
         }

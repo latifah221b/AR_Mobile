@@ -1239,9 +1239,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1906189023}
+    - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1054907900}
+    - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: dadd9411e9e8043f0b5821317f157389, type: 3}
+    - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5894342842806101021, guid: 22a3d69664d5d97428c296f84356781c,
         type: 3}
       propertyPath: m_SizeDelta.x
