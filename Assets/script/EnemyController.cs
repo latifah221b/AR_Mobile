@@ -28,11 +28,13 @@ public class EnemyController : MonoBehaviour
 
 
     private string correctAnswer;
+    private AudioManager audioManager;
     //public Item rocketPart;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         fill_the_canvas();
 
         // event listener ..
@@ -84,6 +86,7 @@ public class EnemyController : MonoBehaviour
         {
             if (button_text.text == correctAnswer)
             {
+                audioManager.PlaySFX(audioManager.correct);
                 ColorBlock colorBlock = butt.colors;
                 colorBlock.normalColor = Color.green;
                 colorBlock.pressedColor = Color.green;
@@ -103,6 +106,7 @@ public class EnemyController : MonoBehaviour
 
             else
             {
+                audioManager.PlaySFX(audioManager.wrong);
                 _incorrectDailog.SetActive(true);
                 
                 yield return new WaitForSecondsRealtime(2);

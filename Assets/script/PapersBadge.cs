@@ -5,6 +5,7 @@ public class PapersBadge : MonoBehaviour
 {
     public static PapersBadge Instance;
     public GameObject badgeSprite;
+    private AudioManager audioManager;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class PapersBadge : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void ShowBadge()
@@ -23,6 +25,7 @@ public class PapersBadge : MonoBehaviour
         if (badgeSprite != null)
         {
             badgeSprite.SetActive(true);
+            audioManager.PlaySFX(audioManager.badge);
             //Debug.Log("badge displayed!");
             StartCoroutine(HideBadgeAfterDelay(5f));
         }

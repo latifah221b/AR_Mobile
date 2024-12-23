@@ -13,11 +13,13 @@ public class InventoryManager : MonoBehaviour
     public Text ItemDescriptionNameText;
     public Text ItemDescriptionText;
     private HashSet<string> collectedHiddenItems = new HashSet<string>();
+    private AudioManager audioManager;
 
     private void Awake()
 
     {
         Instance = this;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void Add(Item item)
@@ -25,6 +27,7 @@ public class InventoryManager : MonoBehaviour
         Items.Add(item);
         if (item.itemName.StartsWith("hidden"))
         {
+            audioManager.PlaySFX(audioManager.pages);
             if (!collectedHiddenItems.Contains(item.itemName))
             {
                 collectedHiddenItems.Add(item.itemName);

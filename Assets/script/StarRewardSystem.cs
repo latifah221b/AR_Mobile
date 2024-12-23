@@ -11,6 +11,12 @@ public class StarRewardSystem : MonoBehaviour
 
     private int rocketPartCount = 0;
     private int itemCount = 0;
+    private AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     public void CollectRocketPart()
     {
@@ -51,10 +57,10 @@ public class StarRewardSystem : MonoBehaviour
     private IEnumerator ShowRewardWithDelay()
     {
         yield return new WaitForSeconds(12f);
-
+        audioManager.PlaySFX(audioManager.badge);
         starRewardImage.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(5f);
 
         starRewardImage.gameObject.SetActive(false);
     }

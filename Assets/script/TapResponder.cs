@@ -15,6 +15,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     [SerializeField] private sceneLoader _sceneLoaderRef;
     [SerializeField] private Animator _flyanimation;
     [SerializeField] private Renderer objectRenderer;
+    private AudioManager audioManager;
 
 
     public void set_Main_Quest_txt(TextMeshProUGUI txt_ref)
@@ -25,6 +26,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     private void Start()
     {
         GameObjectManager.Instance.RegisterNotifier(this);
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void OnTap(Vector2 tapPosition)
@@ -59,6 +61,8 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                 break;
 
             case "rocket_part":
+
+                audioManager.PlaySFX(audioManager.partsitems);
 
                 //Debug.Log("Interacting with rocket Part");
                 parent = GameObjectManager.Instance.GetParentGameObject(collider.gameObject);
@@ -121,6 +125,8 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
             case "star_box":
                 // Handle collectible objects
                 //Debug.Log("Collected an item!");
+
+                audioManager.PlaySFX(audioManager.coin);
 
                 Destroy(collider.transform.parent.gameObject);
                 Destroy(collider);
@@ -213,6 +219,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
             if (_flyanimation != null)
             {
+                audioManager.PlaySFX(audioManager.clear);
                 _flyanimation.enabled = true;
                 // Wait for the animation duration
                 yield return new WaitForSeconds(_flyanimation.GetCurrentAnimatorStateInfo(0).length);

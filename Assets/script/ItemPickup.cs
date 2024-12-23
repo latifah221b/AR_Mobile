@@ -29,13 +29,16 @@ public class ItemPickup : MonoBehaviour
     void Pickup()
     {
         InventoryManager.Instance.Add(Item);
+        AudioManager audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         if (Item.isRocketPart)
         {
             FindObjectOfType<StarRewardSystem>().CollectRocketPart();
+            audioManager.PlaySFX(audioManager.partsitems);
         }
         else if (Item.isSideItem)
         {
             FindObjectOfType<StarRewardSystem>().CollectItem();
+            audioManager.PlaySFX(audioManager.partsitems);
         }
         Destroy(gameObject);
     }
