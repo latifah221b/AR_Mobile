@@ -96,6 +96,7 @@ public class InventoryManager : MonoBehaviour
         //    Debug.LogError("InventoryDescription is not assigned in the InventoryManager!");
         //    return;
         //}
+        audioManager.PlaySFX(audioManager.click);
         InventoryDescription.SetActive(true);
         ItemImage.sprite = item.icon;
         ItemDescriptionNameText.text = item.itemName;
