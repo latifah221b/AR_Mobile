@@ -77,8 +77,9 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                 if (item != null && InventoryManager.Instance != null)
                {
                    InventoryManager.Instance.Add(item);
-                   //Debug.Log(item.itemName + " added to inventory");
-               }
+                   FindObjectOfType<StarRewardSystem>().CollectRocketPart();
+                    //Debug.Log(item.itemName + " added to inventory");
+                }
 
                 // rocket part prefab 
                 collider.gameObject.SetActive(false);

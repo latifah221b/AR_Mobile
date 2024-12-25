@@ -100,7 +100,7 @@ public class EnemyController : MonoBehaviour
                 _attachedPart.SetActive(true);
                 //if (rocketPart != null && rocketPart.isRocketPart)
                 //{
-                    FindObjectOfType<StarRewardSystem>().CollectRocketPart();
+                    //FindObjectOfType<StarRewardSystem>().CollectRocketPart();
                 //}
             }
 
