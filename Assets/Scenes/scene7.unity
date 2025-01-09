@@ -2021,6 +2021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepsText: {fileID: 419853391}
+  papers: []
 --- !u!1001 &365913929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8542,6 +8543,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1355641855}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1355641857 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6614096039863288660, guid: 58d37ae7380b6e54099c016338b664f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1355641855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1387359178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9207,6 +9214,7 @@ MonoBehaviour:
   _eventSystem: {fileID: 0}
   _geodialog: {fileID: 2123342336}
   _num_of_enemy: 4
+  _placingObjAtLatLngAlt: {fileID: 0}
   _toggleGeo: 1
 --- !u!114 &1545701205
 MonoBehaviour:
@@ -9323,6 +9331,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3463387319105478802, guid: 5abc3d6e80fcbf4419557a628c6a9e84,
+        type: 3}
+      propertyPath: _flyanimation
+      value: 
+      objectReference: {fileID: 1355641857}
     - target: {fileID: 3463387319105478802, guid: 5abc3d6e80fcbf4419557a628c6a9e84,
         type: 3}
       propertyPath: _Main_Quest_txt

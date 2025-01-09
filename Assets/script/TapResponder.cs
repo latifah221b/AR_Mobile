@@ -111,8 +111,12 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                             //Debug.Log("Action for Scene6");
                             StartCoroutine(finalLogicScene6());
                             break;
+                            case "scene7":
+                            //Debug.Log("Action for Scene6");
+                            StartCoroutine(finalLogicScene6());
+                            break;
 
-                            default:
+                        default:
                                 //Debug.Log("Default action for other scenes");
                                 // Default code
                                 break;
@@ -137,9 +141,18 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                 value++;
                 _Collectable_count_txt.text = value.ToString();
                 break;
+            case "rocket":
+                // check if we reached our goal
+                if (Int32.Parse(_Main_Quest_txt.text) >= _theTargetScore)
+                {
+                    runfinalanimation();
+                }
+                break;
+
             default:
                 //Debug.Log("Hit an object with no specific tag.");
                 break;
+           
         }
     }
 
@@ -239,6 +252,30 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
             _final_dialogs[1].SetActive(false);
         }
 
+
+    }
+
+    IEnumerator runfinalanimation() {
+
+        if (_flyanimation != null)
+        {
+            audioManager.PlaySFX(audioManager.clear);
+            _flyanimation.enabled = true;
+            // Wait for the animation duration
+            yield return new WaitForSeconds(_flyanimation.GetCurrentAnimatorStateInfo(0).length);
+        }
+
+        yield return new WaitForSecondsRealtime(3);
+
+        _final_dialogs[0].SetActive(true);
+        yield return new WaitForSecondsRealtime(3);
+        _final_dialogs[0].SetActive(false);
+
+        yield return new WaitForSecondsRealtime(1);
+
+        _final_dialogs[1].SetActive(true);
+        yield return new WaitForSecondsRealtime(3);
+        _final_dialogs[1].SetActive(false);
 
     }
 
