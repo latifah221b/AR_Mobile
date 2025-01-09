@@ -14,6 +14,15 @@ public class AbdullahStepCounter : MonoBehaviour
 
     [SerializeField] private TMP_Text stepsText; // UI Text to display the step count
 
+    [SerializeField] private GameObject[] papers;
+    private int currentStepCount = 0;
+    private int nextPaperStep = 8;
+    private int paperIndex = 0;
+    private const float maxSpawnDistance = 2.0f;
+    private int maxPapers = 6;
+    private const int stepBadgeGoal = 300;
+
+    private bool hasTriggeredBadge = false;
     void Start()
     {
         if (Application.platform == RuntimePlatform.Android)
@@ -89,11 +98,45 @@ public class AbdullahStepCounter : MonoBehaviour
         if (stepsText != null)
         {
             stepsText.text =  stepsSinceStart.ToString();
+            currentStepCount = stepsSinceStart; 
+            if (paperIndex < maxPapers && currentStepCount >= nextPaperStep && paperIndex < papers.Length)
+            {
+                SpawnPaper();
+                nextPaperStep += 5;
+            }
+
+            if (currentStepCount >= stepBadgeGoal && !hasTriggeredBadge)
+            {
+                TriggerStepBadge();
+            }
         }
         else
         {
             Debug.LogWarning("Steps Text UI element is not assigned.");
         }
+    }
+
+    private void SpawnPaper()
+    {
+        if (paperIndex >= maxPapers) return;
+
+        Vector3 playerPosition = Camera.main.transform.position;
+        Vector3 randomDirection = Random.insideUnitSphere * maxSpawnDistance;
+        randomDirection.y = 0;
+        Vector3 spawnPosition = playerPosition + randomDirection;
+
+        Instantiate(papers[paperIndex], spawnPosition, Quaternion.identity);
+
+        //Debug.Log("Spawned: " + papers[paperIndex].name + " at position: " + spawnPosition);
+
+        paperIndex++;
+    }
+
+    private void TriggerStepBadge()
+    {
+        StepsBadge.Instance.ShowBadge();
+        //Debug.Log("steps reached");
+        hasTriggeredBadge = true;
     }
 
     void LateUpdate()
