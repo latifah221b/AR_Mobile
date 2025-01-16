@@ -110,10 +110,6 @@ public class AbdullahStepCounter : MonoBehaviour
                 TriggerStepBadge();
             }
         }
-        else
-        {
-            Debug.LogWarning("Steps Text UI element is not assigned.");
-        }
     }
 
     private void SpawnPaper()

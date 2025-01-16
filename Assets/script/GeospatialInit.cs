@@ -114,10 +114,10 @@
         /// </summary>
         public void OnDisable()
         {
-            StopCoroutine(_startLocationService);
-            _startLocationService = null;
-            Debug.Log("Stop location services.");
-            Input.location.Stop();
+           // StopCoroutine(_startLocationService);
+           // _startLocationService = null;
+           // Debug.Log("Stop location services.");
+           // Input.location.Stop();
         }
 
         /// <summary>

@@ -109,11 +109,11 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
                             case "scene6":
                             //Debug.Log("Action for Scene6");
-                            StartCoroutine(finalLogicScene6());
+                            //StartCoroutine(finalLogicScene6());
                             break;
                             case "scene7":
                             //Debug.Log("Action for Scene6");
-                            StartCoroutine(finalLogicScene6());
+                            //StartCoroutine(finalLogicScene6());
                             break;
 
                         default:
@@ -142,10 +142,13 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
                 _Collectable_count_txt.text = value.ToString();
                 break;
             case "rocket":
+                Debug.Log("I have hit the rocket");
                 // check if we reached our goal
+                // Attempt to parse _Main_Quest_txt.text safely
                 if (Int32.Parse(_Main_Quest_txt.text) >= _theTargetScore)
                 {
-                    runfinalanimation();
+
+                    StartCoroutine(runfinalanimation());
                 }
                 break;
 
@@ -210,10 +213,10 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
             yield return new WaitForSecondsRealtime(3);
             _final_dialogs[2].SetActive(false);
 
-            while (!IsFullyVisible())
-            {
-                yield return new WaitForSecondsRealtime(1);
-            }
+           // while (!IsFullyVisible())
+           // {
+              //  yield return new WaitForSecondsRealtime(1);
+            //}
 
             _final_dialogs[3].SetActive(true);
             yield return new WaitForSecondsRealtime(3);
@@ -278,7 +281,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         _final_dialogs[1].SetActive(false);
 
     }
-
+    /*
     private bool IsFullyVisible()
     {
         // Get the bounding box of the GameObject
@@ -307,4 +310,5 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
         return true; // All corners are inside the camera's view
     }
+    */
 }
