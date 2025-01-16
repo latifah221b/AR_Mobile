@@ -29,6 +29,9 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
+
+
+
     public void OnTap(Vector2 tapPosition)
     {
         Collider hitCollider = CheckTapPosition(tapPosition);
@@ -109,7 +112,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
                             case "scene6":
                             //Debug.Log("Action for Scene6");
-                            //StartCoroutine(finalLogicScene6());
+                            StartCoroutine(finalLogicScene6());
                             break;
                             case "scene7":
                             //Debug.Log("Action for Scene6");
@@ -208,7 +211,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     {
         if (_final_dialogs.Length > 0)
         {
-            yield return new WaitForSecondsRealtime(3);
+            yield return new WaitForSecondsRealtime(6);
             _final_dialogs[2].SetActive(true);
             yield return new WaitForSecondsRealtime(3);
             _final_dialogs[2].SetActive(false);
@@ -218,41 +221,41 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
               //  yield return new WaitForSecondsRealtime(1);
             //}
 
-            _final_dialogs[3].SetActive(true);
-            yield return new WaitForSecondsRealtime(3);
-            _final_dialogs[3].SetActive(false);
+           // _final_dialogs[3].SetActive(true);
+           // yield return new WaitForSecondsRealtime(3);
+           // _final_dialogs[3].SetActive(false);
 
 
             // Wait until the distance between pointA and pointB is less than or equal to targetDistance
-            while (Vector3.Distance(Camera.main.transform.position, objectRenderer.transform.position) > 4f)
-            {
+           // while (Vector3.Distance(Camera.main.transform.position, objectRenderer.transform.position) > 4f)
+            //{
                
-                yield return null; // Wait for the next frame
+             //   yield return null; // Wait for the next frame
                
                 
-            }
-            yield return new WaitForSecondsRealtime(2);
+           // }
+           // yield return new WaitForSecondsRealtime(2);
 
 
-            if (_flyanimation != null)
-            {
-                audioManager.PlaySFX(audioManager.clear);
-                _flyanimation.enabled = true;
+           // if (_flyanimation != null)
+           // {
+               // audioManager.PlaySFX(audioManager.clear);
+               // _flyanimation.enabled = true;
                 // Wait for the animation duration
-                yield return new WaitForSeconds(_flyanimation.GetCurrentAnimatorStateInfo(0).length);
-            }
+              //  yield return new WaitForSeconds(_flyanimation.GetCurrentAnimatorStateInfo(0).length);
+           // }
 
-            yield return new WaitForSecondsRealtime(3);
+            //yield return new WaitForSecondsRealtime(3);
 
-            _final_dialogs[0].SetActive(true);
-            yield return new WaitForSecondsRealtime(3);
-            _final_dialogs[0].SetActive(false);
+           // _final_dialogs[0].SetActive(true);
+           // yield return new WaitForSecondsRealtime(3);
+          //  _final_dialogs[0].SetActive(false);
 
-            yield return new WaitForSecondsRealtime(1);
+          //  yield return new WaitForSecondsRealtime(1);
 
-            _final_dialogs[1].SetActive(true);
-            yield return new WaitForSecondsRealtime(3);
-            _final_dialogs[1].SetActive(false);
+           // _final_dialogs[1].SetActive(true);
+          //  yield return new WaitForSecondsRealtime(3);
+          //  _final_dialogs[1].SetActive(false);
         }
 
 
@@ -268,7 +271,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
             yield return new WaitForSeconds(_flyanimation.GetCurrentAnimatorStateInfo(0).length);
         }
 
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(1);
 
         _final_dialogs[0].SetActive(true);
         yield return new WaitForSecondsRealtime(3);
