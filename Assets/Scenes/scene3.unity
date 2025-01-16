@@ -1493,6 +1493,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreUITutorialLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 1332456533743660069, guid: 246f14f2c81764140900560683bd3084,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5812730349460780438, guid: 246f14f2c81764140900560683bd3084,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1774,15 +1779,35 @@ MonoBehaviour:
   musicSource: {fileID: 313093423}
   SFXSource: {fileID: 971623403}
   badge: {fileID: 8300000, guid: 4d8d188c583964da6a7517daaaddad88, type: 3}
+  badgeVolume: 1
+  badgePitch: 1
   clear: {fileID: 8300000, guid: fdcc0e1b4547a49199271022f819df73, type: 3}
+  clearVolume: 1
+  clearPitch: 1
   click: {fileID: 8300000, guid: dadd9411e9e8043f0b5821317f157389, type: 3}
+  clickVolume: 1
+  clickPitch: 1
   disclick: {fileID: 8300000, guid: 586cd13468c804e89ba7ef5beefdaee6, type: 3}
+  disclickVolume: 1
+  disclickPitch: 1
   correct: {fileID: 8300000, guid: b5ffab442ae014ee7b5654c54038a2f1, type: 3}
+  correctVolume: 1
+  correctPitch: 1
   wrong: {fileID: 8300000, guid: 080d26ef2658e4ab7bcbc06957db935a, type: 3}
+  wrongVolume: 1
+  wrongPitch: 1
   coin: {fileID: 8300000, guid: 2afe23bf1abc942ca8d6d55e7d51ddee, type: 3}
+  coinVolume: 1
+  coinPitch: 1
   pages: {fileID: 8300000, guid: 0405d342f2b1d4850bf95e62090d0e2c, type: 3}
+  pagesVolume: 1
+  pagesPitch: 1
   partsitems: {fileID: 8300000, guid: d999fcceb40384df7a829101f4919a96, type: 3}
+  partsitemsVolume: 1
+  partsitemsPitch: 1
   vanish: {fileID: 8300000, guid: 5a6059f83d08e4514b48485044a5ada1, type: 3}
+  vanishVolume: 1
+  vanishPitch: 1
 --- !u!4 &1375058850
 Transform:
   m_ObjectHideFlags: 0
