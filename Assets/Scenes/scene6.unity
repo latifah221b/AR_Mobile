@@ -2458,6 +2458,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b50ad3f5d9024549b0a549c5a03a084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Session: {fileID: 1661489934}
+  Origin: {fileID: 554859627}
+  CameraManager: {fileID: 512055327}
+  ARCoreExtensionsConfig: {fileID: 11400000, guid: cacdfe746e16d744eb0e6421a2f0e650,
+    type: 2}
+  CameraConfigFilter: {fileID: 0}
 --- !u!4 &611158916
 Transform:
   m_ObjectHideFlags: 0
@@ -7550,6 +7556,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302bfae291a6d9b4d958ead8e8f56bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EarthManager: {fileID: 0}
+  ARCoreExtensions: {fileID: 0}
+  _lockScreenToPortrait: 1
 --- !u!4 &1390597914
 Transform:
   m_ObjectHideFlags: 0
@@ -8327,6 +8336,7 @@ MonoBehaviour:
   _eventSystem: {fileID: 0}
   _geodialog: {fileID: 2123342336}
   _num_of_enemy: 4
+  _placingObjAtLatLngAlt: {fileID: 0}
   _toggleGeo: 0
 --- !u!114 &1545701205
 MonoBehaviour:
@@ -9162,6 +9172,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8762fba4a1296b148855ca393e0785fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EarthManager: {fileID: 0}
+  Initializer: {fileID: 0}
+  OutputText: {fileID: 0}
+  HeadingThreshold: 25
+  HorizontalThreshold: 20
+  Altitude: 0
+  ForcePutOnTerrain: 0
+  Heading: 0
+  ContentPrefab: {fileID: 0}
+  AnchorManager: {fileID: 0}
 --- !u!4 &1756220073
 Transform:
   m_ObjectHideFlags: 0
