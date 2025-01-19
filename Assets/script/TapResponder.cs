@@ -283,6 +283,9 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         yield return new WaitForSecondsRealtime(3);
         _final_dialogs[1].SetActive(false);
 
+        _final_dialogs[3].SetActive(true);
+
+
     }
     /*
     private bool IsFullyVisible()
