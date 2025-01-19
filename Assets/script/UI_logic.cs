@@ -68,7 +68,7 @@ public class UI_logic : MonoBehaviour
     {
         _blurEffect.SetActive(false);
         _dialog[4].SetActive(false);
-        _dialog[5].SetActive(true);
+        //_dialog[5].SetActive(true);
         // foreach (var enemy in enemyinputs)
         // {
         //     enemy.GetComponent<InputManger>().enabled = true;

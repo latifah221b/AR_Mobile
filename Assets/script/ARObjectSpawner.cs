@@ -66,7 +66,7 @@ public class ARObjectSpawner : MonoBehaviour
 
     void OnDestroy()
     {
-        aRPlaneManager.planesChanged -= OnPlanesChanged;
+       // aRPlaneManager.planesChanged -= OnPlanesChanged;
     }
 
     void PositionObjectOnPlane(ARPlane plane)

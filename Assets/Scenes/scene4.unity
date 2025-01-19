@@ -1397,15 +1397,35 @@ MonoBehaviour:
   musicSource: {fileID: 924614440}
   SFXSource: {fileID: 41047581}
   badge: {fileID: 8300000, guid: 4d8d188c583964da6a7517daaaddad88, type: 3}
+  badgeVolume: 1
+  badgePitch: 1
   clear: {fileID: 8300000, guid: fdcc0e1b4547a49199271022f819df73, type: 3}
+  clearVolume: 1
+  clearPitch: 1
   click: {fileID: 8300000, guid: dadd9411e9e8043f0b5821317f157389, type: 3}
+  clickVolume: 1
+  clickPitch: 1
   disclick: {fileID: 8300000, guid: 586cd13468c804e89ba7ef5beefdaee6, type: 3}
+  disclickVolume: 1
+  disclickPitch: 1
   correct: {fileID: 8300000, guid: b5ffab442ae014ee7b5654c54038a2f1, type: 3}
+  correctVolume: 1
+  correctPitch: 1
   wrong: {fileID: 8300000, guid: 080d26ef2658e4ab7bcbc06957db935a, type: 3}
+  wrongVolume: 1
+  wrongPitch: 1
   coin: {fileID: 8300000, guid: 2afe23bf1abc942ca8d6d55e7d51ddee, type: 3}
+  coinVolume: 1
+  coinPitch: 1
   pages: {fileID: 8300000, guid: 0405d342f2b1d4850bf95e62090d0e2c, type: 3}
+  pagesVolume: 1
+  pagesPitch: 1
   partsitems: {fileID: 8300000, guid: d999fcceb40384df7a829101f4919a96, type: 3}
+  partsitemsVolume: 1
+  partsitemsPitch: 1
   vanish: {fileID: 8300000, guid: 5a6059f83d08e4514b48485044a5ada1, type: 3}
+  vanishVolume: 1
+  vanishPitch: 1
 --- !u!4 &752464639
 Transform:
   m_ObjectHideFlags: 0
@@ -3170,7 +3190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 258, y: -325.99988}
+  m_AnchoredPosition: {x: 258, y: -257}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1822032278
@@ -3515,6 +3535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepsText: {fileID: 0}
+  papers: []
 --- !u!1 &199762483924965815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2092932294706864940, guid: ba1f3221892bc8d42b018b6a15a81f16,
