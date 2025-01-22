@@ -4,116 +4,102 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
+    [Header("Inventory Data")]
     public List<Item> Items = new List<Item>();
+    [Header("UI References")]
     public Transform MainItems;
     public Transform SideItems;
     public GameObject InventoryItem;
+    [Header("Item Description Panel")]
     public GameObject InventoryDescription;
     public Image ItemImage;
     public Text ItemDescriptionNameText;
     public Text ItemDescriptionText;
     private HashSet<string> collectedHiddenItems = new HashSet<string>();
     private AudioManager audioManager;
-
     private void Awake()
-
     {
-        Instance = this;
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        audioManager = GameObject.FindGameObjectWithTag("Audio")?.GetComponent<AudioManager>();
     }
-
     public void Add(Item item)
     {
         Items.Add(item);
         if (item.itemName.StartsWith("hidden"))
         {
-            audioManager.PlaySFX(audioManager.pages);
+            if (audioManager != null)
+                audioManager.PlaySFX(audioManager.pages);
             if (!collectedHiddenItems.Contains(item.itemName))
             {
                 collectedHiddenItems.Add(item.itemName);
-                //Debug.Log("collected");
                 CheckHiddenItemsGoal();
             }
         }
+        ListItems();
     }
-
-    //public void Remove(Item item)
-    //{
-    //    Items.Remove(item);
-    //}
-
     public void ListItems()
     {
-        //if (ItemContent == null)
-        //{
-        //    Debug.LogError("ItemContent is not assigned in the InventoryManager!");
-        //    return;
-        //}
-
-        foreach (Transform item in MainItems)
+        foreach (Transform child in MainItems)
         {
-            Destroy(item.gameObject);
+            Destroy(child.gameObject);
         }
-
-        foreach (Transform item in SideItems)
+        foreach (Transform child in SideItems)
         {
-            Destroy(item.gameObject);
+            Destroy(child.gameObject);
         }
-
         foreach (var item in Items)
         {
             if (item.isRocketPart)
             {
                 CreateInventoryItem(item, MainItems);
             }
-        }
-
-        foreach (var item in Items)
-        {
-            if (!item.isRocketPart)
+            else
             {
                 CreateInventoryItem(item, SideItems);
             }
         }
     }
-
     private void CreateInventoryItem(Item item, Transform container)
-
     {
         GameObject obj = Instantiate(InventoryItem, container);
-        var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
-        var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-        itemName.text = item.itemName;
-        itemIcon.sprite = item.icon;
+        Text itemName = obj.transform.Find("ItemName")?.GetComponent<Text>();
+        Image itemIcon = obj.transform.Find("ItemIcon")?.GetComponent<Image>();
+        if (itemName != null) itemName.text = item.itemName;
+        if (itemIcon != null) itemIcon.sprite = item.icon;
         Button button = obj.GetComponent<Button>();
-        button.onClick.AddListener(() => ShowItemDescription(item));
+        if (button != null)
+        {
+            button.onClick.AddListener(() => ShowItemDescription(item));
+        }
     }
-
     public void ShowItemDescription(Item item)
     {
-        //if (InventoryDescription == null)
-        //{
-        //    Debug.LogError("InventoryDescription is not assigned in the InventoryManager!");
-        //    return;
-        //}
-        audioManager.PlaySFX(audioManager.click);
+        if (InventoryDescription == null) return;
         InventoryDescription.SetActive(true);
-        ItemImage.sprite = item.icon;
-        ItemDescriptionNameText.text = item.itemName;
-        ItemDescriptionText.text = item.itemDescription;
+        if (ItemImage != null) ItemImage.sprite = item.icon;
+        if (ItemDescriptionNameText != null) ItemDescriptionNameText.text = item.itemName;
+        if (ItemDescriptionText != null) ItemDescriptionText.text = item.itemDescription;
     }
-
     public void CloseInventoryDescription()
     {
-        InventoryDescription.SetActive(false);
+        if (InventoryDescription != null)
+        {
+            InventoryDescription.SetActive(false);
+        }
     }
-
     private void CheckHiddenItemsGoal()
     {
-        if (collectedHiddenItems.Count == 6)
+        if (collectedHiddenItems.Count >= 6)
         {
             PapersBadge.Instance.ShowBadge();
-            //Debug.Log("all  collected");
         }
     }
 }
