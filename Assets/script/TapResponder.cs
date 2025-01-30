@@ -3,6 +3,7 @@ using TMPro;
 using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class TapResponder : MonoBehaviour, INotifyOnTap
@@ -15,6 +16,10 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     [SerializeField] private sceneLoader _sceneLoaderRef;
     [SerializeField] private Animator _flyanimation;
     [SerializeField] private Renderer objectRenderer;
+    [SerializeField] private GameObject resultsPanel;
+    [SerializeField] private Image resultStarImage;
+    [SerializeField] private TextMeshProUGUI resultStepCountText;
+    [SerializeField] private TextMeshProUGUI resultItemCountText;
     private AudioManager audioManager;
 
 
@@ -284,6 +289,23 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         _final_dialogs[1].SetActive(false);
 
         _final_dialogs[3].SetActive(true);
+
+        StarRewardSystem starSystem = FindObjectOfType<StarRewardSystem>();
+        if (starSystem != null && resultStarImage != null)
+        {
+            resultStarImage.sprite = starSystem.GetCurrentRewardSprite();
+        }
+
+        StepCounterIOSScript stepCounter = FindObjectOfType<StepCounterIOSScript>();
+        if (stepCounter != null && resultStepCountText != null)
+        {
+            resultStepCountText.text = stepCounter.GetCurrentStepCount().ToString();
+        }
+
+        if (starSystem != null && resultItemCountText != null)
+        {
+            resultItemCountText.text = starSystem.GetItemCount().ToString();
+        }
 
 
     }

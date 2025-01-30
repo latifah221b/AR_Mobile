@@ -101,4 +101,9 @@ public class StepCounterIOSScript : MonoBehaviour
         }
         
     }
+
+    public int GetCurrentStepCount()
+    {
+        return currentStepCount;
+    }
 }

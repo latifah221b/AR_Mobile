@@ -64,4 +64,30 @@ public class StarRewardSystem : MonoBehaviour
 
         starRewardImage.gameObject.SetActive(false);
     }
+
+    public Sprite GetCurrentRewardSprite()
+    {
+        if (rocketPartCount < 3)
+        {
+            return null;
+        }
+
+        if (itemCount >= 6)
+        {
+            return threeStarsSprite;
+        }
+        else if (itemCount >= 3)
+        {
+            return twoStarsSprite;
+        }
+        else
+        {
+            return oneStarSprite;
+        }
+    }
+
+    public int GetItemCount()
+    {
+        return itemCount;
+    }
 }

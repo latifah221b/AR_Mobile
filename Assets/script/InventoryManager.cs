@@ -83,6 +83,7 @@ public class InventoryManager : MonoBehaviour
     public void ShowItemDescription(Item item)
     {
         if (InventoryDescription == null) return;
+        audioManager.PlaySFX(audioManager.click);
         InventoryDescription.SetActive(true);
         if (ItemImage != null) ItemImage.sprite = item.icon;
         if (ItemDescriptionNameText != null) ItemDescriptionNameText.text = item.itemName;
