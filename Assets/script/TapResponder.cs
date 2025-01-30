@@ -20,8 +20,12 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     [SerializeField] private Image resultStarImage;
     [SerializeField] private TextMeshProUGUI resultStepCountText;
     [SerializeField] private TextMeshProUGUI resultItemCountText;
-    private AudioManager audioManager;
 
+    [SerializeField] private TextMeshProUGUI resultTimeTakenText;
+    private float startTime;
+    private bool isTiming = false;
+
+    private AudioManager audioManager;
 
     public void set_Main_Quest_txt(TextMeshProUGUI txt_ref)
     {
@@ -32,6 +36,9 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     {
         GameObjectManager.Instance.RegisterNotifier(this);
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        startTime = Time.time;
+        isTiming = true;
     }
 
 
@@ -307,8 +314,21 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
             resultItemCountText.text = starSystem.GetItemCount().ToString();
         }
 
+        if (resultTimeTakenText != null)
+        {
+            float totalTime = Time.time - startTime;
+            resultTimeTakenText.text = FormatTime(totalTime);
+        }
 
     }
+
+    private string FormatTime(float timeInSeconds)
+    {
+        int minutes = (int)(timeInSeconds / 60f);
+        int seconds = (int)(timeInSeconds % 60f);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
     /*
     private bool IsFullyVisible()
     {
