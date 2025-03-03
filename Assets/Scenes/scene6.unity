@@ -8059,6 +8059,7 @@ MonoBehaviour:
   _eventSystem: {fileID: 0}
   _geodialog: {fileID: 2123342336}
   _num_of_enemy: 4
+  _placingObjAtLatLngAlt: {fileID: 0}
   _toggleGeo: 0
 --- !u!114 &1545701205
 MonoBehaviour:
@@ -8914,6 +8915,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -96
       objectReference: {fileID: 0}
+    - target: {fileID: 2029266634126168891, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
+      propertyPath: m_FillColor.a
+      value: 0.007843138
+      objectReference: {fileID: 0}
     - target: {fileID: 3526706063548976867, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}
       propertyPath: m_Name
@@ -9019,6 +9025,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6138882748607880608, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8971163804139864163, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}
       propertyPath: m_Name
@@ -9027,7 +9038,7 @@ PrefabInstance:
     - target: {fileID: 8971163804139864163, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8982353221631137228, guid: d0eb96682e72deb4593bdf21eeba09f0,
         type: 3}
@@ -9038,6 +9049,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_margin.z
       value: -24.541428
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982353221631137228, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.9487362
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982353221631137228, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.9487362
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982353221631137228, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982353221631137228, guid: d0eb96682e72deb4593bdf21eeba09f0,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294111994
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
