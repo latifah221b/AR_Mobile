@@ -27,10 +27,13 @@ public class StarRewardSystem : MonoBehaviour
     public void CollectItem()
     {
         itemCount++;
+        // Debug.Log("DEBUG: CollectItem => itemCount = " + itemCount);
     }
 
     private void CheckReward()
     {
+        // This logic only updates the "starRewardImage" if rocketPartCount hits 3
+        // Then checks how many side items for the 1/2/3 star award
         if (rocketPartCount == 3)
         {
             if (itemCount >= 6)
@@ -56,7 +59,6 @@ public class StarRewardSystem : MonoBehaviour
 
     private IEnumerator ShowRewardWithDelay()
     {
-        //yield return new WaitForSeconds(5f);
         audioManager.PlaySFX(audioManager.badge);
         starRewardImage.gameObject.SetActive(true);
 
@@ -65,11 +67,14 @@ public class StarRewardSystem : MonoBehaviour
         starRewardImage.gameObject.SetActive(false);
     }
 
+    // =============== GETTERS ===============
+
+    // If rocketPartCount < 3, we haven't triggered any star threshold
     public Sprite GetCurrentRewardSprite()
     {
         if (rocketPartCount < 3)
         {
-            return null;
+            return null; // Or a default sprite if you prefer
         }
 
         if (itemCount >= 6)
@@ -89,5 +94,10 @@ public class StarRewardSystem : MonoBehaviour
     public int GetItemCount()
     {
         return itemCount;
+    }
+
+    public int GetRocketPartCount()
+    {
+        return rocketPartCount;
     }
 }

@@ -16,7 +16,7 @@ public class StepCounterIOSScript : MonoBehaviour
     private int paperIndex = 0;
     private const float maxSpawnDistance = 2.0f;
     private int maxPapers = 6;
-    private const int stepBadgeGoal = 300;
+    private const int stepBadgeGoal = 100;
 
     private bool hasTriggeredBadge = false;
 
@@ -42,7 +42,7 @@ public class StepCounterIOSScript : MonoBehaviour
 
         if (int.TryParse(_msg, out int steps))
         {
-            if(step_counter_txt != null)
+            if (step_counter_txt != null)
             {
                 step_counter_txt.text = steps.ToString();
                 HandleStepCount(steps);
@@ -50,20 +50,23 @@ public class StepCounterIOSScript : MonoBehaviour
         }
         else
         {
-            //Debug.LogWarning("parsing step count: " + msg);
+            Debug.LogWarning("DEBUG: Could not parse step count from msg: " + msg);
         }
     }
 
     private void HandleStepCount(int steps)
     {
         currentStepCount = steps;
+        Debug.Log("DEBUG: StepCounter - currentStepCount = " + currentStepCount);
 
+        // Example logic: spawn a paper every 5 steps after 8, etc.
         if (paperIndex < maxPapers && currentStepCount >= nextPaperStep && paperIndex < papers.Length)
         {
             SpawnPaper();
             nextPaperStep += 5;
         }
 
+        // If >= 300 steps, trigger a badge
         if (currentStepCount >= stepBadgeGoal && !hasTriggeredBadge)
         {
             TriggerStepBadge();
@@ -80,26 +83,23 @@ public class StepCounterIOSScript : MonoBehaviour
         Vector3 spawnPosition = playerPosition + randomDirection;
 
         Instantiate(papers[paperIndex], spawnPosition, Quaternion.identity);
-
-        //Debug.Log("Spawned: " + papers[paperIndex].name + " at position: " + spawnPosition);
-
         paperIndex++;
+        Debug.Log("DEBUG: Spawned paper index " + paperIndex + " at " + spawnPosition);
     }
 
     private void TriggerStepBadge()
     {
         StepsBadge.Instance.ShowBadge();
-        //Debug.Log("steps reached");
+        Debug.Log("DEBUG: StepBadge triggered at stepCount = " + currentStepCount);
         hasTriggeredBadge = true;
     }
 
     void Update()
     {
-       if(step_counter_txt != null)
+        if (step_counter_txt != null)
         {
             step_counter_txt.text = _msg;
         }
-        
     }
 
     public int GetCurrentStepCount()
