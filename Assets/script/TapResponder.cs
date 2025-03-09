@@ -141,17 +141,17 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
                 audioManager.PlaySFX(audioManager.coin);
 
-                var starSystem = FindObjectOfType<StarRewardSystem>();
-                if (starSystem != null)
-                {
-                    starSystem.CollectItem();
-                    Debug.Log("DEBUG: star_box collected. itemCount now = "
-                    + starSystem.GetItemCount());
-                }
-                else
-                {
-                    // Debug.LogWarning("error");
-                }
+                //var starSystem = FindObjectOfType<StarRewardSystem>();
+                //if (starSystem != null)
+                //{
+                //    starSystem.CollectItem();
+                //    Debug.Log("DEBUG: star_box collected. itemCount now = "
+                //    + starSystem.GetItemCount());
+                //}
+                //else
+                //{
+                //    // Debug.LogWarning("error");
+                //}
 
                 // Remove object
                 Destroy(collider.transform.parent.gameObject);
