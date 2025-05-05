@@ -16,7 +16,7 @@ public class StepCounterIOSScript : MonoBehaviour
     private int paperIndex = 0;
     private const float maxSpawnDistance = 2.0f;
     private int maxPapers = 6;
-    private const int stepBadgeGoal = 300;
+    private const int stepBadgeGoal = 100;
 
     private bool hasTriggeredBadge = false;
 
