@@ -1060,6 +1060,12 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 29
       objectReference: {fileID: 0}
+    - target: {fileID: 2109168559653703248, guid: a7e0d52ea2572cd4d8433402efb0a754,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d6d386db6600b4d2789814ca4757215e,
+        type: 3}
     - target: {fileID: 2290282708949791516, guid: a7e0d52ea2572cd4d8433402efb0a754,
         type: 3}
       propertyPath: m_FillColor.b
@@ -1125,6 +1131,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2843786358451894945, guid: a7e0d52ea2572cd4d8433402efb0a754,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d6d386db6600b4d2789814ca4757215e,
+        type: 3}
     - target: {fileID: 3123080405631324057, guid: a7e0d52ea2572cd4d8433402efb0a754,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1926,6 +1938,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2706634611884241184, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 607bba5175d0f4e4e9478ce20880f5b9,
+        type: 3}
     - target: {fileID: 3826308115793679728, guid: 22a3d69664d5d97428c296f84356781c,
         type: 3}
       propertyPath: m_TargetScreenNodeId
@@ -2031,6 +2049,12 @@ PrefabInstance:
       propertyPath: m_text
       value: LEVELS
       objectReference: {fileID: 0}
+    - target: {fileID: 7493914082488587862, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 607bba5175d0f4e4e9478ce20880f5b9,
+        type: 3}
     - target: {fileID: 8014294839925949075, guid: 22a3d69664d5d97428c296f84356781c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2190,6 +2214,19 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: scene2
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 104809770}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: dadd9411e9e8043f0b5821317f157389,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1822444596

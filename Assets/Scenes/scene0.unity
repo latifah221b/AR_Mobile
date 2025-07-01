@@ -1227,6 +1227,7 @@ MonoBehaviour:
   _eventSystem: {fileID: 1280515407}
   _geodialog: {fileID: 0}
   _num_of_enemy: 0
+  _placingObjAtLatLngAlt: {fileID: 0}
   _toggleGeo: 0
 --- !u!4 &1906189024
 Transform:
@@ -1361,6 +1362,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: start_screen
       objectReference: {fileID: 0}
+    - target: {fileID: 4942132804865859668, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5529824960351127714, guid: 22a3d69664d5d97428c296f84356781c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1414,6 +1420,22 @@ PrefabInstance:
     - target: {fileID: 5894342842806101021, guid: 22a3d69664d5d97428c296f84356781c,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493914082488587862, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e1b161d02c66e4e03a0949a8fdebfc27,
+        type: 3}
+    - target: {fileID: 8014294839925949075, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -665.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400456083321477253, guid: 22a3d69664d5d97428c296f84356781c,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
