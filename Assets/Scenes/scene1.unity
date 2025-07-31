@@ -592,7 +592,6 @@ MonoBehaviour:
   _eventSystem: {fileID: 0}
   _geodialog: {fileID: 0}
   _num_of_enemy: 0
-  _placingObjAtLatLngAlt: {fileID: 0}
   _toggleGeo: 0
 --- !u!4 &1545701203
 Transform:
@@ -867,6 +866,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2968053136170907659, guid: 7b338b3ee0ef5aa4db0003899aa3ff50,
         type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968053136170907659, guid: 7b338b3ee0ef5aa4db0003899aa3ff50,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.63529414
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968053136170907659, guid: 7b338b3ee0ef5aa4db0003899aa3ff50,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968053136170907659, guid: 7b338b3ee0ef5aa4db0003899aa3ff50,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -959,7 +973,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 607bba5175d0f4e4e9478ce20880f5b9,
+      objectReference: {fileID: 21300000, guid: d6d386db6600b4d2789814ca4757215e,
         type: 3}
     - target: {fileID: 7700045553168627654, guid: 7b338b3ee0ef5aa4db0003899aa3ff50,
         type: 3}
@@ -980,7 +994,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 607bba5175d0f4e4e9478ce20880f5b9,
+      objectReference: {fileID: 21300000, guid: 6c48c0b7494744526937979f6b07dfe9,
         type: 3}
     - target: {fileID: 9055968623862388434, guid: 7b338b3ee0ef5aa4db0003899aa3ff50,
         type: 3}
