@@ -40,7 +40,7 @@ public class sceneLoader : MonoBehaviour
 
     [SerializeField] private int _num_of_enemy;
 
-    [SerializeField] PlacingObjAtLatLngAlt _placingObjAtLatLngAlt;
+  //  [SerializeField] PlacingObjAtLatLngAlt _placingObjAtLatLngAlt;
     [SerializeField] bool _toggleGeo = false;
 
 
@@ -101,7 +101,7 @@ public class sceneLoader : MonoBehaviour
 
         if(_eventSystem != null) { DoNotDestoryOnload(_eventSystem); }       
     }
-    
+
     IEnumerator transition()
     {
         if (!_toggleGeo)
@@ -112,7 +112,7 @@ public class sceneLoader : MonoBehaviour
         else
         {
             _geodialog.SetActive(true);
-            while (this._placingObjAtLatLngAlt.getdistance() >= 2.0)
+          //  while (this._placingObjAtLatLngAlt.getdistance() >= 2.0)
             {
                 yield return null; // Wait for the next frame
             }
