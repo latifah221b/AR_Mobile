@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// <summary>
 /// Controller for Fu_Gen_Lvl scene
 /// Handles hidden item collection and triggers rocket fly sequence
-/// Replace the rocket part logic with hidden item collection logic
 /// </summary>
 public class FuGenLevelController : MonoBehaviour
 {
@@ -16,12 +15,11 @@ public class FuGenLevelController : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI hiddenItemCountText;
-    [SerializeField] private GameObject[] notificationDialogs; // U_SAVED_THE_PARK, Click on The Rocket, Get Close to the rocket, etc.
+    [SerializeField] private GameObject[] notificationDialogs;
 
     [Header("Rocket References")]
     [SerializeField] private GameObject rocket;
     [SerializeField] private Animator rocketAnimator;
-    [SerializeField] private Renderer rocketRenderer;
 
     [Header("Scene References")]
     [SerializeField] private sceneLoader sceneLoaderRef;
@@ -76,7 +74,6 @@ public class FuGenLevelController : MonoBehaviour
         currentHiddenItemCount++;
         UpdateUI();
 
-        // Play collection sound
         if (audioManager != null)
         {
             audioManager.PlaySFX(audioManager.pages);
@@ -84,7 +81,6 @@ public class FuGenLevelController : MonoBehaviour
 
         Debug.Log($"Hidden item collected! Count: {currentHiddenItemCount}/{targetHiddenItems}");
 
-        // Check if we reached the goal
         if (currentHiddenItemCount >= targetHiddenItems)
         {
             goalReached = true;
@@ -100,14 +96,10 @@ public class FuGenLevelController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Sequence that plays when all hidden items are collected
-    /// </summary>
     private IEnumerator TriggerGoalReachedSequence()
     {
         Debug.Log("Goal reached! Starting notification sequence...");
 
-        // Play success sound
         if (audioManager != null)
         {
             audioManager.PlaySFX(audioManager.clear);
@@ -143,7 +135,6 @@ public class FuGenLevelController : MonoBehaviour
             notificationDialogs[2].SetActive(false);
         }
 
-        // Enable rocket interaction
         rocketCanFly = true;
         Debug.Log("Rocket is now ready to fly! Tap on it.");
     }
@@ -168,33 +159,26 @@ public class FuGenLevelController : MonoBehaviour
         StartCoroutine(RocketFlySequence());
     }
 
-    /// <summary>
-    /// Rocket fly animation sequence
-    /// </summary>
     private IEnumerator RocketFlySequence()
     {
-        rocketCanFly = false; // Prevent multiple triggers
+        rocketCanFly = false;
 
         Debug.Log("Rocket is flying!");
 
-        // Play fly sound
         if (audioManager != null)
         {
             audioManager.PlaySFX(audioManager.clear);
         }
 
-        // Enable fly animation
         if (rocketAnimator != null)
         {
             rocketAnimator.enabled = true;
         }
 
-        // Show results after delay
         StartCoroutine(ShowResultsPanelAfterDelay(6f));
 
         yield return new WaitForSeconds(6f);
 
-        // Show final dialogs
         if (notificationDialogs.Length > 3 && notificationDialogs[3] != null)
         {
             notificationDialogs[3].SetActive(true);
@@ -212,7 +196,6 @@ public class FuGenLevelController : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // Get step counter
         var stepCounter = FindObjectOfType<StepCounterIOSScript>();
         int stepsNow = 0;
         if (stepCounter != null)
@@ -224,20 +207,17 @@ public class FuGenLevelController : MonoBehaviour
             }
         }
 
-        // Set item count
         if (resultItemCountText != null)
         {
             resultItemCountText.text = currentHiddenItemCount.ToString();
         }
 
-        // Set time taken
         if (resultTimeTakenText != null)
         {
             float totalTime = Time.time - startTime;
             resultTimeTakenText.text = FormatTime(totalTime);
         }
 
-        // Set badges based on completion
         if (L1SpriteBadge != null)
         {
             L1SpriteBadge.SetActive(goalReached);
@@ -271,13 +251,11 @@ public class FuGenLevelController : MonoBehaviour
             }
         }
 
-        // Show rewards screen
         if (rewardsScreen != null)
         {
             rewardsScreen.SetActive(true);
         }
 
-        // Show results panel
         if (resultsPanel != null)
         {
             resultsPanel.SetActive(true);
