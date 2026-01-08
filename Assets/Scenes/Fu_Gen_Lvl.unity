@@ -7458,6 +7458,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6346746588852717947, guid: 58d37ae7380b6e54099c016338b664f2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: af4e95ae527a549e6b890b17f597eecd, type: 2}
     - target: {fileID: 6433274328791229064, guid: 58d37ae7380b6e54099c016338b664f2,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -9888,7 +9893,10 @@ MonoBehaviour:
   - {fileID: 8425672216302788580}
   rocket: {fileID: 1355641858}
   rocketAnimator: {fileID: 1355641857}
-  rocketRenderer: {fileID: 1656243098}
+  rocketRenderers:
+  - {fileID: 1656243098}
+  minAlpha: 0.5
+  maxAlpha: 1
   sceneLoaderRef: {fileID: 0}
   resultsPanel: {fileID: 0}
   rewardsScreen: {fileID: 2195775031318446360}

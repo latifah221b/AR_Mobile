@@ -7,6 +7,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Controller for Fu_Gen_Lvl scene
 /// Handles hidden item collection and triggers rocket fly sequence
+/// Includes rocket transparency based on collected items
 /// </summary>
 public class FuGenLevelController : MonoBehaviour
 {
@@ -20,6 +21,16 @@ public class FuGenLevelController : MonoBehaviour
     [Header("Rocket References")]
     [SerializeField] private GameObject rocket;
     [SerializeField] private Animator rocketAnimator;
+
+    [Header("Rocket Transparency Settings")]
+    [Tooltip("All renderers on the rocket that should fade in")]
+    [SerializeField] private Renderer[] rocketRenderers;
+    [Tooltip("Starting alpha (0.5 = 50% visible)")]
+    [Range(0f, 1f)]
+    [SerializeField] private float minAlpha = 0.5f;
+    [Tooltip("Final alpha when all items collected (1 = 100% visible)")]
+    [Range(0f, 1f)]
+    [SerializeField] private float maxAlpha = 1.0f;
 
     [Header("Scene References")]
     [SerializeField] private sceneLoader sceneLoaderRef;
@@ -61,7 +72,111 @@ public class FuGenLevelController : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio")?.GetComponent<AudioManager>();
         startTime = Time.time;
+
+        // If rocketRenderers is empty, try to get all renderers from rocket
+        if ((rocketRenderers == null || rocketRenderers.Length == 0) && rocket != null)
+        {
+            rocketRenderers = rocket.GetComponentsInChildren<Renderer>();
+        }
+
+        // Initialize rocket transparency
+        UpdateRocketTransparency();
         UpdateUI();
+    }
+
+    /// <summary>
+    /// Update rocket transparency based on collected items
+    /// </summary>
+    private void UpdateRocketTransparency()
+    {
+        if (rocketRenderers == null || rocketRenderers.Length == 0) return;
+
+        // Calculate alpha: lerp from minAlpha to maxAlpha based on progress
+        float progress = (float)currentHiddenItemCount / targetHiddenItems;
+        float alpha = Mathf.Lerp(minAlpha, maxAlpha, progress);
+
+        Debug.Log($"Rocket Alpha: {alpha * 100:F0}% (Items: {currentHiddenItemCount}/{targetHiddenItems})");
+
+        foreach (Renderer renderer in rocketRenderers)
+        {
+            if (renderer == null) continue;
+
+            foreach (Material mat in renderer.materials)
+            {
+                if (mat == null) continue;
+
+                // For Toon Shader with _Alpha property
+                if (mat.HasProperty("_Alpha"))
+                {
+                    mat.SetFloat("_Alpha", alpha);
+                }
+
+                // For shaders with Color property (like your Toon shader)
+                if (mat.HasProperty("Color"))
+                {
+                    Color color = mat.GetColor("Color");
+                    color.a = alpha;
+                    mat.SetColor("Color", color);
+                }
+
+                // Fallback for standard shaders
+                if (mat.HasProperty("_Color"))
+                {
+                    Color color = mat.GetColor("_Color");
+                    color.a = alpha;
+                    mat.SetColor("_Color", color);
+                }
+
+                if (mat.HasProperty("_BaseColor"))
+                {
+                    Color color = mat.GetColor("_BaseColor");
+                    color.a = alpha;
+                    mat.SetColor("_BaseColor", color);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Set rocket to full visibility
+    /// </summary>
+    private void SetRocketFullyVisible()
+    {
+        if (rocketRenderers == null) return;
+
+        foreach (Renderer renderer in rocketRenderers)
+        {
+            if (renderer == null) continue;
+
+            foreach (Material mat in renderer.materials)
+            {
+                if (mat == null) continue;
+
+                if (mat.HasProperty("_Alpha"))
+                    mat.SetFloat("_Alpha", 1f);
+
+                if (mat.HasProperty("Color"))
+                {
+                    Color color = mat.GetColor("Color");
+                    color.a = 1f;
+                    mat.SetColor("Color", color);
+                }
+
+                if (mat.HasProperty("_Color"))
+                {
+                    Color color = mat.GetColor("_Color");
+                    color.a = 1f;
+                    mat.SetColor("_Color", color);
+                }
+
+                if (mat.HasProperty("_BaseColor"))
+                {
+                    Color color = mat.GetColor("_BaseColor");
+                    color.a = 1f;
+                    mat.SetColor("_BaseColor", color);
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -73,6 +188,7 @@ public class FuGenLevelController : MonoBehaviour
 
         currentHiddenItemCount++;
         UpdateUI();
+        UpdateRocketTransparency();
 
         if (audioManager != null)
         {
@@ -84,6 +200,7 @@ public class FuGenLevelController : MonoBehaviour
         if (currentHiddenItemCount >= targetHiddenItems)
         {
             goalReached = true;
+            SetRocketFullyVisible();
             StartCoroutine(TriggerGoalReachedSequence());
         }
     }
@@ -107,7 +224,6 @@ public class FuGenLevelController : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // Show "U GOT ALL THE ITEMS" notification
         if (notificationDialogs.Length > 0 && notificationDialogs[0] != null)
         {
             notificationDialogs[0].SetActive(true);
@@ -117,7 +233,6 @@ public class FuGenLevelController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        // Show "Get Close to the rocket" notification
         if (notificationDialogs.Length > 1 && notificationDialogs[1] != null)
         {
             notificationDialogs[1].SetActive(true);
@@ -127,7 +242,6 @@ public class FuGenLevelController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        // Show "Click on The Rocket" notification
         if (notificationDialogs.Length > 2 && notificationDialogs[2] != null)
         {
             notificationDialogs[2].SetActive(true);
@@ -139,9 +253,6 @@ public class FuGenLevelController : MonoBehaviour
         Debug.Log("Rocket is now ready to fly! Tap on it.");
     }
 
-    /// <summary>
-    /// Call this when the rocket is tapped
-    /// </summary>
     public void OnRocketTapped()
     {
         if (!goalReached)
