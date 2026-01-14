@@ -29,6 +29,7 @@ public class InventoryManager : MonoBehaviour
             return;
         }
         audioManager = GameObject.FindGameObjectWithTag("Audio")?.GetComponent<AudioManager>();
+        ListItems();
     }
 
     public int GetItemCount()
