@@ -108,6 +108,7 @@ public class sceneLoader : MonoBehaviour
         {
             yield return new WaitForSeconds(3f);
             _rocket_scene.SetActive(true);
+            _dialog.SetActive(true);
         }
         else
         {

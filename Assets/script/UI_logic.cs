@@ -36,8 +36,8 @@ public class UI_logic : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2);
         _startSceneTransition.SetActive(false);
-        _blurEffect.SetActive(true);
-        _dialog[0].SetActive(true);
+        //_blurEffect.SetActive(true);
+        //_dialog[0].SetActive(true);
         yield return new WaitForSecondsRealtime(6);
     }
     public void activiate_dialog_0()
