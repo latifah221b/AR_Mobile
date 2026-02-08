@@ -26,6 +26,7 @@ public class HiddenItemPickupFuGen : MonoBehaviour
         if (InventoryManager.Instance != null && Item != null)
         {
             InventoryManager.Instance.Add(Item);
+            InventoryManager.Instance.ShowItemDescription(Item);
             Debug.Log($"Hidden item '{Item.itemName}' added to inventory!");
         }
 
