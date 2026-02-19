@@ -30,4 +30,9 @@ public class BackFlowUI : MonoBehaviour
         confirmBackPanel.SetActive(false);
        
     }
+
+    public void CancelBack()
+    {
+        backPanel.SetActive(false);
+    }
 }
