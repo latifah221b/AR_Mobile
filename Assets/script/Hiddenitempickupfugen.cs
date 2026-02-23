@@ -1,9 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// Pickup script for hidden items in Fu_Gen_Lvl scene
-/// Attach this to hidden item GameObjects instead of ItemPickup
-/// </summary>
+
 public class HiddenItemPickupFuGen : MonoBehaviour
 {
     public Item Item;
@@ -22,25 +19,38 @@ public class HiddenItemPickupFuGen : MonoBehaviour
 
     void Pickup()
     {
-        // Add to inventory
-        if (InventoryManager.Instance != null && Item != null)
+        if (Item == null)
+        {
+            Debug.LogError("[HiddenItemPickup] Item is NULL! Assign the ScriptableObject.");
+            return;
+        }
+
+        Debug.Log("[HiddenItemPickup] Picking up: " + Item.itemName);
+
+        
+        if (InventoryManager.Instance != null)
         {
             InventoryManager.Instance.Add(Item);
             InventoryManager.Instance.ShowItemDescription(Item);
-            Debug.Log($"Hidden item '{Item.itemName}' added to inventory!");
         }
 
-        // Notify the FuGenLevelController
+        
+        InventorySaveSystem.SaveCollectedItem(Item.itemName);
+        Debug.Log("[HiddenItemPickup] SAVED to PlayerPrefs: " + Item.itemName);
+
+        
         if (FuGenLevelController.Instance != null)
         {
             FuGenLevelController.Instance.OnHiddenItemCollected();
         }
-        else
+
+        
+        if (audioManager != null)
         {
-            Debug.LogWarning("FuGenLevelController not found in scene!");
+            audioManager.PlaySFX(audioManager.partsitems);
         }
 
-        // Destroy the picked up item
+        
         Destroy(gameObject);
     }
 }
