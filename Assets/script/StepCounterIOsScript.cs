@@ -12,11 +12,11 @@ public class StepCounterIOSScript : MonoBehaviour
 
     [SerializeField] private GameObject[] papers;
     private int currentStepCount = 0;
-    private int nextPaperStep = 8;
+    private int nextPaperStep = 5;
     private int paperIndex = 0;
     private const float maxSpawnDistance = 2.0f;
     private int maxPapers = 6;
-    private const int stepBadgeGoal = 100;
+    private const int stepBadgeGoal = 1000000;
 
     private bool hasTriggeredBadge = false;
 
@@ -59,14 +59,14 @@ public class StepCounterIOSScript : MonoBehaviour
         currentStepCount = steps;
         Debug.Log("DEBUG: StepCounter - currentStepCount = " + currentStepCount);
 
-        // Example logic: spawn a paper every 5 steps after 8, etc.
+        
         if (paperIndex < maxPapers && currentStepCount >= nextPaperStep && paperIndex < papers.Length)
         {
             SpawnPaper();
             nextPaperStep += 5;
         }
 
-        // If >= 300 steps, trigger a badge
+        
         if (currentStepCount >= stepBadgeGoal && !hasTriggeredBadge)
         {
             TriggerStepBadge();
