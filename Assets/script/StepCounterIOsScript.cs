@@ -12,13 +12,10 @@ public class StepCounterIOSScript : MonoBehaviour
 
     [SerializeField] private GameObject[] papers;
     private int currentStepCount = 0;
-    private int nextPaperStep = 5;
+    private int nextPaperStep = 8;
     private int paperIndex = 0;
     private const float maxSpawnDistance = 2.0f;
     private int maxPapers = 6;
-    private const int stepBadgeGoal = 1000000;
-
-    private bool hasTriggeredBadge = false;
 
 #if UNITY_IOS && !UNITY_EDITOR
     [DllImport("__Internal")]
@@ -48,16 +45,11 @@ public class StepCounterIOSScript : MonoBehaviour
                 HandleStepCount(steps);
             }
         }
-        else
-        {
-            Debug.LogWarning("DEBUG: Could not parse step count from msg: " + msg);
-        }
     }
 
     private void HandleStepCount(int steps)
     {
         currentStepCount = steps;
-        Debug.Log("DEBUG: StepCounter - currentStepCount = " + currentStepCount);
 
         
         if (paperIndex < maxPapers && currentStepCount >= nextPaperStep && paperIndex < papers.Length)
@@ -67,9 +59,9 @@ public class StepCounterIOSScript : MonoBehaviour
         }
 
         
-        if (currentStepCount >= stepBadgeGoal && !hasTriggeredBadge)
+        if (StepsBadge.Instance != null)
         {
-            TriggerStepBadge();
+            StepsBadge.Instance.CheckSteps(currentStepCount);
         }
     }
 
@@ -84,14 +76,6 @@ public class StepCounterIOSScript : MonoBehaviour
 
         Instantiate(papers[paperIndex], spawnPosition, Quaternion.identity);
         paperIndex++;
-        Debug.Log("DEBUG: Spawned paper index " + paperIndex + " at " + spawnPosition);
-    }
-
-    private void TriggerStepBadge()
-    {
-        StepsBadge.Instance.ShowBadge();
-        Debug.Log("DEBUG: StepBadge triggered at stepCount = " + currentStepCount);
-        hasTriggeredBadge = true;
     }
 
     void Update()
