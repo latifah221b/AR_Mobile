@@ -8,14 +8,13 @@ public class AchievementsManager : MonoBehaviour
     public static AchievementsManager Instance;
 
     [Header("All Achievements")]
-    [Tooltip("Define all possible achievements")]
     public AchievementData[] AllAchievements;
 
     [Header("UI References")]
     public Transform AchievementsContainer;
     public GameObject AchievementSlotPrefab;
 
-    [Header("Achievement Description Panel")]
+    [Header("Description Panel")]
     public GameObject DescriptionPanel;
     public Image AchievementImage;
     public Text AchievementNameText;
@@ -52,7 +51,6 @@ public class AchievementsManager : MonoBehaviour
             DescriptionPanel.SetActive(false);
     }
 
-    
     public void OpenAchievements()
     {
         if (audioManager != null)
@@ -64,7 +62,6 @@ public class AchievementsManager : MonoBehaviour
         ListAchievements();
     }
 
-    
     public void CloseAchievements()
     {
         if (audioManager != null)
@@ -77,7 +74,6 @@ public class AchievementsManager : MonoBehaviour
             DescriptionPanel.SetActive(false);
     }
 
-    
     public void ListAchievements()
     {
         if (AchievementsContainer == null || AchievementSlotPrefab == null || AllAchievements == null) return;
@@ -89,12 +85,12 @@ public class AchievementsManager : MonoBehaviour
         }
 
         
-        List<string> unlockedAchievements = AchievementSaveSystem.GetAllUnlockedAchievements();
+        List<string> unlocked = AchievementSaveSystem.GetAllUnlockedAchievements();
 
         
         if (UnlockedCountText != null)
         {
-            UnlockedCountText.text = unlockedAchievements.Count + "/" + AllAchievements.Length;
+            UnlockedCountText.text = unlocked.Count + "/" + AllAchievements.Length;
         }
 
         
@@ -102,13 +98,12 @@ public class AchievementsManager : MonoBehaviour
         {
             if (achievement == null) continue;
 
-            bool isUnlocked = unlockedAchievements.Contains(achievement.achievementName);
-            CreateAchievementSlot(achievement, isUnlocked);
+            bool isUnlocked = unlocked.Contains(achievement.achievementName);
+            CreateSlot(achievement, isUnlocked);
         }
     }
 
-    
-    private void CreateAchievementSlot(AchievementData achievement, bool isUnlocked)
+    private void CreateSlot(AchievementData achievement, bool isUnlocked)
     {
         GameObject obj = Instantiate(AchievementSlotPrefab, AchievementsContainer);
 
@@ -118,7 +113,6 @@ public class AchievementsManager : MonoBehaviour
 
         if (isUnlocked)
         {
-            
             if (nameText != null) nameText.text = achievement.displayName;
             if (iconImage != null)
             {
@@ -129,13 +123,12 @@ public class AchievementsManager : MonoBehaviour
             if (button != null)
             {
                 button.interactable = true;
-                AchievementData capturedAchievement = achievement;
-                button.onClick.AddListener(() => ShowAchievementDescription(capturedAchievement));
+                AchievementData captured = achievement;
+                button.onClick.AddListener(() => ShowDescription(captured));
             }
         }
         else
         {
-            
             if (nameText != null) nameText.text = "???";
             if (iconImage != null)
             {
@@ -150,8 +143,7 @@ public class AchievementsManager : MonoBehaviour
         }
     }
 
-    
-    public void ShowAchievementDescription(AchievementData achievement)
+    public void ShowDescription(AchievementData achievement)
     {
         if (DescriptionPanel == null) return;
 
@@ -165,23 +157,18 @@ public class AchievementsManager : MonoBehaviour
         if (AchievementDescriptionText != null) AchievementDescriptionText.text = achievement.description;
     }
 
-    
     public void CloseDescription()
     {
         if (DescriptionPanel != null)
-        {
             DescriptionPanel.SetActive(false);
-        }
     }
 
-    
     public void ResetAllAchievements()
     {
         AchievementSaveSystem.ClearAllAchievements();
         ListAchievements();
     }
 }
-
 
 [System.Serializable]
 public class AchievementData

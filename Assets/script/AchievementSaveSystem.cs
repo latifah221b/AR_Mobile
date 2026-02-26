@@ -6,28 +6,24 @@ public static class AchievementSaveSystem
 {
     private const string SAVE_KEY = "UnlockedAchievements";
 
-    
     public static void UnlockAchievement(string achievementName)
     {
         if (string.IsNullOrEmpty(achievementName)) return;
 
-        List<string> unlockedAchievements = GetAllUnlockedAchievements();
+        List<string> unlocked = GetAllUnlockedAchievements();
 
-        if (!unlockedAchievements.Contains(achievementName))
+        if (!unlocked.Contains(achievementName))
         {
-            unlockedAchievements.Add(achievementName);
-            SaveAchievementsList(unlockedAchievements);
+            unlocked.Add(achievementName);
+            SaveList(unlocked);
         }
     }
 
-    
     public static bool IsAchievementUnlocked(string achievementName)
     {
-        List<string> unlockedAchievements = GetAllUnlockedAchievements();
-        return unlockedAchievements.Contains(achievementName);
+        return GetAllUnlockedAchievements().Contains(achievementName);
     }
 
-    
     public static List<string> GetAllUnlockedAchievements()
     {
         string json = PlayerPrefs.GetString(SAVE_KEY, "");
@@ -41,20 +37,18 @@ public static class AchievementSaveSystem
         return data != null ? data.achievements : new List<string>();
     }
 
-    
     public static int GetUnlockedCount()
     {
         return GetAllUnlockedAchievements().Count;
     }
 
-    
     public static void ClearAllAchievements()
     {
         PlayerPrefs.DeleteKey(SAVE_KEY);
         PlayerPrefs.Save();
     }
 
-    private static void SaveAchievementsList(List<string> achievements)
+    private static void SaveList(List<string> achievements)
     {
         SaveData data = new SaveData { achievements = achievements };
         string json = JsonUtility.ToJson(data);
