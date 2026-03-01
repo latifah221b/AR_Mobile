@@ -137,21 +137,11 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
             case "star_box":
                 // Handle collectible objects
-                //Debug.Log("Collected an item!");
-
                 audioManager.PlaySFX(audioManager.coin);
 
-                //var starSystem = FindObjectOfType<StarRewardSystem>();
-                //if (starSystem != null)
-                //{
-                //    starSystem.CollectItem();
-                //    Debug.Log("DEBUG: star_box collected. itemCount now = "
-                //    + starSystem.GetItemCount());
-                //}
-                //else
-                //{
-                //    // Debug.LogWarning("error");
-                //}
+                // Count for Papers Badge (100, 200, 300)
+                if (PapersBadge.Instance != null)
+                    PapersBadge.Instance.CollectPaper();
 
                 // Remove object
                 Destroy(collider.transform.parent.gameObject);
@@ -224,47 +214,6 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
             _final_dialogs[2].SetActive(true);
             yield return new WaitForSecondsRealtime(3);
             _final_dialogs[2].SetActive(false);
-
-            // while (!IsFullyVisible())
-            // {
-            //  yield return new WaitForSecondsRealtime(1);
-            //}
-
-            // _final_dialogs[3].SetActive(true);
-            // yield return new WaitForSecondsRealtime(3);
-            // _final_dialogs[3].SetActive(false);
-
-
-            // Wait until the distance between pointA and pointB is less than or equal to targetDistance
-            // while (Vector3.Distance(Camera.main.transform.position, objectRenderer.transform.position) > 4f)
-            //{
-
-            //   yield return null; // Wait for the next frame
-
-
-            // }
-            // yield return new WaitForSecondsRealtime(2);
-
-
-            // if (_flyanimation != null)
-            // {
-            // audioManager.PlaySFX(audioManager.clear);
-            // _flyanimation.enabled = true;
-            // Wait for the animation duration
-            //  yield return new WaitForSeconds(_flyanimation.GetCurrentAnimatorStateInfo(0).length);
-            // }
-
-            //yield return new WaitForSecondsRealtime(3);
-
-            // _final_dialogs[0].SetActive(true);
-            // yield return new WaitForSecondsRealtime(3);
-            //  _final_dialogs[0].SetActive(false);
-
-            //  yield return new WaitForSecondsRealtime(1);
-
-            // _final_dialogs[1].SetActive(true);
-            //  yield return new WaitForSecondsRealtime(3);
-            //  _final_dialogs[1].SetActive(false);
         }
     }
 
@@ -388,35 +337,4 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         int seconds = (int)(timeInSeconds % 60f);
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
-
-    /*
-   private bool IsFullyVisible()
-   {
-       // Get the bounding box of the GameObject
-       Bounds bounds = objectRenderer.bounds;
-       Vector3[] corners = new Vector3[8];
-
-       // Calculate corners of the bounding box
-       corners[0] = bounds.min;
-       corners[1] = bounds.max;
-       corners[2] = new Vector3(bounds.min.x, bounds.min.y, bounds.max.z);
-       corners[3] = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
-       corners[4] = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
-       corners[5] = new Vector3(bounds.min.x, bounds.max.y, bounds.max.z);
-       corners[6] = new Vector3(bounds.max.x, bounds.min.y, bounds.max.z);
-       corners[7] = new Vector3(bounds.max.x, bounds.max.y, bounds.min.z);
-
-       // Check if all corners are visible to the camera
-       foreach (Vector3 corner in corners)
-       {
-           Vector3 screenPoint = Camera.main.WorldToViewportPoint(corner);
-           if (screenPoint.x < 0 || screenPoint.x > 1 || screenPoint.y < 0 || screenPoint.y > 1 || screenPoint.z < 0)
-           {
-               return false; // At least one corner is outside the view
-           }
-       }
-
-       return true; // All corners are inside the camera's view
-   }
-   */
 }
