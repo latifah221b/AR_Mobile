@@ -58,6 +58,12 @@ public class BadgePopupCard : MonoBehaviour
         defaultsCaptured = true;
     }
 
+    /// <summary>True while a badge is on screen or still waiting in the queue.</summary>
+    public bool IsShowing
+    {
+        get { return showing || queue.Count > 0; }
+    }
+
     /// <summary>Queue an entry using the card's own heading.</summary>
     public void Show(Sprite sprite, string badgeName, string description)
     {

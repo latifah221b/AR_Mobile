@@ -26,6 +26,10 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     [SerializeField] private GameObject S2SpriteBadge;
     [SerializeField] private GameObject P1SpriteBadge;
     [SerializeField] private GameObject P2SpriteBadge;
+    [Header("Popup Card")]
+    [Tooltip("When set, taps are ignored and the end-of-level dialogs wait while this card is on screen.")]
+    [SerializeField] private BadgePopupCard popupCard;
+
     private AudioManager audioManager;
     private float startTime;
     private bool isTiming = false;
@@ -46,6 +50,9 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
 
     public void OnTap(Vector2 tapPosition)
     {
+        // a modal card is on screen - do not let taps reach the world behind it
+        if (popupCard != null && popupCard.IsShowing) return;
+
         Collider hitCollider = CheckTapPosition(tapPosition);
 
         if (hitCollider != null)
@@ -199,6 +206,15 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         GameObjectManager.Instance.UnregisterNotifier(this);
     }
 
+    /// <summary>Blocks until the reward/badge card has been dismissed.</summary>
+    private IEnumerator WaitForPopupClosed()
+    {
+        while (popupCard != null && popupCard.IsShowing)
+        {
+            yield return null;
+        }
+    }
+
     IEnumerator finalLogicScene3()
     {
         yield return new WaitForSecondsRealtime(2);
@@ -211,6 +227,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         if (_final_dialogs.Length > 0)
         {
             yield return new WaitForSecondsRealtime(6);
+            yield return WaitForPopupClosed();
             _final_dialogs[2].SetActive(true);
             yield return new WaitForSecondsRealtime(3);
             _final_dialogs[2].SetActive(false);
@@ -229,6 +246,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
         }
 
         yield return new WaitForSecondsRealtime(1);
+        yield return WaitForPopupClosed();
 
         _final_dialogs[0].SetActive(true);
         yield return new WaitForSecondsRealtime(3);
@@ -246,6 +264,7 @@ public class TapResponder : MonoBehaviour, INotifyOnTap
     private IEnumerator ShowResultsPanelAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        yield return WaitForPopupClosed();
 
         isTiming = false;
 
