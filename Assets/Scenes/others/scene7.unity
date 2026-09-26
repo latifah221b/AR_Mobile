@@ -8760,7 +8760,6 @@ MonoBehaviour:
   _eventSystem: {fileID: 0}
   _geodialog: {fileID: 2123342336}
   _num_of_enemy: 4
-  _placingObjAtLatLngAlt: {fileID: 0}
   _toggleGeo: 1
 --- !u!114 &1545701205
 MonoBehaviour:
@@ -8778,6 +8777,12 @@ MonoBehaviour:
   oneStarSprite: {fileID: 21300000, guid: bbc162c19c06f4df393540f1b1fc791e, type: 3}
   twoStarsSprite: {fileID: 21300000, guid: eb70ca101b91544338a3def87fe0d67b, type: 3}
   threeStarsSprite: {fileID: 21300000, guid: b8f6c3355e5be4c648e31caa594b4ff3, type: 3}
+  popupCard: {fileID: 0}
+  rewardTitle: Level Complete!
+  rewardSubtitle: Here is how you did
+  oneStarName: 1 Star
+  twoStarsName: 2 Stars
+  threeStarsName: 3 Stars
 --- !u!114 &1545701206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8791,6 +8796,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   badgeSprite: {fileID: 2093516362}
+  badgeSprite200: {fileID: 0}
+  badgeSprite300: {fileID: 0}
+  popupCard: {fileID: 0}
+  badgeName100: 2 Coins
+  badgeName200: 4 Coins
+  badgeName300: 6 Coins
+  badgeDescription100: 
+  badgeDescription200: 
+  badgeDescription300: 
 --- !u!114 &1545701207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8804,6 +8818,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   badgeSprite: {fileID: 1851034663}
+  badgeSprite200: {fileID: 0}
+  badgeSprite300: {fileID: 0}
+  popupCard: {fileID: 0}
+  badgeName100: 1000 Steps
+  badgeName200: 2000 Steps
+  badgeName300: 3000 Steps
+  badgeDescription100: 
+  badgeDescription200: 
+  badgeDescription300: 
 --- !u!1001 &1561602719
 PrefabInstance:
   m_ObjectHideFlags: 0

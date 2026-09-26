@@ -327,6 +327,8 @@ GameObject:
   - component: {fileID: 3910805318398663260}
   - component: {fileID: 6946206391974997803}
   - component: {fileID: 3147569302765230089}
+  - component: {fileID: 629357488660385101}
+  - component: {fileID: 2659420656944955591}
   m_Layer: 0
   m_Name: tut panel
   m_TagString: Untagged
@@ -345,12 +347,15 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 994774955644735195}
+  - {fileID: 531909889293298455}
+  - {fileID: 3269893608011830748}
   m_Father: {fileID: 3832993146900464087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 179.00024, y: -455.99997}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -300}
   m_SizeDelta: {x: 280, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7301487322882234196
@@ -367,9 +372,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
   m_MinWidth: 280
-  m_MinHeight: 280
+  m_MinHeight: -1
   m_PreferredWidth: 280
-  m_PreferredHeight: 280
+  m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -487,6 +492,46 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.25}
   m_EffectDistance: {x: 0, y: -4}
   m_UseGraphicAlpha: 1
+--- !u!114 &629357488660385101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290170222862131048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 24
+    m_Right: 24
+    m_Top: 22
+    m_Bottom: 22
+  m_ChildAlignment: 4
+  m_Spacing: 14
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &2659420656944955591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290170222862131048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &7511038278741545297
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,12 +563,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3832993146900464087}
+  m_Father: {fileID: 2403748068950500474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -79, y: 39}
-  m_SizeDelta: {x: 165, y: 39}
+  m_SizeDelta: {x: 232, y: 39}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4185191212374711793
 MonoBehaviour:
@@ -538,10 +583,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 165
-  m_MinHeight: 39
-  m_PreferredWidth: 165
-  m_PreferredHeight: 39
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -674,12 +719,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3832993146900464087}
+  m_Father: {fileID: 2403748068950500474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -125, y: -12}
-  m_SizeDelta: {x: 251, y: 59}
+  m_SizeDelta: {x: 232, y: 59}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4867489762907891809
 MonoBehaviour:
@@ -694,10 +739,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 251
-  m_MinHeight: 59
-  m_PreferredWidth: 251
-  m_PreferredHeight: 59
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -833,9 +878,6 @@ RectTransform:
   m_Children:
   - {fileID: 5823659521537034970}
   - {fileID: 2403748068950500474}
-  - {fileID: 3269893608011830748}
-  - {fileID: 531909889293298455}
-  - {fileID: 994774955644735195}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -981,7 +1023,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2834372173954513864}
-  m_Father: {fileID: 3832993146900464087}
+  m_Father: {fileID: 2403748068950500474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1001,12 +1043,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 286
-  m_MinHeight: 67
-  m_PreferredWidth: 286
-  m_PreferredHeight: 67
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
+  m_MinWidth: 175
+  m_MinHeight: 41
+  m_PreferredWidth: 175
+  m_PreferredHeight: 41
+  m_FlexibleWidth: 0
+  m_FlexibleHeight: 0
   m_LayoutPriority: 1
 --- !u!222 &5050512779654863094
 CanvasRenderer:
