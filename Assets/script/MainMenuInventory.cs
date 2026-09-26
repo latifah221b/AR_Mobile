@@ -30,7 +30,7 @@ public class MainMenuInventory : MonoBehaviour
     [Header("Counter (Optional)")]
     public Text CollectedCountText;
     
-    private const int MAX_ITEMS = 31;
+    private const int MAX_ITEMS = 32;
     
     
     private AudioManager audioManager;
