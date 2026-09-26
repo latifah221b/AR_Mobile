@@ -62,21 +62,21 @@ public class StepsBadge : MonoBehaviour
 
     public void CheckSteps(int stepCount)
     {
-        if (!triggered100 && stepCount >= 40)
+        if (!triggered100 && stepCount >= 1000)
         {
             triggered100 = true;
             AchievementSaveSystem.UnlockAchievement("Steps_100");
             ShowBadgeInternal(badgeSprite, badgeName100, badgeDescription100);
         }
 
-        if (!triggered200 && stepCount >= 60)
+        if (!triggered200 && stepCount >= 2000)
         {
             triggered200 = true;
             AchievementSaveSystem.UnlockAchievement("Steps_200");
             ShowBadgeInternal(badgeSprite200, badgeName200, badgeDescription200);
         }
 
-        if (!triggered300 && stepCount >= 80)
+        if (!triggered300 && stepCount >= 3000)
         {
             triggered300 = true;
             AchievementSaveSystem.UnlockAchievement("Steps_300");
