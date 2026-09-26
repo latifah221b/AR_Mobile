@@ -78,6 +78,49 @@ public class EnemyController : MonoBehaviour
 
 
     }
+    // Answer feedback colours, from the design system.
+    private static readonly Color CorrectGreen = new Color(0.2314f, 0.7294f, 0.3569f, 1f); // #3BBA5B
+    private static readonly Color WrongRed = new Color(0.6980f, 0.2392f, 0.2471f, 1f);     // #B23D3F
+
+    // The answer buttons are FigmaImages and the Button tint MULTIPLIES the fill,
+    // so tinting alone over the dark #3A3D43 background would give a murky colour.
+    // Set the fill directly and hold the tints at white. Returns the previous fill
+    // so it can be put back (alpha 0 means there was nothing to restore).
+    private Color SetAnswerFill(Button butt, Color colour)
+    {
+        if (butt == null) return Color.clear;
+
+        ColorBlock cb = butt.colors;
+        cb.normalColor = Color.white;
+        cb.highlightedColor = Color.white;
+        cb.pressedColor = Color.white;
+        cb.selectedColor = Color.white;
+        butt.colors = cb;
+
+        FigmaImage fill = butt.targetGraphic as FigmaImage;
+        if (fill != null)
+        {
+            Color previous = fill.FillColor;
+            fill.FillColor = colour;
+            return previous;
+        }
+        if (butt.targetGraphic != null)
+        {
+            Color previous = butt.targetGraphic.color;
+            butt.targetGraphic.color = colour;
+            return previous;
+        }
+        return Color.clear;
+    }
+
+    private void RestoreAnswerFill(Button butt, Color colour)
+    {
+        if (butt == null || colour.a <= 0f) return;
+        FigmaImage fill = butt.targetGraphic as FigmaImage;
+        if (fill != null) { fill.FillColor = colour; return; }
+        if (butt.targetGraphic != null) butt.targetGraphic.color = colour;
+    }
+
     IEnumerator button_logic(Button butt)
     {
         var button_text = butt.GetComponentInChildren<TMP_Text>();
@@ -87,12 +130,7 @@ public class EnemyController : MonoBehaviour
             if (button_text.text == correctAnswer)
             {
                 audioManager.PlaySFX(audioManager.correct);
-                ColorBlock colorBlock = butt.colors;
-                colorBlock.normalColor = Color.green;
-                colorBlock.pressedColor = Color.green;
-                colorBlock.selectedColor = Color.green;
-
-                butt.colors = colorBlock;
+                SetAnswerFill(butt, CorrectGreen);
 
                 yield return new WaitForSecondsRealtime(2);
                 _canvas.SetActive(false);
@@ -107,6 +145,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 audioManager.PlaySFX(audioManager.wrong);
+                Color wrongPrevious = SetAnswerFill(butt, WrongRed);
                 _incorrectDailog.SetActive(true);
                 
                 yield return new WaitForSecondsRealtime(2);
@@ -129,6 +168,7 @@ public class EnemyController : MonoBehaviour
                // Debug.Log("new pos" + transform.position);
 
                 _incorrectDailog.SetActive(false);
+                RestoreAnswerFill(butt, wrongPrevious);
                 _visual.SetActive(true);
 
             }
