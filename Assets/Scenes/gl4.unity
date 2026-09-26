@@ -3087,9 +3087,9 @@ RectTransform:
   - {fileID: 1640392935}
   m_Father: {fileID: 1161250183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 61.5, y: -801}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -135.5, y: -805}
   m_SizeDelta: {x: 81, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1605314331
@@ -3192,10 +3192,10 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
   m_Shape: 0
-  m_StrokeColor: {r: 0.75686276, g: 0.75686276, b: 0.7764706, a: 1}
+  m_StrokeColor: {r: 1, g: 1, b: 1, a: 1}
   m_FillColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StrokeWidth: 1
-  m_CornerRadius: {x: 24, y: 24, z: 24, w: 24}
+  m_StrokeWidth: 0
+  m_CornerRadius: {x: 30, y: 30, z: 30, w: 30}
   m_StrokePosition: 0
   m_Fill: 1
   m_ImageScaleMode: 0
@@ -3205,18 +3205,18 @@ MonoBehaviour:
   m_ImageScaleFactor: 1
   m_FillGradient:
     serializedVersion: 2
-    key0: {r: 0.52156866, g: 0.52156866, b: 0.5411765, a: 1}
-    key1: {r: 0.5529412, g: 0.5529412, b: 0.57254905, a: 1}
-    key2: {r: 0.5529412, g: 0.5529412, b: 0.57254905, a: 0}
-    key3: {r: 0.58431375, g: 0.58431375, b: 0.6, a: 0}
+    key0: {r: 0.43529412, g: 0.5019608, b: 0.6666667, a: 1}
+    key1: {r: 0.07450981, g: 0.16078432, b: 0.34509805, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 16384
-    ctime2: 47841
-    ctime3: 65535
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
     ctime4: 0
     ctime5: 0
     ctime6: 0
@@ -3231,7 +3231,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
-    m_NumColorKeys: 4
+    m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   m_GradientHandlePositions:
   - {x: 0.5, y: 0}
@@ -3299,11 +3299,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1605314330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -38.17929, y: -10.397388}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1640392936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3348,8 +3348,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294835711
+  m_fontColor: {r: 1, g: 0.9925003, b: 0.9925003, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
