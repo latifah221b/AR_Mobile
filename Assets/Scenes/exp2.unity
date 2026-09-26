@@ -12184,6 +12184,12 @@ MonoBehaviour:
   oneStarSprite: {fileID: 21300000, guid: 8a7e03a0230e44e1c96c00ce7bd15e63, type: 3}
   twoStarsSprite: {fileID: 21300000, guid: 547a3afc4af704766a8603d541dadd88, type: 3}
   threeStarsSprite: {fileID: 21300000, guid: 2ab5ebb5bf47645a7935f5cce3dec6da, type: 3}
+  popupCard: {fileID: 0}
+  rewardTitle: Level Complete!
+  rewardSubtitle: Here is how you did
+  oneStarName: 1 Star
+  twoStarsName: 2 Stars
+  threeStarsName: 3 Stars
 --- !u!114 &1545701208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17127,6 +17133,8 @@ MonoBehaviour:
   badgeImage: {fileID: 1041118441819186176}
   nameText: {fileID: 4075611939605918042}
   descriptionText: {fileID: 3219902042963581929}
+  titleText: {fileID: 8654191808084216490}
+  subtitleText: {fileID: 5248129299986802930}
 --- !u!222 &4189707357772212728
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19761,7 +19769,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 42}
-  m_SizeDelta: {x: 196, y: 196}
+  m_SizeDelta: {x: 240, y: 196}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
